@@ -555,6 +555,7 @@ nav a.active {
     background: var(--white);
     padding: 90px 40px; /* Increased padding */
     text-align: center;
+  background: rgba(245, 245, 245, 0.9); /* Softer, less bright white */
 }
 
 .testimonials h2 {
