@@ -18,11 +18,11 @@
             <a href="#home" class="active">Home</a>
             <a href="#app">About Us</a>
             <a href="#features">The App </a>
-            <a href="#about">Log In</a>
+            <a href="#" id="loginRedirect">Log In</a>
             <a href="#reviews">Reviews</a>
             <a href="#contact">Contact</a>
         </nav>
-    </header> 
+    </header>
 
     <main class="hero" id="home">
         <section class="left">
@@ -38,7 +38,8 @@
             <div class="info-box">
                 <p><strong>🚀 We build AI Systems</strong> for Industries and Human Use Cases.</p>
                 <p>✨ We have been Featured on Elevate<strong>SHARK TANK 2025</strong></p>
-                <p>🎓 We are the only company to be selected under the Generative AI Category to be showcased at the<strong> National Startup Summit by IIT Madras. </strong></p>
+                <p>🎓 We are the only company to be selected under the Generative AI Category to be showcased at
+                    the<strong> National Startup Summit by IIT Madras. </strong></p>
                 <p class="trusted">✅ We are Trusted by Atal Innovation Mission Institutes. – Govt of India.</p>
             </div>
         </section>
@@ -46,7 +47,8 @@
 
     <section class="cosmo-section" id="app">
         <h2>AI Cosmo</h2>
-        <p>Cosmo is our flagship Generative AI Copilot that is helping Startups<br/> and Entrepreneurs scale during their build phase and help them go from 0 to 1.</p>
+        <p>Cosmo is our flagship Generative AI Copilot that is helping Startups<br /> and Entrepreneurs scale during
+            their build phase and help them go from 0 to 1.</p>
         <button class="cosmo-btn">Let's Begin</button>
     </section>
 
@@ -114,7 +116,9 @@
     </section>
 
     <section class="testimonials" id="reviews">
-        <h2 style="background-color: linear-gradient(45deg, #efefef 25%, transparent 25%, transparent 75%, #efefef 75%, #efefef), linear-gradient(45deg, #efefef 25%, transparent 25%, transparent 75%, #efefef 75%, #efefef);;">Testimonials</h2>
+        <h2
+            style="background-color: linear-gradient(45deg, #efefef 25%, transparent 25%, transparent 75%, #efefef 75%, #efefef), linear-gradient(45deg, #efefef 25%, transparent 25%, transparent 75%, #efefef 75%, #efefef);;">
+            Testimonials</h2>
         <div class="testimonial-cards">
             <div class="card">
                 <div class="quote">“</div>
@@ -209,6 +213,11 @@
             } else {
                 header.classList.remove('scrolled');
             }
+        });
+
+        document.getElementById("loginRedirect").addEventListener("click", function (e) {
+            e.preventDefault();
+            window.location.href = "login.html";
         });
     </script>
 </body>
