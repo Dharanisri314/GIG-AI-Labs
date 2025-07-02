@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Create Account</title>
+   <link rel="stylesheet" href="login.css" />
+</head>
+<body>
+  <h2>Signup</h2>
+  <input type="text" id="signupName" placeholder="Enter name" />
+  <input type="email" id="signupEmail" placeholder="Enter email" />
+  <input type="password" id="signupPassword" placeholder="Enter password" />
+  <button onclick="signUp()">Create an Account</button>
+
+  <p>Already have an account? <a href="login.html">Login</a></p>
+
+  <!-- Only manual click works -->
+  <button id="goHomeBtn">Go to Home</button>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"></script>
+
+  <!-- Firebase Logic -->
+  <script type="module" src="script.js"></script>
+
+  <!-- JS for Go Home button -->
+  <script>
+    document.getElementById("goHomeBtn").addEventListener("click", function () {
+      window.location.href = "index.html"; // or your homepage filename
+    });
+  </script>
+</body>
+</html>

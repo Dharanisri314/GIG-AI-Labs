@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login</title>
+  <link rel="stylesheet" href="login.css" />
+</head>
+<body>
+  <!-- 👇 Go to Home button -->
+  <button id="goHomeBtn">Go to Home</button>
+
+  <h2>Login</h2>
+  <input type="email" id="loginEmail" placeholder="Enter email" />
+  <input type="password" id="loginPassword" placeholder="Enter password" />
+  <button onclick="logIn()">Login</button>
+
+  <!-- 👇 Create Account Link -->
+  <p>Don't have an account? 
+    <a href="Signup Page.html" style="color: #2F6FD3;
+     text-decoration: underline;">Create an Account</a>
+  </p>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"></script>
+
+  <!-- Firebase Logic -->
+  <script type="module" src="script.js"></script>
+
+  <!-- 👇 JS for Go to Home button -->
+  <script>
+    document.getElementById("goHomeBtn").addEventListener("click", function () {
+      window.location.href = "index.html"; // your home page path
+    });
+  </script>
+</body>
+</html>
