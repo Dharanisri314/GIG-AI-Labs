@@ -1,288 +1,220 @@
-/* CSS variables for consistent theming and easier updates */
 :root {
-    --primary-blue: #2F6FD3; /* Slightly darker and richer blue */
-    --light-blue-bg: #EAF3FF; /* Very light blue for backgrounds - changed for more softness */
+    --primary-blue: #2F6FD3;
+    --light-blue-bg: #EAF3FF;
     --white: #ffffff;
-    --dark-text: #1A202C; /* Even darker text for better contrast and modern feel */
-    --medium-text: #4A5568; /* Medium text color */
-    --soft-shadow: rgba(0, 0, 0, 0.06); /* Softer shadows for floating effect */
-    --medium-shadow: rgba(0, 0, 0, 0.12); /* Medium shadows */
-    --strong-shadow: rgba(0, 0, 0, 0.18); /* Stronger shadows */
-    --hover-blue-light: rgba(47, 111, 211, 0.12); /* Light blue tint for box hover based on new primary blue */
-    --gradient-blue-light: #5A9BFF; /* Lighter blue for gradients */
-    --gradient-blue-dark: #1A4D9A; /* Darker blue for gradients */
-
-    /* Define RGB values for use in rgba() to maintain consistency with variables */
+    --dark-text: #1A202C;
+    --medium-text: #4A5568;
+    --soft-shadow: rgba(0, 0, 0, 0.06);
+    --medium-shadow: rgba(0, 0, 0, 0.12);
+    --gradient-blue-light: #5A9BFF;
+    --gradient-blue-dark: #1A4D9A;
     --primary-blue-rgb: 47, 111, 211;
     --gradient-blue-light-rgb: 90, 155, 255;
 }
 
-/* Global Reset and Base Styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth; /* Smooth scrolling for navigation links */
-}
-
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 body {
-    font-family: 'Outfit', sans-serif; /* Global font setting */
-    background: linear-gradient(160deg, var(--light-blue-bg) 0%, var(--white) 100%); /* More dynamic gradient background */
+    font-family: 'Outfit', sans-serif;
+    background: linear-gradient(160deg, var(--light-blue-bg) 0%, var(--white) 100%);
     color: var(--dark-text);
-    line-height: 1.7; /* Increased line height for readability */
-    overflow-x: hidden; /* Prevents horizontal scrollbar */
+    line-height: 1.7;
+    overflow-x: hidden;
 }
 
-/* Header Styling */
+/* Header */
 header {
     background: var(--white);
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1.5rem 3rem;
-    box-shadow: 0 10px 30px var(--soft-shadow); /* Enhanced shadow for immediate depth */
+    box-shadow: 0 10px 30px var(--soft-shadow);
     position: sticky;
     top: 0;
-    z-index: 1000; /* Ensures header stays on top */
-    border-radius: 0 0 30px 30px; /* More rounded bottom corners */
-    transition: all 0.4s ease-in-out; /* Smooth transition for potential changes */
-    border-bottom: 1px solid rgba(var(--primary-blue-rgb), 0.05); /* Subtle border */
+    z-index: 1000;
+    border-radius: 0 0 30px 30px;
+    transition: all 0.4s ease-in-out;
+    border-bottom: 1px solid rgba(var(--primary-blue-rgb), 0.05);
 }
-
 header.scrolled {
-    padding: 1rem 3rem; /* Smaller padding when scrolled */
-    box-shadow: 0 6px 20px var(--medium-shadow); /* More prominent shadow when scrolled */
+    padding: 1rem 3rem;
+    box-shadow: 0 6px 20px var(--medium-shadow);
 }
-
 .logo {
-    font-size: 2.2rem; /* Larger and bolder logo */
+    font-size: 2.2rem;
     font-weight: 700;
     color: var(--primary-blue);
     letter-spacing: 1.8px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.08); /* More pronounced text shadow */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.08);
 }
-
 nav {
     display: flex;
-    gap: 2.8rem; /* Increased spacing between nav links */
+    gap: 2.8rem;
 }
-
 nav a {
     text-decoration: none;
     color: var(--medium-text);
     font-weight: 500;
     transition: all 0.3s ease;
-    padding: 12px 20px; /* More padding for a bolder look */
-    border-radius: 15px; /* More rounded links */
+    padding: 12px 20px;
+    border-radius: 15px;
     position: relative;
     overflow: hidden;
     letter-spacing: 0.5px;
 }
-
 nav a::before {
     content: '';
     position: absolute;
     bottom: 0;
     left: 50%;
     width: 0;
-    height: 4px; /* Thicker underline */
-    background: linear-gradient(90deg, var(--gradient-blue-light), var(--primary-blue)); /* Gradient underline */
+    height: 4px;
+    background: linear-gradient(90deg, var(--gradient-blue-light), var(--primary-blue));
     transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
     transform: translateX(-50%);
 }
-
 nav a:hover::before,
-nav a.active::before {
-    width: 100%;
-}
-
+nav a.active::before { width: 100%; }
 nav a:hover,
 nav a.active {
-    background: var(--hover-blue-light);
+    background: rgba(var(--primary-blue-rgb), 0.12);
     color: var(--primary-blue);
-    transform: translateY(-3px) scale(1.01); /* More pronounced lift and subtle scale */
-    box-shadow: 0 5px 15px rgba(var(--primary-blue-rgb), 0.15); /* More visible shadow */
+    transform: translateY(-3px) scale(1.01);
+    box-shadow: 0 5px 15px rgba(var(--primary-blue-rgb), 0.15);
 }
 
-/* Hero Section Styling */
+/* Hero */
 .hero {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: 5rem; /* Increased gap for more breathing room */
-    padding: 7rem 5rem; /* Even more padding */
-    margin: 3.5rem; /* Even more margin */
-    border-radius: 35px; /* Even more highly rounded corners */
-   background: rgba(245, 245, 245, 0.9); /* Softer, less bright white */
-    backdrop-filter: blur(25px) saturate(2); /* Stronger blur and saturation */
-    box-shadow: 0 40px 100px var(--medium-shadow); /* More prominent shadow */
-    animation: fadeUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) both; /* Slower, smoother bounce animation */
-    border: 2px solid rgba(var(--primary-blue-rgb), 0.15); /* Slightly more prominent subtle blue border */
+    gap: 5rem;
+    padding: 7rem 5rem;
+    margin: 3.5rem;
+    border-radius: 35px;
+    background: rgba(245, 245, 245, 0.9);
+    backdrop-filter: blur(25px) saturate(2);
+    box-shadow: 0 40px 100px var(--medium-shadow);
+    animation: fadeUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    border: 2px solid rgba(var(--primary-blue-rgb), 0.15);
     position: relative;
     overflow: hidden;
 }
-
-/* Keyframe for fade up animation */
 @keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(20px);}
+    to { opacity: 1; transform: translateY(0);}
 }
-
-
-/* Hero Background Elements - Abstract shapes */
 .hero::before, .hero::after {
     content: '';
     position: absolute;
-    background: rgba(var(--primary-blue-rgb), 0.1); /* Light blue blobs */
+    background: rgba(var(--primary-blue-rgb), 0.1);
     border-radius: 50%;
-    filter: blur(80px); /* Soft blur effect */
+    filter: blur(80px);
     z-index: -1;
     animation: float 10s infinite ease-in-out alternate;
 }
-
 .hero::before {
-    width: 300px;
-    height: 300px;
-    top: -50px;
-    left: -80px;
+    width: 300px; height: 300px; top: -50px; left: -80px;
     transform: translate(-20%, -20%) rotate(15deg);
 }
-
 .hero::after {
-    width: 250px;
-    height: 250px;
-    bottom: -70px;
-    right: -60px;
-    background: rgba(var(--gradient-blue-light-rgb), 0.12); /* Slightly different color for second blob */
+    width: 250px; height: 250px; bottom: -70px; right: -60px;
+    background: rgba(var(--gradient-blue-light-rgb), 0.12);
     transform: translate(20%, 20%) rotate(-25deg);
     animation-delay: 2s;
 }
-
 @keyframes float {
-    0% { transform: translateY(0) rotate(0deg); }
-    100% { transform: translateY(-20px) rotate(10deg); }
+    0% { transform: translateY(0) rotate(0deg);}
+    100% { transform: translateY(-20px) rotate(10deg);}
 }
-
-
 .hero .left {
     flex: 1;
     min-width: 320px;
     max-width: 650px;
-    text-align: left; /* Ensure left content is left-aligned */
+    text-align: left;
 }
-
 .left h1 {
-    font-size: 4.5rem; /* Even larger heading */
+    font-size: 4.5rem;
     font-weight: 800;
     margin-bottom: 1.8rem;
-    line-height: 1.15; /* Tighter line height */
+    line-height: 1.15;
     color: var(--dark-text);
-    letter-spacing: -2px; /* Even tighter letter spacing */
+    letter-spacing: -2px;
 }
-
 .highlight {
-    background: linear-gradient(60deg, var(--primary-blue), var(--gradient-blue-light), var(--gradient-blue-dark), #102A6F); /* More complex, vibrant gradient */
-    background-size: 200% 200%; /* For better animation */
+    background: linear-gradient(60deg, var(--primary-blue), var(--gradient-blue-light), var(--gradient-blue-dark), #102A6F);
+    background-size: 200% 200%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: textGradient 4s ease-in-out infinite alternate; /* Slower, more impactful animation */
+    animation: textGradient 4s ease-in-out infinite alternate;
 }
-
 @keyframes textGradient {
     0% { background-position: 0% 50%; }
     100% { background-position: 100% 50%; }
 }
-
 .subtitle {
-    font-size: 1.8rem; /* Even larger subtitle */
+    font-size: 1.8rem;
     margin-bottom: 2.5rem;
     color: var(--medium-text);
     font-weight: 300;
     letter-spacing: 0.5px;
 }
-
 .hiring-text {
-    background: linear-gradient(90deg, rgba(var(--primary-blue-rgb), 0.15), rgba(var(--gradient-blue-light-rgb), 0.1)); /* Gradient background */
-    padding: 1.8rem; /* More padding */
+    background: linear-gradient(90deg, rgba(var(--primary-blue-rgb), 0.15), rgba(var(--gradient-blue-light-rgb), 0.1));
+    padding: 1.8rem;
     margin-top: 3.5rem;
-    border-left: 10px solid var(--primary-blue); /* Thicker and bolder border */
-    border-radius: 20px; /* More rounded */
+    border-left: 10px solid var(--primary-blue);
+    border-radius: 20px;
     font-weight: 600;
     color: var(--primary-blue);
     line-height: 1.6;
-    box-shadow: 0 8px 25px rgba(var(--primary-blue-rgb), 0.15); /* More visible shadow */
+    box-shadow: 0 8px 25px rgba(var(--primary-blue-rgb), 0.15);
     transition: all 0.3s ease-in-out;
 }
-
 .hiring-text:hover {
     transform: translateY(-5px);
     box-shadow: 0 12px 30px rgba(var(--primary-blue-rgb), 0.25);
 }
-
 .click-link {
     color: var(--primary-blue);
     text-decoration: underline;
     font-weight: bold;
     transition: color 0.3s ease;
 }
-
-.click-link:hover {
-    color: var(--gradient-blue-dark);
-}
-
-/* Info Box Styling */
+.click-link:hover { color: var(--gradient-blue-dark); }
 .info-box {
     background: var(--white);
-    padding: 3rem; /* Even more padding */
-    border-radius: 25px; /* More rounded */
-    box-shadow: 0 30px 60px var(--soft-shadow); /* Enhanced shadow */
-    font-size: 1.3rem; /* Even larger font */
-    line-height: 2.2; /* Increased line height for readability */
-    border: 2px solid rgba(var(--primary-blue-rgb), 0.1); /* Slightly more prominent subtle border */
-    transform: rotate(3deg); /* Slightly more rotation for a dynamic feel */
+    padding: 3rem;
+    border-radius: 25px;
+    box-shadow: 0 30px 60px var(--soft-shadow);
+    font-size: 1.3rem;
+    line-height: 2.2;
+    border: 2px solid rgba(var(--primary-blue-rgb), 0.1);
+    transform: rotate(3deg);
     transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-    max-width: 480px; /* Increased max width */
+    max-width: 480px;
 }
-
 .info-box:hover {
-    transform: rotate(0deg) scale(1.03); /* Straighten and slightly scale on hover */
-    box-shadow: 0 40px 80px var(--medium-shadow); /* Stronger shadow on hover */
+    transform: rotate(0deg) scale(1.03);
+    box-shadow: 0 40px 80px var(--medium-shadow);
 }
+.info-box p { margin-bottom: 1rem; color: var(--medium-text);}
+.info-box strong { color: var(--primary-blue); font-weight: 700;}
+.info-box p:last-child { margin-bottom: 0; }
 
-.info-box p {
-    margin-bottom: 1rem; /* Increased margin */
-    color: var(--medium-text);
-}
-.info-box strong {
-    color: var(--primary-blue);
-    font-weight: 700;
-}
-.info-box p:last-child {
-    margin-bottom: 0;
-}
-
-/* Cosmo Section Styling */
+/* Cosmo Section */
 .cosmo-section {
     text-align: center;
-    padding: 9rem 4rem; /* Even more padding */
-    background: linear-gradient(to bottom, var(--white), var(--light-blue-bg)); /* Gradient background */
-    border-radius: 0 0 120px 120px; /* Even more rounded bottom */
-    box-shadow: 0 20px 50px var(--soft-shadow); /* Added shadow for separation */
+    padding: 9rem 4rem;
+    background: linear-gradient(to bottom, var(--white), var(--light-blue-bg));
+    border-radius: 0 0 120px 120px;
+    box-shadow: 0 20px 50px var(--soft-shadow);
     animation: fadeUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) both;
     position: relative;
-    overflow: hidden; /* Ensure pseudo-element doesn't overflow */
+    overflow: hidden;
 }
-
 .cosmo-section::before {
     content: '';
     position: absolute;
@@ -294,9 +226,8 @@ nav a.active {
     transform: translate(-50%, -50%);
     z-index: 0;
 }
-
 .cosmo-section h2 {
-    font-size: 3.8rem; /* Even larger heading */
+    font-size: 3.8rem;
     color: var(--primary-blue);
     margin-bottom: 2rem;
     font-weight: 800;
@@ -304,9 +235,8 @@ nav a.active {
     position: relative;
     z-index: 1;
 }
-
 .cosmo-section p {
-    font-size: 1.3rem; /* Larger font */
+    font-size: 1.3rem;
     color: var(--medium-text);
     margin-bottom: 3rem;
     max-width: 800px;
@@ -315,419 +245,136 @@ nav a.active {
     position: relative;
     z-index: 1;
 }
-
 .cosmo-btn {
     background: linear-gradient(45deg, var(--primary-blue), var(--gradient-blue-light));
     color: var(--white);
-    padding: 1.2rem 3.5rem; /* More padding */
+    padding: 1.2rem 3.5rem;
     border: none;
-    font-size: 1.3rem; /* Larger font */
-    border-radius: 70px; /* Highly rounded button */
+    font-size: 1.3rem;
+    border-radius: 70px;
     cursor: pointer;
     transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
     margin-top: 2.5rem;
-    box-shadow: 0 18px 45px rgba(var(--primary-blue-rgb), 0.4); /* Stronger shadow */
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    position: relative;
-    z-index: 1;
-}
-
-.cosmo-btn:hover {
-    background: linear-gradient(45deg, var(--gradient-blue-dark), var(--primary-blue));
-    transform: translateY(-8px) scale(1.03); /* More pronounced lift and scale */
-    box-shadow: 0 25px 55px rgba(var(--primary-blue-rgb), 0.5);
-    animation: pulse 1s infinite alternate; /* Subtle pulse animation */
-}
-
-@keyframes pulse {
-    from { transform: translateY(-8px) scale(1.03); box-shadow: 0 25px 55px rgba(var(--primary-blue-rgb), 0.5); }
-    to { transform: translateY(-6px) scale(1.02); box-shadow: 0 20px 45px rgba(var(--primary-blue-rgb), 0.4); }
-}
-
-
-/* Features Section Styling */
-.main {
-    padding: 8rem 4rem; /* Even more padding */
-    background: var(--light-blue-bg);
-    animation: fadeUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) both;
-    position: relative;
-}
-
-.title h1 {
-    font-size: 3.5rem; /* Larger heading */
-    margin-bottom: 2.5rem;
-    color: var(--dark-text);
-    text-align: center;
-    font-weight: 800;
-    letter-spacing: -1px;
-}
-
-.features-title {
-    color: var(--primary-blue);
-    font-weight: 700;
-    font-size: 1.6rem; /* Even larger font */
-    margin-bottom: 3.5rem;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 4px; /* More letter spacing */
-}
-
-.features-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 3.5rem; /* Increased gap */
-    justify-content: center;
-}
-
-.feature {
-    background: var(--white);
-    padding: 3.5rem; /* Even more padding */
-    border-radius: 30px; /* Highly rounded */
-    max-width: 380px; /* Wider cards */
-    box-shadow: 0 25px 50px var(--soft-shadow); /* Enhanced shadow */
-    transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1); /* Smoother and more dynamic transition */
-    text-align: left;
-    position: relative;
-    overflow: hidden;
-    border: 2px solid rgba(var(--primary-blue-rgb), 0.1); /* Slightly more prominent subtle border */
-}
-
-.feature::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at bottom right, var(--hover-blue-light) 0%, transparent 70%); /* Radial gradient from bottom right */
-    transform: scale(0); /* Start scaled down */
-    border-radius: 30px;
-    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
-    z-index: 0;
-}
-
-.feature:hover::before {
-    transform: scale(1);
-}
-
-.feature > * {
-    position: relative;
-    z-index: 1;
-}
-
-.feature:hover {
-    transform: translateY(-15px) scale(1.04); /* More pronounced lift and scale */
-    box-shadow: 0 40px 80px var(--medium-shadow); /* Stronger shadow on hover */
-}
-
-.feature i {
-    font-size: 3.2rem; /* Even larger icon */
-    color: var(--primary-blue);
-    margin-bottom: 1.8rem;
-    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-.feature:hover i {
-    transform: rotate(15deg) scale(1.25); /* More dynamic icon animation */
-}
-
-.feature h3 {
-    color: var(--dark-text);
-    margin-bottom: 1.2rem;
-    font-size: 1.6rem; /* Larger heading */
-    font-weight: 700;
-}
-.feature p {
-    color: var(--medium-text);
-    font-size: 1.15rem;
-}
-.feature .how {
-    font-weight: 600;
-    margin-top: 1.8rem;
-    color: var(--primary-blue);
-    text-decoration: underline;
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-.feature .how:hover {
-    color: var(--gradient-blue-dark);
-}
-
-/* How to Begin Section Styling */
-.how-begin {
-    padding: 8rem 4rem;
-    background: linear-gradient(to bottom, var(--white), var(--light-blue-bg));
-    text-align: center;
-    box-shadow: 0 -15px 40px var(--soft-shadow);
-    animation: fadeUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) both;
-}
-
-.how-begin h2 {
-    font-size: 3.5rem;
-    color: var(--primary-blue);
-    margin-bottom: 2rem;
-    font-weight: 800;
-}
-
-.how-begin p {
-    font-size: 1.3rem;
-    color: var(--medium-text);
-    margin-bottom: 1.5rem;
-}
-
-.simple-text {
-    font-weight: 700;
-    color: var(--dark-text);
-    margin-top: 1.5rem;
-    font-size: 1.4rem; /* Emphasize "SIMPLE!" */
-}
-
-.cta-button {
-    display: inline-block;
-    margin-top: 3rem;
-    background: linear-gradient(45deg, var(--primary-blue), var(--gradient-blue-light));
-    color: var(--white);
-    padding: 1.3rem 4rem; /* More padding */
-    border-radius: 70px;
-    text-decoration: none;
-    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
     box-shadow: 0 18px 45px rgba(var(--primary-blue-rgb), 0.4);
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1.5px;
+    position: relative;
+    z-index: 1;
 }
-
-.cta-button:hover {
+.cosmo-btn:hover {
     background: linear-gradient(45deg, var(--gradient-blue-dark), var(--primary-blue));
     transform: translateY(-8px) scale(1.03);
     box-shadow: 0 25px 55px rgba(var(--primary-blue-rgb), 0.5);
     animation: pulse 1s infinite alternate;
 }
-
-/* Our Story Section Styling */
-.our-story {
-    background-color: var(--light-blue-bg);
-    padding: 90px 40px; /* Increased padding */
+@keyframes pulse {
+    from { transform: translateY(-8px) scale(1.03); box-shadow: 0 25px 55px rgba(var(--primary-blue-rgb), 0.5);}
+    to { transform: translateY(-6px) scale(1.02); box-shadow: 0 20px 45px rgba(var(--primary-blue-rgb), 0.4);}
 }
 
+/* Our Story */
+.our-story {
+    background-color: var(--light-blue-bg);
+    padding: 90px 40px;
+}
 .story-container {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    max-width: 1200px; /* Wider container */
+    max-width: 1200px;
     margin: 0 auto;
-    gap: 90px; /* Increased gap */
+    gap: 90px;
     flex-wrap: wrap;
 }
-
 .story-left {
     flex: 1;
-    min-width: 350px; /* Increased min-width */
+    min-width: 350px;
 }
-
 .story-left h2 {
     font-size: 3.8rem;
     color: var(--primary-blue);
     font-weight: 800;
     letter-spacing: -1px;
 }
-
 .story-right {
     flex: 2;
-    min-width: 450px; /* Increased min-width */
+    min-width: 450px;
 }
-
 .story-right p {
     font-size: 1.3rem;
     color: var(--dark-text);
     line-height: 1.9;
-    margin-bottom: 25px; /* Increased margin */
+    margin-bottom: 25px;
 }
 .story-right strong {
     color: var(--primary-blue);
     font-weight: 700;
 }
 
-/* Testimonials Section Styling */
-.testimonials {
-    background: var(--white);
-    padding: 90px 40px; /* Increased padding */
-    text-align: center;
-  background: rgba(245, 245, 245, 0.9); /* Softer, less bright white */
-}
-
-.testimonials h2 {
-    font-size: 3.8rem;
-    margin-bottom: 60px; /* Increased margin */
-    color: var(--dark-text);
-    font-weight: 800;
-    letter-spacing: -1px;
-}
-
-.testimonial-cards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 45px; /* Increased gap */
-}
-
-.testimonial-cards .card {
-    position: relative;
-    background: var(--white);
-    border-radius: 30px;
-    box-shadow: 0 10px 30px var(--soft-shadow); /* Refined shadow */
-    padding: 45px; /* More padding */
-    width: 400px; /* Wider cards */
-    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.5s ease;
-    cursor: pointer;
-    text-align: left;
-    overflow: hidden;
-    border: 2px solid rgba(var(--primary-blue-rgb), 0.1); /* Slightly more prominent subtle border */
-}
-
-.testimonial-cards .card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at bottom right, var(--hover-blue-light) 0%, transparent 70%); /* Radial gradient from bottom right */
-    transform: scale(0);
-    border-radius: 30px;
-    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
-    z-index: 0;
-}
-
-.testimonial-cards .card:hover::before {
-    transform: scale(1);
-}
-
-.testimonial-cards .card > * {
-    position: relative;
-    z-index: 1;
-}
-
-.testimonial-cards .card:hover {
-    transform: translateY(-18px) scale(1.03); /* More pronounced lift */
-    box-shadow: 0 40px 80px var(--medium-shadow); /* Stronger shadow on hover */
-}
-
-.card .quote {
-    font-size: 4.5rem; /* Larger quote icon */
-    color: var(--primary-blue);
-    margin-bottom: 25px;
-    line-height: 1;
-    font-weight: 900;
-}
-
-.card p {
-    margin: 18px 0;
-    color: var(--dark-text);
-    font-size: 1.2rem;
-    line-height: 1.8;
-}
-
-.card .author {
-    font-weight: bold;
-    color: var(--primary-blue);
-    margin-top: 25px;
-    font-size: 1.25rem;
-}
-
-.card .stars {
-    color: #FFD700;
-    font-size: 1.5rem; /* Larger stars */
-    margin-top: 18px;
-}
-
-/* Contact Section Styling */
+/* Contact Section */
 .contact-section {
     background: linear-gradient(135deg, var(--light-blue-bg) 0%, var(--white) 100%);
     color: var(--dark-text);
-    padding: 110px 40px; /* Increased padding */
+    padding: 110px 40px;
 }
-
 .contact-container {
     display: flex;
     flex-wrap: wrap;
-    max-width: 1200px; /* Wider container */
+    max-width: 1200px;
     margin: 0 auto;
-    gap: 60px; /* Increased gap */
+    gap: 60px;
     align-items: flex-start;
     justify-content: center;
 }
-
-.contact-text {
-    flex: 1;
-    min-width: 300px; /* Ensures text block doesn't get too narrow */
-}
-
-.contact-text h2 {
-    font-size: 3.5rem; /* Larger heading */
-    color: var(--primary-blue);
-    line-height: 1.3;
-    font-weight: 800;
-    letter-spacing: -1px;
-}
-
 .contact-form {
     flex: 2;
-    min-width: 450px; /* Ensures form doesn't get too narrow */
+    min-width: 450px;
     background: var(--white);
-    padding: 50px; /* Increased padding */
+    padding: 50px;
     border-radius: 30px;
-    box-shadow: 0 25px 60px var(--soft-shadow); /* Enhanced shadow */
-    border: 2px solid rgba(var(--primary-blue-rgb), 0.1); /* Subtle blue border */
+    box-shadow: 0 25px 60px var(--soft-shadow);
+    border: 2px solid rgba(var(--primary-blue-rgb), 0.1);
 }
-
 .contact-form .form-row {
     display: flex;
-    gap: 30px; /* Spacing between first and last name fields */
-    margin-bottom: 30px; /* Increased margin below row */
+    gap: 30px;
+    margin-bottom: 30px;
 }
-
 .contact-form .form-group {
     flex: 1;
-    margin-bottom: 25px; /* Increased margin between form groups */
+    margin-bottom: 25px;
 }
-
 .contact-form label {
     display: block;
-    margin-bottom: 12px; /* Increased space for label */
+    margin-bottom: 12px;
     font-size: 1.15rem;
     color: var(--dark-text);
     font-weight: 600;
 }
-
 .contact-form input[type="text"],
 .contact-form input[type="email"],
 .contact-form textarea {
     width: 100%;
-    padding: 18px 20px; /* More padding for inputs */
-    border: 2px solid #e2e8f0; /* Softer border color */
-    border-radius: 15px; /* More rounded inputs */
+    padding: 18px 20px;
+    border: 2px solid #e2e8f0;
+    border-radius: 15px;
     font-family: 'Outfit', sans-serif;
     font-size: 1.1rem;
     color: var(--dark-text);
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
-
 .contact-form input[type="text"]:focus,
 .contact-form input[type="email"]:focus,
 .contact-form textarea:focus {
     outline: none;
     border-color: var(--primary-blue);
-    box-shadow: 0 0 0 4px rgba(var(--primary-blue-rgb), 0.2); /* Subtle focus ring */
+    box-shadow: 0 0 0 4px rgba(var(--primary-blue-rgb), 0.2);
 }
-
 .contact-form textarea {
     resize: vertical;
-    min-height: 120px; /* Minimum height for textarea */
+    min-height: 120px;
 }
-
 .contact-form button {
     background: linear-gradient(45deg, var(--primary-blue), var(--gradient-blue-light));
     color: var(--white);
@@ -742,12 +389,11 @@ nav a.active {
     margin-top: 20px;
     transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
     box-shadow: 0 18px 45px rgba(var(--primary-blue-rgb), 0.4);
-    display: block; /* Make button full width */
-    width: fit-content; /* Adjust width to content */
-    margin-left: auto; /* Center button */
-    margin-right: auto; /* Center button */
+    display: block;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
 }
-
 .contact-form button:hover {
     background: linear-gradient(45deg, var(--gradient-blue-dark), var(--primary-blue));
     transform: translateY(-8px) scale(1.03);
@@ -755,379 +401,71 @@ nav a.active {
     animation: pulse 1s infinite alternate;
 }
 
-
 /* Responsive Design */
 @media (max-width: 1200px) {
-    .story-container {
-        flex-direction: column;
-        align-items: center;
-        gap: 50px;
-    }
-    .story-left, .story-right {
-        min-width: unset;
-        width: 100%;
-        text-align: center;
-    }
-    .story-left h2 {
-        font-size: 3.2rem;
-    }
+    .story-container { flex-direction: column; align-items: center; gap: 50px; }
+    .story-left, .story-right { min-width: unset; width: 100%; text-align: center; }
+    .story-left h2 { font-size: 3.2rem; }
 }
-
 @media (max-width: 992px) {
-    header {
-        padding: 1rem 2rem;
-    }
-    .logo {
-        font-size: 1.8rem;
-    }
-    nav {
-        gap: 1.5rem;
-    }
-    nav a {
-        padding: 8px 15px;
-        font-size: 0.95rem;
-    }
-    .hero {
-        flex-direction: column;
-        padding: 5rem 2rem;
-        gap: 3rem;
-        margin: 2rem;
-    }
-    .left h1 {
-        font-size: 3.5rem;
-        text-align: center;
-    }
-    .subtitle {
-        font-size: 1.4rem;
-        text-align: center;
-    }
-    .hiring-text {
-        padding: 1.5rem;
-        text-align: center;
-    }
-    .info-box {
-        padding: 2.5rem;
-        font-size: 1.1rem;
-        transform: rotate(0deg); /* Remove rotation on smaller screens */
-    }
-    .info-box:hover {
-        transform: scale(1.02);
-    }
-    .cosmo-section {
-        padding: 6rem 2rem;
-    }
-    .cosmo-section h2 {
-        font-size: 3rem;
-    }
-    .cosmo-section p {
-        font-size: 1.1rem;
-    }
-    .cosmo-btn {
-        padding: 1rem 2.5rem;
-        font-size: 1.1rem;
-    }
-    .main {
-        padding: 6rem 2rem;
-    }
-    .title h1 {
-        font-size: 2.8rem;
-    }
-    .features-title {
-        font-size: 1.4rem;
-    }
-    .features-row {
-        gap: 2.5rem;
-    }
-    .feature {
-        padding: 2.5rem;
-        max-width: 350px;
-    }
-    .feature i {
-        font-size: 2.8rem;
-    }
-    .feature h3 {
-        font-size: 1.4rem;
-    }
-    .how-begin {
-        padding: 6rem 2rem;
-    }
-    .how-begin h2 {
-        font-size: 3rem;
-    }
-    .how-begin p {
-        font-size: 1.1rem;
-    }
-    .cta-button {
-        padding: 1.1rem 3rem;
-        font-size: 1.1rem;
-    }
-    .testimonials {
-        padding: 70px 20px;
-    }
-    .testimonials h2 {
-        font-size: 3rem;
-        margin-bottom: 40px;
-    }
-    .testimonial-cards {
-        gap: 30px;
-    }
-    .testimonial-cards .card {
-        padding: 30px;
-        width: 100%; /* Full width on smaller screens */
-        max-width: 380px; /* But keep a max-width */
-    }
-    .card .quote {
-        font-size: 3.5rem;
-    }
-    .card p {
-        font-size: 1.1rem;
-    }
-    .card .author {
-        font-size: 1.1rem;
-    }
-    .contact-section {
-        padding: 80px 20px;
-    }
-    .contact-container {
-        flex-direction: column;
-        gap: 40px;
-    }
-    .contact-text h2 {
-        font-size: 2.8rem;
-        text-align: center;
-    }
-    .contact-form {
-        padding: 40px;
-        min-width: unset;
-        width: 100%;
-    }
-    .contact-form .form-row {
-        flex-direction: column;
-        gap: 0; /* Remove gap in column layout */
-    }
-    .contact-form .form-group {
-        margin-bottom: 20px;
-    }
+    header { padding: 1rem 2rem; }
+    .logo { font-size: 1.8rem; }
+    nav { gap: 1.5rem; }
+    nav a { padding: 8px 15px; font-size: 0.95rem; }
+    .hero { flex-direction: column; padding: 5rem 2rem; gap: 3rem; margin: 2rem; }
+    .left h1 { font-size: 3.5rem; text-align: center; }
+    .subtitle { font-size: 1.4rem; text-align: center; }
+    .hiring-text { padding: 1.5rem; text-align: center; }
+    .info-box { padding: 2.5rem; font-size: 1.1rem; transform: rotate(0deg);}
+    .info-box:hover { transform: scale(1.02);}
+    .cosmo-section { padding: 6rem 2rem;}
+    .cosmo-section h2 { font-size: 3rem;}
+    .cosmo-section p { font-size: 1.1rem;}
+    .cosmo-btn { padding: 1rem 2.5rem; font-size: 1.1rem;}
+    .contact-section { padding: 80px 20px;}
+    .contact-container { flex-direction: column; gap: 40px;}
+    .contact-form { padding: 40px; min-width: unset; width: 100%;}
+    .contact-form .form-row { flex-direction: column; gap: 0;}
+    .contact-form .form-group { margin-bottom: 20px;}
+    .contact-form label { font-size: 1rem;}
 }
-
 @media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        padding: 1rem;
-        text-align: center;
-    }
-    nav {
-        margin-top: 1rem;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    nav a {
-        padding: 6px 12px;
-        font-size: 0.9rem;
-    }
-    .hero {
-        padding: 4rem 1rem;
-        margin: 1.5rem;
-    }
-    .left h1 {
-        font-size: 2.8rem;
-    }
-    .subtitle {
-        font-size: 1.2rem;
-    }
-    .info-box {
-        padding: 2rem;
-        font-size: 1rem;
-    }
-    .cosmo-section {
-        padding: 5rem 1rem;
-    }
-    .cosmo-section h2 {
-        font-size: 2.5rem;
-    }
-    .cosmo-section p {
-        font-size: 1rem;
-    }
-    .main {
-        padding: 5rem 1rem;
-    }
-    .title h1 {
-        font-size: 2.2rem;
-    }
-    .features-title {
-        font-size: 1.2rem;
-    }
-    .feature {
-        padding: 2rem;
-        max-width: 300px;
-    }
-    .how-begin {
-        padding: 5rem 1rem;
-    }
-    .how-begin h2 {
-        font-size: 2.5rem;
-    }
-    .testimonials {
-        padding: 50px 15px;
-    }
-    .testimonials h2 {
-        font-size: 2.5rem;
-    }
-    .testimonial-cards .card {
-        padding: 25px;
-    }
-    .card .quote {
-        font-size: 3rem;
-    }
-    .contact-section {
-        padding: 60px 15px;
-    }
-    .contact-text h2 {
-        font-size: 2.2rem;
-    }
-    .contact-form {
-        padding: 30px;
-    }
-    .contact-form label {
-        font-size: 1rem;
-    }
+    header { flex-direction: column; padding: 1rem; text-align: center;}
+    nav { margin-top: 1rem; flex-wrap: wrap; justify-content: center;}
+    nav a { padding: 6px 12px; font-size: 0.9rem;}
+    .hero { padding: 4rem 1rem; margin: 1.5rem;}
+    .left h1 { font-size: 2.8rem;}
+    .subtitle { font-size: 1.2rem;}
+    .info-box { padding: 2rem; font-size: 1rem;}
+    .cosmo-section { padding: 5rem 1rem;}
+    .cosmo-section h2 { font-size: 2.5rem;}
+    .cosmo-section p { font-size: 1rem;}
+    .cosmo-btn { padding: 1rem 2.5rem; font-size: 1.1rem;}
+    .contact-section { padding: 60px 15px;}
+    .contact-form { padding: 30px;}
+    .contact-form label { font-size: 1rem;}
     .contact-form input,
-    .contact-form textarea {
-        padding: 15px;
-        font-size: 1rem;
-    }
-    .contact-form button {
-        padding: 1rem 2.5rem;
-        font-size: 1.1rem;
-    }
+    .contact-form textarea { padding: 15px; font-size: 1rem;}
+    .contact-form button { padding: 1rem 2.5rem; font-size: 1.1rem;}
 }
-
 @media (max-width: 480px) {
-    header {
-        padding: 0.8rem;
-    }
-    .logo {
-        font-size: 1.5rem;
-    }
-    nav {
-        gap: 0.8rem;
-    }
-    nav a {
-        padding: 5px 10px;
-        font-size: 0.85rem;
-    }
-    .hero {
-        padding: 3rem 0.8rem;
-        margin: 1rem;
-    }
-    .left h1 {
-        font-size: 2.2rem;
-        line-height: 1.2;
-    }
-    .subtitle {
-        font-size: 1.1rem;
-    }
-    .hiring-text {
-        padding: 1.2rem;
-        font-size: 0.95rem;
-    }
-    .info-box {
-        padding: 1.5rem;
-        font-size: 0.95rem;
-        line-height: 1.8;
-    }
-    .cosmo-section {
-        padding: 4rem 0.8rem;
-    }
-    .cosmo-section h2 {
-        font-size: 2rem;
-    }
-    .cosmo-section p {
-        font-size: 0.95rem;
-    }
-    .cosmo-btn {
-        padding: 0.9rem 2rem;
-        font-size: 1rem;
-    }
-    .main {
-        padding: 4rem 0.8rem;
-    }
-    .title h1 {
-        font-size: 1.8rem;
-    }
-    .features-title {
-        font-size: 1.1rem;
-    }
-    .features-row {
-        gap: 1.5rem;
-    }
-    .feature {
-        padding: 1.8rem;
-        max-width: 280px;
-    }
-    .feature i {
-        font-size: 2.5rem;
-    }
-    .feature h3 {
-        font-size: 1.3rem;
-    }
-    .feature p {
-        font-size: 1rem;
-    }
-    .how-begin {
-        padding: 4rem 0.8rem;
-    }
-    .how-begin h2 {
-        font-size: 2rem;
-    }
-    .simple-text {
-        font-size: 1.2rem;
-    }
-    .cta-button {
-        padding: 1rem 2.5rem;
-        font-size: 1rem;
-    }
-    .testimonials {
-        padding: 40px 10px;
-    }
-    .testimonials h2 {
-        font-size: 2rem;
-        margin-bottom: 30px;
-    }
-    .testimonial-cards .card {
-        padding: 20px;
-    }
-    .card .quote {
-        font-size: 2.8rem;
-    }
-    .card p {
-        font-size: 1rem;
-    }
-    .card .author {
-        font-size: 1rem;
-    }
-    .card .stars {
-        font-size: 1.3rem;
-    }
-    .contact-section {
-        padding: 50px 10px;
-    }
-    .contact-text h2 {
-        font-size: 1.8rem;
-    }
-    .contact-form {
-        padding: 20px;
-    }
-    .contact-form .form-group {
-        margin-bottom: 15px;
-    }
+    header { padding: 0.8rem;}
+    .logo { font-size: 1.5rem;}
+    nav { gap: 0.8rem;}
+    nav a { padding: 5px 10px; font-size: 0.85rem;}
+    .hero { padding: 3rem 0.8rem; margin: 1rem;}
+    .left h1 { font-size: 2.2rem; line-height: 1.2;}
+    .subtitle { font-size: 1.1rem;}
+    .hiring-text { padding: 1.2rem; font-size: 0.95rem;}
+    .info-box { padding: 1.5rem; font-size: 0.95rem; line-height: 1.8;}
+    .cosmo-section { padding: 4rem 0.8rem;}
+    .cosmo-section h2 { font-size: 2rem;}
+    .cosmo-section p { font-size: 0.95rem;}
+    .cosmo-btn { padding: 0.9rem 2rem; font-size: 1rem;}
+    .contact-section { padding: 50px 10px;}
+    .contact-form { padding: 20px;}
+    .contact-form .form-group { margin-bottom: 15px;}
     .contact-form input,
-    .contact-form textarea {
-        padding: 12px;
-        font-size: 0.9rem;
-    }
-    .contact-form button {
-        padding: 0.8rem 2rem;
-        font-size: 1rem;
-    }
+    .contact-form textarea { padding: 12px; font-size: 0.9rem;}
+    .contact-form button { padding: 0.8rem 2rem; font-size: 1rem;}
 }
