@@ -15,7 +15,7 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Outfit', sans-serif; /* Assumes 'Outfit' font is linked in HTML, e.g., from Google Fonts */
     background: linear-gradient(160deg, var(--light-blue-bg) 0%, var(--white) 100%);
     color: var(--dark-text);
     line-height: 1.7;
@@ -84,7 +84,9 @@ nav a.active {
     box-shadow: 0 5px 15px rgba(var(--primary-blue-rgb), 0.15);
 }
 
-/* Hero */
+/* Hero - Assuming this is a section that might be present in your HTML,
+   though not explicitly in the HTML snippet you provided earlier.
+   Keeping it as it's part of the full CSS. */
 .hero {
     display: flex;
     flex-wrap: wrap;
@@ -273,7 +275,9 @@ nav a.active {
     to { transform: translateY(-6px) scale(1.02); box-shadow: 0 20px 45px rgba(var(--primary-blue-rgb), 0.4);}
 }
 
-/* Our Story */
+/* Our Story - Assuming this is a section that might be present in your HTML,
+   though not explicitly in the HTML snippet you provided earlier.
+   Keeping it as it's part of the full CSS. */
 .our-story {
     background-color: var(--light-blue-bg);
     padding: 90px 40px;
@@ -325,7 +329,7 @@ nav a.active {
     margin: 0 auto;
     gap: 60px;
     align-items: flex-start;
-    justify-content: center;
+    justify-content: center; /* Center the form if it's the only element */
 }
 .contact-form {
     flex: 2;
@@ -336,6 +340,18 @@ nav a.active {
     box-shadow: 0 25px 60px var(--soft-shadow);
     border: 2px solid rgba(var(--primary-blue-rgb), 0.1);
 }
+
+/* Styling for the new Contact Us heading inside the form */
+.contact-form h3 {
+    font-size: 2.5rem; /* Adjusted to fit the new design's heading sizes */
+    color: var(--primary-blue); /* Consistent with other main headings */
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 40px; /* Space below the title */
+    text-align: center; /* Center the heading */
+}
+
+
 .contact-form .form-row {
     display: flex;
     gap: 30px;
@@ -425,7 +441,9 @@ nav a.active {
     .contact-section { padding: 80px 20px;}
     .contact-container { flex-direction: column; gap: 40px;}
     .contact-form { padding: 40px; min-width: unset; width: 100%;}
-    .contact-form .form-row { flex-direction: column; gap: 0;}
+    /* Adjusted for the new form structure */
+    .contact-form h3 { font-size: 2rem; margin-bottom: 30px;}
+    .contact-form .form-row { flex-direction: column; gap: 0;} /* Ensuring Name input stacks if it's the only one in a row */
     .contact-form .form-group { margin-bottom: 20px;}
     .contact-form label { font-size: 1rem;}
 }
@@ -443,6 +461,8 @@ nav a.active {
     .cosmo-btn { padding: 1rem 2.5rem; font-size: 1.1rem;}
     .contact-section { padding: 60px 15px;}
     .contact-form { padding: 30px;}
+    /* Adjusted for the new form structure */
+    .contact-form h3 { font-size: 1.8rem; margin-bottom: 25px;}
     .contact-form label { font-size: 1rem;}
     .contact-form input,
     .contact-form textarea { padding: 15px; font-size: 1rem;}
@@ -464,6 +484,8 @@ nav a.active {
     .cosmo-btn { padding: 0.9rem 2rem; font-size: 1rem;}
     .contact-section { padding: 50px 10px;}
     .contact-form { padding: 20px;}
+    /* Adjusted for the new form structure */
+    .contact-form h3 { font-size: 1.6rem; margin-bottom: 20px;}
     .contact-form .form-group { margin-bottom: 15px;}
     .contact-form input,
     .contact-form textarea { padding: 12px; font-size: 0.9rem;}

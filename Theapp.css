@@ -1,0 +1,484 @@
+/* General Body Styles */
+body {
+    font-family: Arial, sans-serif; /* A clean, modern font */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #F8F8F8; /* A very light off-white/light gray for the body background */
+    color: #333; /* Dark gray for general text for good readability */
+    line-height: 1.6;
+}
+
+/* Header Styles */
+header {
+    background-color: #FFFFFF; /* Pure white for the header */
+    padding: 15px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
+    position: sticky; /* Make header sticky */
+    top: 0;
+    z-index: 1000; /* Ensure header stays on top */
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 24px;
+    color: #333;
+    /* Add a subtle animation for the logo */
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05); /* Slightly enlarge logo on hover */
+}
+
+nav a {
+    text-decoration: none;
+    color: #555; /* Slightly lighter gray for navigation links */
+    margin-left: 25px;
+    font-weight: 500;
+    transition: color 0.3s ease, transform 0.2s ease; /* Smooth transition for color and transform */
+}
+
+nav a.active,
+nav a:hover {
+    color: #000; /* Black on hover/active for emphasis */
+    transform: translateY(-2px); /* Slight lift on hover */
+}
+
+/* Section Common Styles */
+section {
+    padding: 60px 5%;
+    text-align: center;
+    opacity: 0; /* Initially hidden for fade-in animation */
+    transform: translateY(20px); /* Start slightly below for slide-up effect */
+    animation: fadeInSlideUp 0.8s ease-out forwards; /* Apply animation */
+    /* Add a small delay for sections to animate one after another */
+    animation-delay: var(--section-delay, 0s);
+}
+
+/* Keyframes for fade-in and slide-up animation */
+@keyframes fadeInSlideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Apply staggered animation delays (You might need JS for proper scroll-triggered staggered animation,
+   but this provides a basic staggered load effect if all sections are visible on load) */
+.cosmo-section { --section-delay: 0.2s; }
+.main { --section-delay: 0.4s; }
+.how-begin { --section-delay: 0.6s; }
+.testimonials { --section-delay: 0.8s; }
+.contact-section { --section-delay: 1.0s; }
+
+
+h1, h2, h3 {
+    color: #333; /* Darker text for headings */
+    margin-bottom: 20px;
+}
+
+p {
+    color: #555; /* Standard paragraph text color */
+    margin-bottom: 15px;
+}
+
+/* Cosmo Section (AI Cosmo1) */
+.cosmo-section {
+    background-color: #F8F8F8; /* Same light background as body */
+    padding: 80px 5%;
+}
+
+.cosmo-section h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.cosmo-section p {
+    font-size: 18px;
+    max-width: 700px;
+    margin: 0 auto 30px auto;
+}
+
+.cosmo-btn {
+    background-color: #000; /* Black button */
+    color: #FFF; /* White text */
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Add transform for hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Initial shadow */
+}
+
+.cosmo-btn:hover {
+    background-color: #333; /* Slightly lighter black on hover */
+    transform: translateY(-3px); /* Lift button on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Enhance shadow on hover */
+}
+
+/* Main Section (Features) */
+.main {
+    background-color: #FFFFFF; /* White background for this section */
+    padding-bottom: 80px;
+}
+
+.main .title h1 {
+    font-size: 40px;
+    line-height: 1.2;
+    margin-bottom: 50px;
+    /* Adding a subtle text animation if desired (can be too much if overused) */
+    /* animation: textFadeIn 1s ease-out forwards; */
+}
+
+/* @keyframes textFadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+} */
+
+
+.features-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.features-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Allows features to wrap on smaller screens */
+    gap: 30px; /* Space between feature cards */
+}
+
+.feature {
+    background-color: #F8F8F8; /* Light background for feature cards */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Subtle shadow for cards */
+    max-width: 350px;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for lift and shadow */
+}
+
+.feature:hover {
+    transform: translateY(-8px); /* More pronounced lift on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Stronger shadow on hover */
+}
+
+.feature .icon {
+    font-size: 40px;
+    color: #000; /* Black icons */
+    margin-bottom: 20px;
+    display: block; /* Ensures icon takes full width for centering */
+    text-align: center;
+    /* Add icon bounce on hover */
+    transition: transform 0.3s ease;
+}
+
+.feature:hover .icon {
+    transform: scale(1.1) rotate(5deg); /* Slightly larger and rotated on feature hover */
+}
+
+.feature h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.feature p {
+    font-size: 16px;
+    color: #555;
+    text-align: left;
+}
+
+.feature .how {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+/* How Do I Begin Section */
+.how-begin {
+    background-color: #F8F8F8; /* Light background */
+    padding: 80px 5%;
+}
+
+.how-begin h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.how-begin p {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.how-begin .simple-text {
+    font-weight: bold;
+    font-size: 20px;
+    color: #333;
+    margin-top: 20px;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: #000; /* Black button */
+    color: #FFF;
+    padding: 15px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 18px;
+    margin-top: 30px;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cta-button:hover {
+    background-color: #333;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Testimonials Section */
+.testimonials {
+    background-color: #FFFFFF; /* White background */
+    padding-bottom: 80px;
+}
+
+.testimonials h2 {
+    font-size: 36px;
+    margin-bottom: 50px;
+}
+
+.testimonial-cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.testimonial-cards .card {
+    background-color: #F8F8F8; /* Light background for testimonial cards */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    max-width: 350px;
+    text-align: center;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+}
+
+.testimonial-cards .card:hover {
+    transform: translateY(-8px); /* Lift card on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Stronger shadow on hover */
+}
+
+.testimonial-cards .card .quote {
+    font-size: 80px;
+    color: #EEE; /* Very light gray for the large quote mark */
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: serif;
+    z-index: 0;
+    transition: color 0.3s ease; /* Smooth transition for quote color */
+}
+
+.testimonial-cards .card:hover .quote {
+    color: #DDD; /* Slightly darker quote on hover */
+}
+
+.testimonial-cards .card p {
+    font-style: italic;
+    font-size: 17px;
+    margin-bottom: 20px;
+    position: relative; /* To keep text above the quote mark */
+    z-index: 1;
+    color: #333;
+}
+
+.testimonial-cards .card .author {
+    font-weight: bold;
+    color: #000;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.testimonial-cards .card .stars {
+    color: #FFD700; /* Gold color for stars */
+    font-size: 20px;
+}
+
+/* Contact Section */
+.contact-section {
+    background-color: #F8F8F8; /* Light background */
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.contact-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align items to the top */
+    flex-wrap: wrap;
+    gap: 50px;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: left; /* Align text within the container to left */
+}
+
+.contact-text {
+    flex: 1;
+    min-width: 300px;
+}
+
+.contact-text h2 {
+    font-size: 36px;
+    line-height: 1.2;
+    margin-bottom: 0; /* Remove default margin */
+}
+
+.contact-form {
+    background-color: #FFFFFF; /* White background for the form */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    flex: 1;
+    min-width: 350px;
+    transition: box-shadow 0.3s ease; /* Smooth shadow transition */
+}
+
+.contact-form:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Enhance shadow on hover */
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    flex: 1;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #DDD; /* Light gray border */
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box; /* Include padding in element's total width and height */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #000; /* Black border on focus */
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1); /* Subtle shadow on focus */
+    outline: none;
+}
+
+.contact-form button[type="submit"] {
+    background-color: #000; /* Black submit button */
+    color: #FFF;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    width: 100%; /* Full width button */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form button[type="submit"]:hover {
+    background-color: #333;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Font Awesome Icons (if you're using them) */
+/* Make sure you link to Font Awesome CDN in your HTML's <head> */
+/* <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> */
+
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav {
+        margin-top: 15px;
+    }
+
+    nav a {
+        margin: 0 10px;
+        display: inline-block;
+    }
+
+    .features-row,
+    .testimonial-cards,
+    .contact-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .feature,
+    .testimonial-cards .card,
+    .contact-text,
+    .contact-form {
+        max-width: 90%; /* Adjust width for smaller screens */
+        width: 100%;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 32px;
+    }
+
+    h2 {
+        font-size: 28px;
+    }
+
+    .cosmo-section p,
+    .how-begin p {
+        font-size: 16px;
+    }
+
+    .cosmo-btn, .cta-button, .contact-form button[type="submit"] {
+        font-size: 16px;
+        padding: 12px 25px;
+    }
+}
