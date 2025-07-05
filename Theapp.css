@@ -7,6 +7,7 @@ body {
     background-color: #F8F8F8; /* A very light off-white/light gray for the body background */
     color: #333; /* Dark gray for general text for good readability */
     line-height: 1.6;
+    overflow-x: hidden; /* Prevent horizontal scroll on animations */
 }
 
 /* Header Styles */
@@ -16,22 +17,23 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08); /* Slightly darker initial shadow */
     position: sticky; /* Make header sticky */
     top: 0;
     z-index: 1000; /* Ensure header stays on top */
+    transition: all 0.3s ease-in-out; /* Smooth transition for any header changes */
 }
 
 .logo {
     font-weight: bold;
     font-size: 24px;
     color: #333;
-    /* Add a subtle animation for the logo */
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, color 0.3s ease; /* Smooth transition for logo */
 }
 
 .logo:hover {
-    transform: scale(1.05); /* Slightly enlarge logo on hover */
+    transform: scale(1.08); /* Slightly enlarge logo on hover */
+    color: #222; /* Darker black on hover for logo */
 }
 
 nav a {
@@ -39,13 +41,38 @@ nav a {
     color: #555; /* Slightly lighter gray for navigation links */
     margin-left: 25px;
     font-weight: 500;
-    transition: color 0.3s ease, transform 0.2s ease; /* Smooth transition for color and transform */
+    transition: color 0.3s ease, transform 0.2s ease, background-color 0.3s ease, box-shadow 0.3s ease; /* Enhanced transitions */
+    padding: 8px 15px; /* Add some padding for better hover area */
+    border-radius: 5px; /* Slightly rounded corners for links */
+    position: relative;
+    overflow: hidden; /* For underline animation */
 }
 
-nav a.active,
-nav a:hover {
+nav a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #000; /* Black underline for navigation links */
+    transform: scaleX(0); /* Start hidden */
+    transform-origin: bottom right; /* Animate from right to left */
+    transition: transform 0.3s ease-out;
+}
+
+nav a:hover::before,
+nav a.active::before {
+    transform: scaleX(1); /* Expand on hover/active */
+    transform-origin: bottom left; /* Animate from left to right on hover */
+}
+
+nav a:hover,
+nav a.active {
     color: #000; /* Black on hover/active for emphasis */
-    transform: translateY(-2px); /* Slight lift on hover */
+    transform: translateY(-3px); /* More pronounced lift on hover */
+    background-color: rgba(0, 0, 0, 0.08); /* Slightly darker light black background on hover */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Darker black shadow */
 }
 
 /* Section Common Styles */
@@ -53,10 +80,9 @@ section {
     padding: 60px 5%;
     text-align: center;
     opacity: 0; /* Initially hidden for fade-in animation */
-    transform: translateY(20px); /* Start slightly below for slide-up effect */
-    animation: fadeInSlideUp 0.8s ease-out forwards; /* Apply animation */
-    /* Add a small delay for sections to animate one after another */
-    animation-delay: var(--section-delay, 0s);
+    transform: translateY(30px); /* Start further below for a more noticeable slide-up effect */
+    animation: fadeInSlideUp 1s ease-out forwards; /* Apply animation with slightly longer duration */
+    animation-delay: var(--section-delay, 0s); /* Staggered animation delay */
 }
 
 /* Keyframes for fade-in and slide-up animation */
@@ -67,8 +93,7 @@ section {
     }
 }
 
-/* Apply staggered animation delays (You might need JS for proper scroll-triggered staggered animation,
-   but this provides a basic staggered load effect if all sections are visible on load) */
+/* Apply staggered animation delays for a smoother reveal */
 .cosmo-section { --section-delay: 0.2s; }
 .main { --section-delay: 0.4s; }
 .how-begin { --section-delay: 0.6s; }
@@ -108,17 +133,19 @@ p {
     color: #FFF; /* White text */
     padding: 15px 30px;
     border: none;
-    border-radius: 5px;
+    border-radius: 50px; /* More rounded for a softer look */
     font-size: 18px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Add transform for hover */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Initial shadow */
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Slightly darker initial shadow */
+    position: relative;
+    overflow: hidden; /* For ripple effect if added later */
 }
 
 .cosmo-btn:hover {
-    background-color: #333; /* Slightly lighter black on hover */
-    transform: translateY(-3px); /* Lift button on hover */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Enhance shadow on hover */
+    background-color: #222; /* Darker black on hover for depth */
+    transform: translateY(-6px) scale(1.03); /* Lift and slightly enlarge more */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4); /* Much darker black shadow */
 }
 
 /* Main Section (Features) */
@@ -131,15 +158,7 @@ p {
     font-size: 40px;
     line-height: 1.2;
     margin-bottom: 50px;
-    /* Adding a subtle text animation if desired (can be too much if overused) */
-    /* animation: textFadeIn 1s ease-out forwards; */
 }
-
-/* @keyframes textFadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-} */
-
 
 .features-title {
     font-size: 24px;
@@ -160,30 +179,32 @@ p {
 .feature {
     background-color: #F8F8F8; /* Light background for feature cards */
     padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Subtle shadow for cards */
+    border-radius: 15px; /* More rounded corners */
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1); /* Slightly darker initial shadow */
     max-width: 350px;
     text-align: left;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for lift and shadow */
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s ease, border 0.4s ease; /* Enhanced transitions */
+    border: 2px solid transparent; /* Transparent border, will not change color */
 }
 
 .feature:hover {
-    transform: translateY(-8px); /* More pronounced lift on hover */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Stronger shadow on hover */
+    transform: translateY(-12px); /* More significant lift on hover */
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25); /* Much darker black shadow */
+    border: 2px solid transparent; /* Keep transparent, no blue border */
 }
 
 .feature .icon {
-    font-size: 40px;
+    font-size: 45px; /* Slightly larger icon */
     color: #000; /* Black icons */
     margin-bottom: 20px;
-    display: block; /* Ensures icon takes full width for centering */
+    display: block;
     text-align: center;
-    /* Add icon bounce on hover */
-    transition: transform 0.3s ease;
+    transition: transform 0.4s ease, color 0.3s ease; /* Smooth icon transition */
 }
 
 .feature:hover .icon {
-    transform: scale(1.1) rotate(5deg); /* Slightly larger and rotated on feature hover */
+    transform: rotateY(360deg) scale(1.1); /* 3D flip and slight scale on feature hover */
+    color: #222; /* Darker black for icon on hover */
 }
 
 .feature h3 {
@@ -233,19 +254,22 @@ p {
     background-color: #000; /* Black button */
     color: #FFF;
     padding: 15px 30px;
-    border-radius: 5px;
+    border-radius: 50px; /* More rounded */
     text-decoration: none;
     font-size: 18px;
     margin-top: 30px;
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Slightly darker initial shadow */
 }
 
 .cta-button:hover {
-    background-color: #333;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    background-color: #222; /* Darker black on hover */
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4); /* Much darker black shadow */
 }
+
+/* Testimonials Section */
+/* ... (previous CSS code) ... */
 
 /* Testimonials Section */
 .testimonials {
@@ -268,33 +292,35 @@ p {
 .testimonial-cards .card {
     background-color: #F8F8F8; /* Light background for testimonial cards */
     padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    border-radius: 15px; /* More rounded */
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1); /* Slightly darker initial shadow */
     max-width: 350px;
     text-align: center;
     position: relative;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s ease, border 0.4s ease;
+    border: 2px solid transparent; /* Transparent border, will not change color */
 }
 
 .testimonial-cards .card:hover {
-    transform: translateY(-8px); /* Lift card on hover */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Stronger shadow on hover */
+    transform: translateY(-12px); /* More significant lift on hover */
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25); /* Much darker black shadow */
+    border: 2px solid transparent; /* Keep transparent, no blue border */
 }
 
 .testimonial-cards .card .quote {
     font-size: 80px;
-    color: #EEE; /* Very light gray for the large quote mark */
+    color: #AAA; /* Darker initial grey for the quote mark (was #DDD) */
     position: absolute;
     top: -20px;
     left: 50%;
     transform: translateX(-50%);
     font-family: serif;
     z-index: 0;
-    transition: color 0.3s ease; /* Smooth transition for quote color */
+    transition: color 0.3s ease;
 }
 
 .testimonial-cards .card:hover .quote {
-    color: #DDD; /* Slightly darker quote on hover */
+    color: #888; /* Even darker grey on hover for the quote mark (was #BBB) */
 }
 
 .testimonial-cards .card p {
@@ -306,6 +332,8 @@ p {
     color: #333;
 }
 
+/* ... (rest of your CSS code) ... */
+
 .testimonial-cards .card .author {
     font-weight: bold;
     color: #000;
@@ -314,8 +342,13 @@ p {
 }
 
 .testimonial-cards .card .stars {
-    color: #FFD700; /* Gold color for stars */
+    color: #FFD700; /* Gold color for stars (kept this as it's standard for ratings) */
     font-size: 20px;
+    transition: transform 0.3s ease;
+}
+
+.testimonial-cards .card:hover .stars {
+    transform: scale(1.1) rotate(5deg); /* Slight pop and rotate for stars on hover */
 }
 
 /* Contact Section */
@@ -336,29 +369,28 @@ p {
     text-align: left; /* Align text within the container to left */
 }
 
-.contact-text {
-    flex: 1;
-    min-width: 300px;
-}
-
-.contact-text h2 {
-    font-size: 36px;
-    line-height: 1.2;
-    margin-bottom: 0; /* Remove default margin */
+/* Styling for the new Contact Us heading inside the form */
+.contact-form h3 {
+    font-size: 32px; /* Adjusted to fit the general heading sizes */
+    color: #333; /* Consistent with other main headings */
+    font-weight: bold;
+    margin-bottom: 30px; /* Space below the title */
+    text-align: center; /* Center the heading */
 }
 
 .contact-form {
     background-color: #FFFFFF; /* White background for the form */
     padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    border-radius: 15px; /* More rounded */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* Slightly darker initial shadow */
     flex: 1;
     min-width: 350px;
-    transition: box-shadow 0.3s ease; /* Smooth shadow transition */
+    transition: box-shadow 0.4s ease, transform 0.3s ease; /* Smooth shadow and transform transition */
 }
 
 .contact-form:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Enhance shadow on hover */
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3); /* Much darker black shadow */
+    transform: translateY(-7px); /* Slightly more lift on hover */
 }
 
 .form-row {
@@ -384,8 +416,8 @@ p {
 .form-group textarea {
     width: 100%;
     padding: 12px;
-    border: 1px solid #DDD; /* Light gray border */
-    border-radius: 5px;
+    border: 1px solid #CCC; /* Slightly darker light gray border */
+    border-radius: 8px; /* Slightly more rounded inputs */
     font-size: 16px;
     box-sizing: border-box; /* Include padding in element's total width and height */
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
@@ -394,7 +426,7 @@ p {
 .form-group input:focus,
 .form-group textarea:focus {
     border-color: #000; /* Black border on focus */
-    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1); /* Subtle shadow on focus */
+    box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.15); /* Darker black glow on focus */
     outline: none;
 }
 
@@ -403,18 +435,17 @@ p {
     color: #FFF;
     padding: 15px 30px;
     border: none;
-    border-radius: 5px;
+    border-radius: 50px; /* More rounded */
     font-size: 18px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-    width: 100%; /* Full width button */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Slightly darker initial shadow */
 }
 
 .contact-form button[type="submit"]:hover {
-    background-color: #333;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    background-color: #222; /* Darker black on hover */
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4); /* Much darker black shadow */
 }
 
 /* Font Awesome Icons (if you're using them) */
@@ -461,6 +492,10 @@ p {
     .form-group {
         margin-bottom: 15px;
     }
+
+    .contact-form h3 {
+        font-size: 28px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -480,5 +515,9 @@ p {
     .cosmo-btn, .cta-button, .contact-form button[type="submit"] {
         font-size: 16px;
         padding: 12px 25px;
+    }
+
+    .contact-form h3 {
+        font-size: 24px;
     }
 }
