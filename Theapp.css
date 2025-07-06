@@ -1,49 +1,49 @@
 /* General Body Styles */
 body {
-    font-family: Arial, sans-serif; /* A clean, modern font */
+    font-family: 'Inter', sans-serif; /* Using a more modern sans-serif font, assuming it's imported or available */
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #F8F8F8; /* A very light off-white/light gray for the body background */
-    color: #333; /* Dark gray for general text for good readability */
-    line-height: 1.6;
+    background-color: #F9FAFB; /* A softer, slightly warmer very light gray */
+    color: #343A40; /* Slightly darker charcoal for general text for better readability */
+    line-height: 1.7; /* Increased line height for better readability */
     overflow-x: hidden; /* Prevent horizontal scroll on animations */
 }
 
 /* Header Styles */
 header {
     background-color: #FFFFFF; /* Pure white for the header */
-    padding: 15px 5%;
+    padding: 18px 6%; /* Slightly more padding */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08); /* Slightly darker initial shadow */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.07); /* More prominent but still subtle initial shadow */
     position: sticky; /* Make header sticky */
     top: 0;
     z-index: 1000; /* Ensure header stays on top */
-    transition: all 0.3s ease-in-out; /* Smooth transition for any header changes */
+    transition: all 0.4s ease-in-out; /* Smooth transition for any header changes */
 }
 
 .logo {
-    font-weight: bold;
-    font-size: 24px;
-    color: #333;
-    transition: transform 0.3s ease, color 0.3s ease; /* Smooth transition for logo */
+    font-weight: 700; /* Bolder logo */
+    font-size: 26px; /* Slightly larger logo */
+    color: #212529; /* Darker, almost black for logo */
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), color 0.3s ease; /* More dynamic transition */
 }
 
 .logo:hover {
-    transform: scale(1.08); /* Slightly enlarge logo on hover */
-    color: #222; /* Darker black on hover for logo */
+    transform: scale(1.1); /* More pronounced enlarge effect */
+    color: #000; /* Pure black on hover for logo */
 }
 
 nav a {
     text-decoration: none;
-    color: #555; /* Slightly lighter gray for navigation links */
-    margin-left: 25px;
-    font-weight: 500;
+    color: #6C757D; /* Softer gray for navigation links */
+    margin-left: 30px; /* More space between links */
+    font-weight: 600; /* Slightly bolder nav links */
     transition: color 0.3s ease, transform 0.2s ease, background-color 0.3s ease, box-shadow 0.3s ease; /* Enhanced transitions */
-    padding: 8px 15px; /* Add some padding for better hover area */
-    border-radius: 5px; /* Slightly rounded corners for links */
+    padding: 10px 18px; /* Increased padding for larger clickable area */
+    border-radius: 8px; /* More rounded corners for links */
     position: relative;
     overflow: hidden; /* For underline animation */
 }
@@ -54,11 +54,11 @@ nav a::before {
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 2px;
+    height: 3px; /* Thicker underline */
     background-color: #000; /* Black underline for navigation links */
     transform: scaleX(0); /* Start hidden */
     transform-origin: bottom right; /* Animate from right to left */
-    transition: transform 0.3s ease-out;
+    transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1); /* Smoother animation */
 }
 
 nav a:hover::before,
@@ -69,19 +69,19 @@ nav a.active::before {
 
 nav a:hover,
 nav a.active {
-    color: #000; /* Black on hover/active for emphasis */
-    transform: translateY(-3px); /* More pronounced lift on hover */
-    background-color: rgba(0, 0, 0, 0.08); /* Slightly darker light black background on hover */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Darker black shadow */
+    color: #000; /* Pure black on hover/active for emphasis */
+    transform: translateY(-4px); /* More pronounced lift on hover */
+    background-color: rgba(0, 0, 0, 0.06); /* Slightly more opaque light black background on hover */
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18); /* Darker, more defined shadow on hover */
 }
 
 /* Section Common Styles */
 section {
-    padding: 60px 5%;
+    padding: 80px 6%; /* Increased vertical padding for more breathing room */
     text-align: center;
     opacity: 0; /* Initially hidden for fade-in animation */
-    transform: translateY(30px); /* Start further below for a more noticeable slide-up effect */
-    animation: fadeInSlideUp 1s ease-out forwards; /* Apply animation with slightly longer duration */
+    transform: translateY(40px); /* Start further below for a more noticeable slide-up effect */
+    animation: fadeInSlideUp 1.2s ease-out forwards; /* Longer duration for a smoother reveal */
     animation-delay: var(--section-delay, 0s); /* Staggered animation delay */
 }
 
@@ -102,422 +102,506 @@ section {
 
 
 h1, h2, h3 {
-    color: #333; /* Darker text for headings */
-    margin-bottom: 20px;
+    color: #212529; /* Darker headings */
+    margin-bottom: 25px; /* More space below headings */
+    font-family: 'Montserrat', sans-serif; /* A more distinct font for headings, assuming it's imported */
+    line-height: 1.2;
 }
 
 p {
-    color: #555; /* Standard paragraph text color */
-    margin-bottom: 15px;
+    color: #495057; /* Slightly darker paragraph text color for better contrast */
+    margin-bottom: 20px; /* More space below paragraphs */
+    font-size: 17px; /* Slightly larger base font size */
 }
 
 /* Cosmo Section (AI Cosmo1) */
 .cosmo-section {
-    background-color: #F8F8F8; /* Same light background as body */
-    padding: 80px 5%;
+    background-color: #F9FAFB; /* Same light background as body */
+    padding: 100px 6%; /* More generous padding */
 }
 
 .cosmo-section h2 {
-    font-size: 36px;
-    margin-bottom: 20px;
+    font-size: 42px; /* Larger heading */
+    margin-bottom: 25px;
 }
 
 .cosmo-section p {
-    font-size: 18px;
-    max-width: 700px;
-    margin: 0 auto 30px auto;
+    font-size: 20px; /* Larger paragraph */
+    max-width: 800px; /* Wider text block */
+    margin: 0 auto 40px auto; /* More space below paragraph */
 }
 
 .cosmo-btn {
     background-color: #000; /* Black button */
     color: #FFF; /* White text */
-    padding: 15px 30px;
+    padding: 16px 35px; /* Increased padding */
     border: none;
-    border-radius: 50px; /* More rounded for a softer look */
-    font-size: 18px;
+    border-radius: 60px; /* Even more rounded for a softer look */
+    font-size: 19px; /* Larger font size */
+    font-weight: 600; /* Bolder text */
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Slightly darker initial shadow */
+    transition: background-color 0.3s ease, transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease; /* Smoother, more dynamic transition */
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25); /* More prominent initial shadow */
     position: relative;
-    overflow: hidden; /* For ripple effect if added later */
+    overflow: hidden;
 }
 
 .cosmo-btn:hover {
     background-color: #222; /* Darker black on hover for depth */
-    transform: translateY(-6px) scale(1.03); /* Lift and slightly enlarge more */
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4); /* Much darker black shadow */
+    transform: translateY(-8px) scale(1.04); /* More significant lift and enlarge */
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5); /* Much darker, more impactful black shadow */
 }
 
 /* Main Section (Features) */
 .main {
     background-color: #FFFFFF; /* White background for this section */
-    padding-bottom: 80px;
+    padding-bottom: 100px; /* More padding */
 }
 
 .main .title h1 {
-    font-size: 40px;
-    line-height: 1.2;
-    margin-bottom: 50px;
+    font-size: 48px; /* Larger main title */
+    line-height: 1.3;
+    margin-bottom: 60px; /* More space below title */
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .features-title {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 40px;
+    font-size: 26px; /* Larger feature title */
+    font-weight: 700; /* Bolder */
+    color: #343A40; /* Darker color */
+    margin-bottom: 50px; /* More space */
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 3px; /* More letter spacing */
 }
 
 .features-row {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap; /* Allows features to wrap on smaller screens */
-    gap: 30px; /* Space between feature cards */
+    flex-wrap: wrap;
+    gap: 40px; /* More space between feature cards */
 }
 
 .feature {
-    background-color: #F8F8F8; /* Light background for feature cards */
-    padding: 30px;
-    border-radius: 15px; /* More rounded corners */
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1); /* Slightly darker initial shadow */
-    max-width: 350px;
+    background-color: #F9FAFB; /* Lighter background for feature cards */
+    padding: 35px; /* More padding inside card */
+    border-radius: 20px; /* Even more rounded corners */
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12); /* More defined initial shadow */
+    max-width: 380px; /* Slightly wider cards */
     text-align: left;
-    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s ease, border 0.4s ease; /* Enhanced transitions */
-    border: 2px solid transparent; /* Transparent border, will not change color */
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s ease, border 0.4s ease;
+    border: 2px solid transparent; /* Transparent border */
+    position: relative; /* For potential pseudo-elements or specific positioning */
+}
+
+.feature::after { /* Subtle border glow on hover */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 20px;
+    border: 2px solid transparent;
+    transition: border-color 0.4s ease-out;
 }
 
 .feature:hover {
-    transform: translateY(-12px); /* More significant lift on hover */
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25); /* Much darker black shadow */
+    transform: translateY(-15px); /* Even more significant lift on hover */
+    box-shadow: 0 22px 50px rgba(0, 0, 0, 0.35); /* Much darker, more impactful black shadow */
     border: 2px solid transparent; /* Keep transparent, no blue border */
 }
 
+.feature:hover::after {
+    border-color: rgba(0, 0, 0, 0.1); /* Subtle dark border glow on hover */
+}
+
 .feature .icon {
-    font-size: 45px; /* Slightly larger icon */
-    color: #000; /* Black icons */
-    margin-bottom: 20px;
+    font-size: 55px; /* Much larger icon */
+    color: #212529; /* Darker black icons */
+    margin-bottom: 25px; /* More space below icon */
     display: block;
     text-align: center;
-    transition: transform 0.4s ease, color 0.3s ease; /* Smooth icon transition */
+    transition: transform 0.4s ease, color 0.3s ease;
 }
 
 .feature:hover .icon {
-    transform: rotateY(360deg) scale(1.1); /* 3D flip and slight scale on feature hover */
-    color: #222; /* Darker black for icon on hover */
+    transform: rotateY(360deg) scale(1.15); /* More pronounced 3D flip and scale */
+    color: #000; /* Pure black for icon on hover */
 }
 
 .feature h3 {
-    font-size: 22px;
-    margin-bottom: 15px;
+    font-size: 24px; /* Larger feature heading */
+    margin-bottom: 18px;
     text-align: center;
+    font-weight: 700;
 }
 
 .feature p {
-    font-size: 16px;
-    color: #555;
+    font-size: 17px; /* Consistent paragraph font size */
+    color: #495057;
     text-align: left;
+    margin-bottom: 10px; /* Adjusted margin for clearer separation */
 }
 
 .feature .how {
     font-weight: bold;
-    margin-top: 20px;
-    margin-bottom: 5px;
+    margin-top: 25px; /* More space above "How?" */
+    margin-bottom: 8px;
     color: #333;
 }
 
 /* How Do I Begin Section */
 .how-begin {
-    background-color: #F8F8F8; /* Light background */
-    padding: 80px 5%;
+    background-color: #F9FAFB; /* Light background */
+    padding: 100px 6%;
 }
 
 .how-begin h2 {
-    font-size: 36px;
-    margin-bottom: 20px;
+    font-size: 42px;
+    margin-bottom: 30px;
 }
 
 .how-begin p {
-    font-size: 18px;
-    margin-bottom: 10px;
+    font-size: 20px;
+    margin-bottom: 15px;
 }
 
 .how-begin .simple-text {
-    font-weight: bold;
-    font-size: 20px;
+    font-weight: 700; /* Bolder */
+    font-size: 22px; /* Larger */
     color: #333;
-    margin-top: 20px;
+    margin-top: 30px; /* More space */
+    letter-spacing: 1px;
 }
 
 .cta-button {
     display: inline-block;
     background-color: #000; /* Black button */
     color: #FFF;
-    padding: 15px 30px;
-    border-radius: 50px; /* More rounded */
+    padding: 16px 35px;
+    border-radius: 60px;
     text-decoration: none;
-    font-size: 18px;
-    margin-top: 30px;
-    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Slightly darker initial shadow */
+    font-size: 19px;
+    font-weight: 600;
+    margin-top: 40px; /* More space */
+    transition: background-color 0.3s ease, transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
 }
 
 .cta-button:hover {
     background-color: #222; /* Darker black on hover */
-    transform: translateY(-6px) scale(1.03);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4); /* Much darker black shadow */
+    transform: translateY(-8px) scale(1.04);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5); /* Much darker, more impactful black shadow */
 }
-
-/* Testimonials Section */
-/* ... (previous CSS code) ... */
 
 /* Testimonials Section */
 .testimonials {
     background-color: #FFFFFF; /* White background */
-    padding-bottom: 80px;
+    padding-bottom: 100px;
 }
 
 .testimonials h2 {
-    font-size: 36px;
-    margin-bottom: 50px;
+    font-size: 42px;
+    margin-bottom: 60px; /* More space */
 }
 
 .testimonial-cards {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 30px;
+    gap: 40px; /* More space between cards */
 }
 
 .testimonial-cards .card {
-    background-color: #F8F8F8; /* Light background for testimonial cards */
-    padding: 30px;
-    border-radius: 15px; /* More rounded */
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1); /* Slightly darker initial shadow */
-    max-width: 350px;
+    background-color: #F9FAFB; /* Light background for testimonial cards */
+    padding: 35px; /* More padding */
+    border-radius: 20px; /* More rounded */
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+    max-width: 380px;
     text-align: center;
     position: relative;
     transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s ease, border 0.4s ease;
-    border: 2px solid transparent; /* Transparent border, will not change color */
+    border: 2px solid transparent;
+}
+
+.testimonial-cards .card::after { /* Subtle border glow on hover */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 20px;
+    border: 2px solid transparent;
+    transition: border-color 0.4s ease-out;
 }
 
 .testimonial-cards .card:hover {
-    transform: translateY(-12px); /* More significant lift on hover */
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25); /* Much darker black shadow */
-    border: 2px solid transparent; /* Keep transparent, no blue border */
+    transform: translateY(-15px); /* More significant lift on hover */
+    box-shadow: 0 22px 50px rgba(0, 0, 0, 0.35); /* Much darker black shadow */
+    border: 2px solid transparent;
+}
+
+.testimonial-cards .card:hover::after {
+    border-color: rgba(0, 0, 0, 0.1); /* Subtle dark border glow on hover */
 }
 
 .testimonial-cards .card .quote {
-    font-size: 80px;
-    color: #AAA; /* Darker initial grey for the quote mark (was #DDD) */
+    font-size: 100px; /* Even larger quote mark */
+    color: #999; /* Even darker grey for the quote mark (was #AAA) */
     position: absolute;
-    top: -20px;
+    top: -25px; /* Adjusted position due to larger font-size */
     left: 50%;
     transform: translateX(-50%);
-    font-family: serif;
+    font-family: 'Georgia', serif; /* A more classic serif font for quotes */
     z-index: 0;
     transition: color 0.3s ease;
 }
 
 .testimonial-cards .card:hover .quote {
-    color: #888; /* Even darker grey on hover for the quote mark (was #BBB) */
+    color: #777; /* Even darker grey on hover for the quote mark (was #888) */
 }
 
 .testimonial-cards .card p {
     font-style: italic;
-    font-size: 17px;
-    margin-bottom: 20px;
-    position: relative; /* To keep text above the quote mark */
+    font-size: 18px; /* Slightly larger testimonial text */
+    margin-bottom: 25px; /* More space */
+    position: relative;
     z-index: 1;
-    color: #333;
+    color: #343A40; /* Darker text color */
 }
 
-/* ... (rest of your CSS code) ... */
-
 .testimonial-cards .card .author {
-    font-weight: bold;
+    font-weight: 700; /* Bolder author name */
     color: #000;
-    font-size: 16px;
-    margin-bottom: 10px;
+    font-size: 17px; /* Slightly larger author font size */
+    margin-bottom: 12px;
 }
 
 .testimonial-cards .card .stars {
-    color: #FFD700; /* Gold color for stars (kept this as it's standard for ratings) */
-    font-size: 20px;
+    color: #FFD700; /* Gold color for stars */
+    font-size: 22px; /* Slightly larger stars */
     transition: transform 0.3s ease;
 }
 
 .testimonial-cards .card:hover .stars {
-    transform: scale(1.1) rotate(5deg); /* Slight pop and rotate for stars on hover */
+    transform: scale(1.15) rotate(7deg); /* More pronounced pop and rotate for stars on hover */
 }
 
 /* Contact Section */
 .contact-section {
-    background-color: #F8F8F8; /* Light background */
-    padding-top: 80px;
-    padding-bottom: 80px;
+    background-color: #F9FAFB; /* Light background */
+    padding-top: 100px;
+    padding-bottom: 100px;
 }
 
 .contact-container {
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Align items to the top */
+    align-items: flex-start;
     flex-wrap: wrap;
-    gap: 50px;
-    max-width: 1000px;
+    gap: 60px; /* More space between contact text and form */
+    max-width: 1100px; /* Wider container */
     margin: 0 auto;
-    text-align: left; /* Align text within the container to left */
+    text-align: left;
 }
 
-/* Styling for the new Contact Us heading inside the form */
-.contact-form h3 {
-    font-size: 32px; /* Adjusted to fit the general heading sizes */
-    color: #333; /* Consistent with other main headings */
-    font-weight: bold;
-    margin-bottom: 30px; /* Space below the title */
-    text-align: center; /* Center the heading */
+.contact-text h2 {
+    font-size: 42px; /* Larger heading for contact */
+    margin-bottom: 20px;
+    line-height: 1.3;
 }
 
 .contact-form {
     background-color: #FFFFFF; /* White background for the form */
-    padding: 40px;
-    border-radius: 15px; /* More rounded */
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* Slightly darker initial shadow */
+    padding: 50px; /* More padding inside the form */
+    border-radius: 20px; /* More rounded */
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15); /* More prominent initial shadow */
     flex: 1;
-    min-width: 350px;
-    transition: box-shadow 0.4s ease, transform 0.3s ease; /* Smooth shadow and transform transition */
+    min-width: 400px; /* Minimum width for form */
+    max-width: 600px; /* Max width to prevent it from getting too wide */
+    transition: box-shadow 0.4s ease, transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .contact-form:hover {
-    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3); /* Much darker black shadow */
-    transform: translateY(-7px); /* Slightly more lift on hover */
+    box-shadow: 0 25px 55px rgba(0, 0, 0, 0.4); /* Much darker, more impactful black shadow */
+    transform: translateY(-10px); /* More significant lift on hover */
+}
+
+.contact-form h3 {
+    font-size: 36px; /* Larger contact form heading */
+    color: #212529;
+    font-weight: 700;
+    margin-bottom: 35px; /* More space */
+    text-align: center;
 }
 
 .form-row {
     display: flex;
-    gap: 20px;
-    margin-bottom: 20px;
+    gap: 25px; /* More space between form fields in a row */
+    margin-bottom: 25px; /* More space below a row */
 }
 
 .form-group {
     flex: 1;
-    margin-bottom: 20px;
+    margin-bottom: 0; /* Adjusted as margin is on form-row */
 }
 
 .form-group label {
     display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-    color: #333;
+    margin-bottom: 10px; /* More space below label */
+    font-weight: 600; /* Bolder labels */
+    color: #343A40;
+    font-size: 16px;
 }
 
 .form-group input[type="text"],
 .form-group input[type="email"],
 .form-group textarea {
     width: 100%;
-    padding: 12px;
-    border: 1px solid #CCC; /* Slightly darker light gray border */
-    border-radius: 8px; /* Slightly more rounded inputs */
-    font-size: 16px;
-    box-sizing: border-box; /* Include padding in element's total width and height */
+    padding: 14px; /* More padding inside inputs */
+    border: 1px solid #CED4DA; /* Softer border color */
+    border-radius: 10px; /* More rounded inputs */
+    font-size: 17px; /* Larger input font size */
+    box-sizing: border-box;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
     border-color: #000; /* Black border on focus */
-    box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.15); /* Darker black glow on focus */
+    box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.2); /* Darker, more spread black glow on focus */
     outline: none;
 }
 
 .contact-form button[type="submit"] {
     background-color: #000; /* Black submit button */
     color: #FFF;
-    padding: 15px 30px;
+    padding: 16px 35px;
     border: none;
-    border-radius: 50px; /* More rounded */
-    font-size: 18px;
+    border-radius: 60px;
+    font-size: 19px;
+    font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Slightly darker initial shadow */
+    transition: background-color 0.3s ease, transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+    margin-top: 20px; /* Space above button */
 }
 
 .contact-form button[type="submit"]:hover {
     background-color: #222; /* Darker black on hover */
-    transform: translateY(-6px) scale(1.03);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4); /* Much darker black shadow */
+    transform: translateY(-8px) scale(1.04);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5); /* Much darker, more impactful black shadow */
 }
 
-/* Font Awesome Icons (if you're using them) */
-/* Make sure you link to Font Awesome CDN in your HTML's <head> */
+/* Font Awesome Icons (Add this to your HTML <head>) */
 /* <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> */
+/* Google Fonts for 'Inter' and 'Montserrat' (Add this to your HTML <head>) */
+/* <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet"> */
 
 
 /* Responsive Adjustments */
-@media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        text-align: center;
+@media (max-width: 992px) { /* Tablet adjustments */
+    .main .title h1 {
+        font-size: 40px;
     }
-
-    nav {
-        margin-top: 15px;
+    .cosmo-section h2, .how-begin h2, .testimonials h2, .contact-text h2 {
+        font-size: 38px;
     }
-
-    nav a {
-        margin: 0 10px;
-        display: inline-block;
-    }
-
-    .features-row,
-    .testimonial-cards,
     .contact-container {
         flex-direction: column;
         align-items: center;
+        gap: 40px;
     }
+    .contact-text, .contact-form {
+        min-width: unset; /* Remove min-width to allow flexing */
+        width: 90%;
+        max-width: 600px; /* Keep max-width for readability */
+    }
+}
 
+@media (max-width: 768px) { /* Smaller tablet/large phone adjustments */
+    header {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px 4%;
+    }
+    nav {
+        margin-top: 15px;
+        display: flex; /* Use flex to allow links to wrap */
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    nav a {
+        margin: 5px 10px; /* Adjust margin for wrapped links */
+        padding: 8px 12px;
+    }
+    section {
+        padding: 70px 4%;
+    }
+    .main .title h1 {
+        font-size: 36px;
+    }
+    .cosmo-section h2, .how-begin h2, .testimonials h2, .contact-text h2 {
+        font-size: 32px;
+    }
+    .features-row,
+    .testimonial-cards {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
     .feature,
-    .testimonial-cards .card,
-    .contact-text,
-    .contact-form {
-        max-width: 90%; /* Adjust width for smaller screens */
+    .testimonial-cards .card {
+        max-width: 95%; /* Adjust width for smaller screens */
         width: 100%;
     }
-
     .form-row {
         flex-direction: column;
         gap: 0;
     }
-
     .form-group {
         margin-bottom: 15px;
     }
-
     .contact-form h3 {
         font-size: 28px;
     }
 }
 
-@media (max-width: 480px) {
-    h1 {
-        font-size: 32px;
+@media (max-width: 480px) { /* Mobile adjustments */
+    .logo {
+        font-size: 22px;
     }
-
-    h2 {
+    nav a {
+        font-size: 15px;
+        padding: 7px 10px;
+    }
+    h1 {
         font-size: 28px;
     }
-
+    h2 {
+        font-size: 26px;
+    }
     .cosmo-section p,
-    .how-begin p {
-        font-size: 16px;
+    .how-begin p,
+    .feature p,
+    .testimonial-cards .card p {
+        font-size: 15px;
     }
-
     .cosmo-btn, .cta-button, .contact-form button[type="submit"] {
-        font-size: 16px;
-        padding: 12px 25px;
+        font-size: 17px;
+        padding: 14px 30px;
     }
-
     .contact-form h3 {
         font-size: 24px;
+    }
+    .feature .icon {
+        font-size: 48px;
+    }
+    .testimonial-cards .card .quote {
+        font-size: 85px;
+        top: -15px; /* Adjust position for smaller screens */
     }
 }
