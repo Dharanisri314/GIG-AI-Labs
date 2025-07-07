@@ -1,49 +1,63 @@
 /* General Body Styles */
 body {
-    font-family: 'Inter', sans-serif; /* Using a more modern sans-serif font, assuming it's imported or available */
+    font-family: 'Inter', sans-serif; /* Using a more modern sans-serif font */
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #F9FAFB; /* A softer, slightly warmer very light gray */
-    color: #343A40; /* Slightly darker charcoal for general text for better readability */
+    /* Added subtle background pattern for depth */
+    background-color: #F8F8F8;
+    background-image: radial-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+    background-size: 20px 20px;
+    color: #333; /* Dark gray for general text for good readability */
     line-height: 1.7; /* Increased line height for better readability */
     overflow-x: hidden; /* Prevent horizontal scroll on animations */
+    text-rendering: optimizeLegibility; /* Improves font rendering */
+    -webkit-font-smoothing: antialiased; /* Smoother fonts for Webkit browsers */
+    -moz-osx-font-smoothing: grayscale; /* Smoother fonts for Firefox */
 }
 
 /* Header Styles */
 header {
     background-color: #FFFFFF; /* Pure white for the header */
-    padding: 18px 6%; /* Slightly more padding */
+    padding: 20px 6%; /* Slightly more padding for a premium feel */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.07); /* More prominent but still subtle initial shadow */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); /* More prominent but still subtle initial shadow */
     position: sticky; /* Make header sticky */
     top: 0;
     z-index: 1000; /* Ensure header stays on top */
     transition: all 0.4s ease-in-out; /* Smooth transition for any header changes */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05); /* Subtle bottom border */
+}
+
+header.scrolled { /* Example for a scrolled header effect if you implement JS for it */
+    padding: 15px 6%;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
 .logo {
     font-weight: 700; /* Bolder logo */
-    font-size: 26px; /* Slightly larger logo */
+    font-size: 28px; /* Larger logo */
     color: #212529; /* Darker, almost black for logo */
+    letter-spacing: -0.5px; /* Tighter letter spacing for modern look */
     transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), color 0.3s ease; /* More dynamic transition */
 }
 
 .logo:hover {
-    transform: scale(1.1); /* More pronounced enlarge effect */
+    transform: scale(1.08); /* More pronounced enlarge effect */
     color: #000; /* Pure black on hover for logo */
 }
 
 nav a {
     text-decoration: none;
     color: #6C757D; /* Softer gray for navigation links */
-    margin-left: 30px; /* More space between links */
+    margin-left: 35px; /* More space between links */
     font-weight: 600; /* Slightly bolder nav links */
+    font-size: 17px; /* Slightly larger nav text */
     transition: color 0.3s ease, transform 0.2s ease, background-color 0.3s ease, box-shadow 0.3s ease; /* Enhanced transitions */
-    padding: 10px 18px; /* Increased padding for larger clickable area */
-    border-radius: 8px; /* More rounded corners for links */
+    padding: 12px 20px; /* Increased padding for larger clickable area */
+    border-radius: 10px; /* More rounded corners for links */
     position: relative;
     overflow: hidden; /* For underline animation */
 }
@@ -77,11 +91,11 @@ nav a.active {
 
 /* Section Common Styles */
 section {
-    padding: 80px 6%; /* Increased vertical padding for more breathing room */
+    padding: 90px 6%; /* Increased vertical padding for more breathing room */
     text-align: center;
     opacity: 0; /* Initially hidden for fade-in animation */
-    transform: translateY(40px); /* Start further below for a more noticeable slide-up effect */
-    animation: fadeInSlideUp 1.2s ease-out forwards; /* Longer duration for a smoother reveal */
+    transform: translateY(50px); /* Start further below for a more noticeable slide-up effect */
+    animation: fadeInSlideUp 1.4s ease-out forwards; /* Longer duration for a smoother reveal */
     animation-delay: var(--section-delay, 0s); /* Staggered animation delay */
 }
 
@@ -103,345 +117,455 @@ section {
 
 h1, h2, h3 {
     color: #212529; /* Darker headings */
-    margin-bottom: 25px; /* More space below headings */
-    font-family: 'Montserrat', sans-serif; /* A more distinct font for headings, assuming it's imported */
+    margin-bottom: 30px; /* More space below headings */
+    font-family: 'Montserrat', sans-serif; /* A more distinct font for headings */
     line-height: 1.2;
+    letter-spacing: -0.5px; /* Tighter letter spacing for headings */
+    /* Subtle text shadow for depth */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 p {
     color: #495057; /* Slightly darker paragraph text color for better contrast */
-    margin-bottom: 20px; /* More space below paragraphs */
-    font-size: 17px; /* Slightly larger base font size */
+    margin-bottom: 25px; /* More space below paragraphs */
+    font-size: 18px; /* Slightly larger base font size */
 }
 
 /* Cosmo Section (AI Cosmo1) */
 .cosmo-section {
-    background-color: #F9FAFB; /* Same light background as body */
-    padding: 100px 6%; /* More generous padding */
+    background: radial-gradient(circle at top left, #F9FAFB 0%, #FFFFFF 100%); /* Subtle radial gradient */
+    padding: 110px 6%; /* More generous padding */
 }
 
 .cosmo-section h2 {
-    font-size: 42px; /* Larger heading */
-    margin-bottom: 25px;
+    font-size: 48px; /* Larger heading */
+    margin-bottom: 30px;
 }
 
 .cosmo-section p {
-    font-size: 20px; /* Larger paragraph */
-    max-width: 800px; /* Wider text block */
-    margin: 0 auto 40px auto; /* More space below paragraph */
+    font-size: 22px; /* Larger paragraph */
+    max-width: 850px; /* Wider text block */
+    margin: 0 auto 50px auto; /* More space below paragraph */
 }
 
 .cosmo-btn {
     background-color: #000; /* Black button */
     color: #FFF; /* White text */
-    padding: 16px 35px; /* Increased padding */
+    padding: 18px 40px; /* Increased padding */
     border: none;
     border-radius: 60px; /* Even more rounded for a softer look */
-    font-size: 19px; /* Larger font size */
+    font-size: 20px; /* Larger font size */
     font-weight: 600; /* Bolder text */
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease; /* Smoother, more dynamic transition */
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25); /* More prominent initial shadow */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3); /* More prominent initial shadow */
     position: relative;
     overflow: hidden;
+    letter-spacing: 0.5px;
+}
+
+/* Button ripple effect */
+.cosmo-btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.3); /* White ripple */
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(1) translate(-50%, -50%);
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out;
 }
 
 .cosmo-btn:hover {
     background-color: #222; /* Darker black on hover for depth */
-    transform: translateY(-8px) scale(1.04); /* More significant lift and enlarge */
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5); /* Much darker, more impactful black shadow */
+    transform: translateY(-10px) scale(1.05); /* More significant lift and enlarge */
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6); /* Much darker, more impactful black shadow */
 }
+
+.cosmo-btn:active::after { /* Activate ripple on click/active */
+    transform: scale(200) translate(-50%, -50%);
+    opacity: 1;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+}
+
 
 /* Main Section (Features) */
 .main {
     background-color: #FFFFFF; /* White background for this section */
-    padding-bottom: 100px; /* More padding */
+    padding-bottom: 110px; /* More padding */
+    position: relative;
+    overflow: hidden;
 }
 
+.main::before { /* Subtle background element */
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: -10%;
+    width: 200px;
+    height: 200px;
+    background: rgba(0, 0, 0, 0.02);
+    border-radius: 50%;
+    filter: blur(50px);
+    z-index: 0;
+    animation: floatEffect 8s infinite ease-in-out alternate;
+}
+
+@keyframes floatEffect {
+    0% { transform: translateY(0) translateX(0); }
+    100% { transform: translateY(-20px) translateX(20px); }
+}
+
+
 .main .title h1 {
-    font-size: 48px; /* Larger main title */
-    line-height: 1.3;
-    margin-bottom: 60px; /* More space below title */
-    max-width: 900px;
+    font-size: 52px; /* Larger main title */
+    line-height: 1.25;
+    margin-bottom: 70px; /* More space below title */
+    max-width: 950px;
     margin-left: auto;
     margin-right: auto;
 }
 
 .features-title {
-    font-size: 26px; /* Larger feature title */
+    font-size: 28px; /* Larger feature title */
     font-weight: 700; /* Bolder */
     color: #343A40; /* Darker color */
-    margin-bottom: 50px; /* More space */
+    margin-bottom: 60px; /* More space */
     text-transform: uppercase;
-    letter-spacing: 3px; /* More letter spacing */
+    letter-spacing: 4px; /* More letter spacing */
+    position: relative;
+    display: inline-block;
 }
+.features-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: #000; /* Black accent line */
+    border-radius: 2px;
+}
+
 
 .features-row {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 40px; /* More space between feature cards */
+    gap: 45px; /* More space between feature cards */
 }
 
 .feature {
     background-color: #F9FAFB; /* Lighter background for feature cards */
-    padding: 35px; /* More padding inside card */
-    border-radius: 20px; /* Even more rounded corners */
-    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12); /* More defined initial shadow */
-    max-width: 380px; /* Slightly wider cards */
+    padding: 40px; /* More padding inside card */
+    border-radius: 25px; /* Even more rounded corners */
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15); /* More defined initial shadow */
+    max-width: 400px; /* Slightly wider cards */
     text-align: left;
     transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s ease, border 0.4s ease;
     border: 2px solid transparent; /* Transparent border */
-    position: relative; /* For potential pseudo-elements or specific positioning */
+    position: relative;
+    overflow: hidden; /* For subtle gradient effect */
 }
 
-.feature::after { /* Subtle border glow on hover */
+.feature::before { /* Subtle gradient overlay on hover */
     content: '';
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: 20px;
-    border: 2px solid transparent;
-    transition: border-color 0.4s ease-out;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.02) 0%, rgba(0, 0, 0, 0) 50%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 1;
 }
 
 .feature:hover {
-    transform: translateY(-15px); /* Even more significant lift on hover */
-    box-shadow: 0 22px 50px rgba(0, 0, 0, 0.35); /* Much darker, more impactful black shadow */
-    border: 2px solid transparent; /* Keep transparent, no blue border */
+    transform: translateY(-18px); /* Even more significant lift on hover */
+    box-shadow: 0 25px 55px rgba(0, 0, 0, 0.4); /* Much darker, more impactful black shadow */
+    border: 2px solid rgba(0, 0, 0, 0.05); /* Very subtle dark border on hover */
 }
 
-.feature:hover::after {
-    border-color: rgba(0, 0, 0, 0.1); /* Subtle dark border glow on hover */
+.feature:hover::before {
+    opacity: 1; /* Show gradient overlay on hover */
 }
 
 .feature .icon {
-    font-size: 55px; /* Much larger icon */
+    font-size: 60px; /* Much larger icon */
     color: #212529; /* Darker black icons */
-    margin-bottom: 25px; /* More space below icon */
+    margin-bottom: 30px; /* More space below icon */
     display: block;
     text-align: center;
-    transition: transform 0.4s ease, color 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), color 0.3s ease;
+    position: relative;
+    z-index: 2; /* Ensure icon is above pseudo-element */
 }
 
 .feature:hover .icon {
-    transform: rotateY(360deg) scale(1.15); /* More pronounced 3D flip and scale */
+    transform: rotateY(360deg) scale(1.18); /* More pronounced 3D flip and scale */
     color: #000; /* Pure black for icon on hover */
 }
 
 .feature h3 {
-    font-size: 24px; /* Larger feature heading */
-    margin-bottom: 18px;
+    font-size: 26px; /* Larger feature heading */
+    margin-bottom: 20px;
     text-align: center;
     font-weight: 700;
+    position: relative;
+    z-index: 2;
 }
 
 .feature p {
-    font-size: 17px; /* Consistent paragraph font size */
+    font-size: 18px; /* Consistent paragraph font size */
     color: #495057;
     text-align: left;
-    margin-bottom: 10px; /* Adjusted margin for clearer separation */
+    margin-bottom: 15px; /* Adjusted margin for clearer separation */
+    position: relative;
+    z-index: 2;
 }
 
 .feature .how {
-    font-weight: bold;
-    margin-top: 25px; /* More space above "How?" */
-    margin-bottom: 8px;
+    font-weight: 700; /* Bolder "How?" */
+    margin-top: 30px; /* More space above "How?" */
+    margin-bottom: 10px;
     color: #333;
+    position: relative;
+    z-index: 2;
 }
 
 /* How Do I Begin Section */
 .how-begin {
-    background-color: #F9FAFB; /* Light background */
-    padding: 100px 6%;
+    background: linear-gradient(160deg, #F9FAFB 0%, #FFFFFF 100%); /* Subtle linear gradient */
+    padding: 110px 6%;
 }
 
 .how-begin h2 {
-    font-size: 42px;
-    margin-bottom: 30px;
+    font-size: 48px;
+    margin-bottom: 35px;
 }
 
 .how-begin p {
-    font-size: 20px;
-    margin-bottom: 15px;
+    font-size: 22px;
+    margin-bottom: 20px;
 }
 
 .how-begin .simple-text {
     font-weight: 700; /* Bolder */
-    font-size: 22px; /* Larger */
+    font-size: 24px; /* Larger */
     color: #333;
-    margin-top: 30px; /* More space */
-    letter-spacing: 1px;
+    margin-top: 35px; /* More space */
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
 }
 
 .cta-button {
     display: inline-block;
     background-color: #000; /* Black button */
     color: #FFF;
-    padding: 16px 35px;
+    padding: 18px 40px;
     border-radius: 60px;
     text-decoration: none;
-    font-size: 19px;
+    font-size: 20px;
     font-weight: 600;
-    margin-top: 40px; /* More space */
+    margin-top: 50px; /* More space */
     transition: background-color 0.3s ease, transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Button ripple effect */
+.cta-button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.3); /* White ripple */
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(1) translate(-50%, -50%);
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out;
 }
 
 .cta-button:hover {
     background-color: #222; /* Darker black on hover */
-    transform: translateY(-8px) scale(1.04);
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5); /* Much darker, more impactful black shadow */
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6); /* Much darker, more impactful black shadow */
+}
+
+.cta-button:active::after { /* Activate ripple on click/active */
+    transform: scale(200) translate(-50%, -50%);
+    opacity: 1;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
 }
 
 /* Testimonials Section */
 .testimonials {
     background-color: #FFFFFF; /* White background */
-    padding-bottom: 100px;
+    padding-bottom: 110px;
 }
 
 .testimonials h2 {
-    font-size: 42px;
-    margin-bottom: 60px; /* More space */
+    font-size: 48px;
+    margin-bottom: 70px; /* More space */
 }
 
 .testimonial-cards {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 40px; /* More space between cards */
+    gap: 45px; /* More space between cards */
 }
 
 .testimonial-cards .card {
     background-color: #F9FAFB; /* Light background for testimonial cards */
-    padding: 35px; /* More padding */
-    border-radius: 20px; /* More rounded */
-    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
-    max-width: 380px;
+    padding: 40px; /* More padding */
+    border-radius: 25px; /* More rounded */
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+    max-width: 400px;
     text-align: center;
     position: relative;
     transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s ease, border 0.4s ease;
     border: 2px solid transparent;
+    overflow: hidden;
 }
 
-.testimonial-cards .card::after { /* Subtle border glow on hover */
+.testimonial-cards .card::before { /* Subtle gradient overlay on hover */
     content: '';
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: 20px;
-    border: 2px solid transparent;
-    transition: border-color 0.4s ease-out;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.02) 0%, rgba(0, 0, 0, 0) 50%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 1;
 }
 
 .testimonial-cards .card:hover {
-    transform: translateY(-15px); /* More significant lift on hover */
-    box-shadow: 0 22px 50px rgba(0, 0, 0, 0.35); /* Much darker black shadow */
-    border: 2px solid transparent;
+    transform: translateY(-18px); /* More significant lift on hover */
+    box-shadow: 0 25px 55px rgba(0, 0, 0, 0.4); /* Much darker black shadow */
+    border: 2px solid rgba(0, 0, 0, 0.05); /* Very subtle dark border on hover */
 }
 
-.testimonial-cards .card:hover::after {
-    border-color: rgba(0, 0, 0, 0.1); /* Subtle dark border glow on hover */
+.testimonial-cards .card:hover::before {
+    opacity: 1; /* Show gradient overlay on hover */
 }
 
 .testimonial-cards .card .quote {
-    font-size: 100px; /* Even larger quote mark */
-    color: #999; /* Even darker grey for the quote mark (was #AAA) */
+    font-size: 110px; /* Even larger quote mark */
+    color: #888; /* Darker grey for the quote mark */
     position: absolute;
-    top: -25px; /* Adjusted position due to larger font-size */
+    top: -30px; /* Adjusted position due to larger font-size */
     left: 50%;
     transform: translateX(-50%);
     font-family: 'Georgia', serif; /* A more classic serif font for quotes */
-    z-index: 0;
+    z-index: 0; /* Keep it behind text */
     transition: color 0.3s ease;
 }
 
 .testimonial-cards .card:hover .quote {
-    color: #777; /* Even darker grey on hover for the quote mark (was #888) */
+    color: #666; /* Even darker grey on hover for the quote mark */
 }
 
 .testimonial-cards .card p {
     font-style: italic;
-    font-size: 18px; /* Slightly larger testimonial text */
-    margin-bottom: 25px; /* More space */
+    font-size: 19px; /* Slightly larger testimonial text */
+    margin-bottom: 30px; /* More space */
     position: relative;
-    z-index: 1;
+    z-index: 2; /* Ensure text is above pseudo-element */
     color: #343A40; /* Darker text color */
 }
 
 .testimonial-cards .card .author {
     font-weight: 700; /* Bolder author name */
     color: #000;
-    font-size: 17px; /* Slightly larger author font size */
-    margin-bottom: 12px;
+    font-size: 18px; /* Slightly larger author font size */
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 2;
 }
 
 .testimonial-cards .card .stars {
     color: #FFD700; /* Gold color for stars */
-    font-size: 22px; /* Slightly larger stars */
-    transition: transform 0.3s ease;
+    font-size: 24px; /* Slightly larger stars */
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    position: relative;
+    z-index: 2;
 }
 
 .testimonial-cards .card:hover .stars {
-    transform: scale(1.15) rotate(7deg); /* More pronounced pop and rotate for stars on hover */
+    transform: scale(1.18) rotate(10deg); /* More pronounced pop and rotate for stars on hover */
 }
 
 /* Contact Section */
 .contact-section {
-    background-color: #F9FAFB; /* Light background */
-    padding-top: 100px;
-    padding-bottom: 100px;
+    background: linear-gradient(160deg, #F9FAFB 0%, #FFFFFF 100%); /* Subtle linear gradient */
+    padding-top: 110px;
+    padding-bottom: 110px;
 }
 
 .contact-container {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: flex-start; /* Align items to the top */
     flex-wrap: wrap;
-    gap: 60px; /* More space between contact text and form */
-    max-width: 1100px; /* Wider container */
+    gap: 70px; /* More space between contact text and form */
+    max-width: 1200px; /* Wider container */
     margin: 0 auto;
     text-align: left;
 }
 
+.contact-text {
+    flex: 1;
+    min-width: 350px; /* Ensure text block has enough space */
+    max-width: 500px;
+    padding-top: 20px; /* Align text better with form */
+}
+
 .contact-text h2 {
-    font-size: 42px; /* Larger heading for contact */
-    margin-bottom: 20px;
-    line-height: 1.3;
+    font-size: 48px; /* Larger heading for contact */
+    margin-bottom: 25px;
+    line-height: 1.25;
 }
 
 .contact-form {
     background-color: #FFFFFF; /* White background for the form */
-    padding: 50px; /* More padding inside the form */
-    border-radius: 20px; /* More rounded */
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15); /* More prominent initial shadow */
+    padding: 55px; /* More padding inside the form */
+    border-radius: 25px; /* More rounded */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2); /* More prominent initial shadow */
     flex: 1;
-    min-width: 400px; /* Minimum width for form */
-    max-width: 600px; /* Max width to prevent it from getting too wide */
+    min-width: 450px; /* Minimum width for form */
+    max-width: 650px; /* Max width to prevent it from getting too wide */
     transition: box-shadow 0.4s ease, transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .contact-form:hover {
-    box-shadow: 0 25px 55px rgba(0, 0, 0, 0.4); /* Much darker, more impactful black shadow */
-    transform: translateY(-10px); /* More significant lift on hover */
+    box-shadow: 0 30px 65px rgba(0, 0, 0, 0.5); /* Much darker, more impactful black shadow */
+    transform: translateY(-12px); /* More significant lift on hover */
 }
 
-.contact-form h3 {
-    font-size: 36px; /* Larger contact form heading */
+/* Styling for the new Contact Us heading inside the form */
+.contact-form-title {
+    font-size: 40px; /* Larger contact form heading */
     color: #212529;
     font-weight: 700;
-    margin-bottom: 35px; /* More space */
+    margin-bottom: 40px; /* More space below title */
     text-align: center;
 }
 
 .form-row {
     display: flex;
-    gap: 25px; /* More space between form fields in a row */
-    margin-bottom: 25px; /* More space below a row */
+    gap: 30px; /* More space between form fields in a row */
+    margin-bottom: 30px; /* More space below a row */
 }
 
 .form-group {
@@ -451,49 +575,74 @@ p {
 
 .form-group label {
     display: block;
-    margin-bottom: 10px; /* More space below label */
+    margin-bottom: 12px; /* More space below label */
     font-weight: 600; /* Bolder labels */
     color: #343A40;
-    font-size: 16px;
+    font-size: 17px; /* Slightly larger label font size */
 }
 
 .form-group input[type="text"],
 .form-group input[type="email"],
 .form-group textarea {
     width: 100%;
-    padding: 14px; /* More padding inside inputs */
+    padding: 16px; /* More padding inside inputs */
     border: 1px solid #CED4DA; /* Softer border color */
-    border-radius: 10px; /* More rounded inputs */
-    font-size: 17px; /* Larger input font size */
+    border-radius: 12px; /* More rounded inputs */
+    font-size: 18px; /* Larger input font size */
     box-sizing: border-box;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    color: #343A40; /* Input text color */
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
     border-color: #000; /* Black border on focus */
-    box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.2); /* Darker, more spread black glow on focus */
+    box-shadow: 0 0 0 6px rgba(0, 0, 0, 0.25); /* Darker, more spread black glow on focus */
     outline: none;
 }
 
 .contact-form button[type="submit"] {
     background-color: #000; /* Black submit button */
     color: #FFF;
-    padding: 16px 35px;
+    padding: 18px 40px;
     border: none;
     border-radius: 60px;
-    font-size: 19px;
+    font-size: 20px;
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
-    margin-top: 20px; /* Space above button */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    margin-top: 30px; /* More space above button */
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Button ripple effect */
+.contact-form button[type="submit"]::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.3); /* White ripple */
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(1) translate(-50%, -50%);
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out;
 }
 
 .contact-form button[type="submit"]:hover {
     background-color: #222; /* Darker black on hover */
-    transform: translateY(-8px) scale(1.04);
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5); /* Much darker, more impactful black shadow */
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6); /* Much darker, more impactful black shadow */
+}
+
+.contact-form button[type="submit"]:active::after { /* Activate ripple on click/active */
+    transform: scale(200) translate(-50%, -50%);
+    opacity: 1;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
 }
 
 /* Font Awesome Icons (Add this to your HTML <head>) */
@@ -503,105 +652,86 @@ p {
 
 
 /* Responsive Adjustments */
+@media (max-width: 1200px) { /* Adjust for larger tablets/laptops */
+    header { padding: 18px 4%; }
+    nav a { margin-left: 25px; }
+    section { padding: 80px 4%; }
+    .main .title h1 { font-size: 48px; }
+    .cosmo-section h2, .how-begin h2, .testimonials h2, .contact-text h2 { font-size: 42px; }
+    .contact-container { gap: 50px; }
+    .contact-form { min-width: 400px; }
+}
+
 @media (max-width: 992px) { /* Tablet adjustments */
-    .main .title h1 {
-        font-size: 40px;
-    }
-    .cosmo-section h2, .how-begin h2, .testimonials h2, .contact-text h2 {
-        font-size: 38px;
-    }
-    .contact-container {
-        flex-direction: column;
-        align-items: center;
-        gap: 40px;
-    }
-    .contact-text, .contact-form {
-        min-width: unset; /* Remove min-width to allow flexing */
-        width: 90%;
-        max-width: 600px; /* Keep max-width for readability */
-    }
+    header { flex-direction: column; padding: 15px 4%; }
+    nav { margin-top: 15px; flex-wrap: wrap; justify-content: center; gap: 15px; }
+    nav a { margin-left: 0; padding: 10px 15px; font-size: 16px; }
+    section { padding: 70px 5%; }
+    .main .title h1 { font-size: 40px; margin-bottom: 50px; }
+    .features-title { font-size: 24px; margin-bottom: 40px; letter-spacing: 3px; }
+    .cosmo-section h2, .how-begin h2, .testimonials h2, .contact-text h2 { font-size: 38px; }
+    .cosmo-section p, .how-begin p { font-size: 20px; }
+    .features-row, .testimonial-cards { gap: 35px; }
+    .feature, .testimonial-cards .card { max-width: 350px; padding: 35px; border-radius: 20px; }
+    .feature .icon { font-size: 55px; margin-bottom: 25px; }
+    .feature h3 { font-size: 22px; }
+    .feature p { font-size: 16px; }
+    .testimonial-cards .card .quote { font-size: 100px; top: -25px; }
+    .testimonial-cards .card p { font-size: 18px; }
+    .contact-container { flex-direction: column; align-items: center; gap: 40px; }
+    .contact-text, .contact-form { min-width: unset; width: 90%; max-width: 600px; padding: 45px; }
+    .contact-form-title { font-size: 36px; margin-bottom: 35px; }
+    .form-row { flex-direction: column; gap: 0; margin-bottom: 20px; }
+    .form-group { margin-bottom: 20px; }
+    .form-group label { font-size: 16px; margin-bottom: 10px; }
+    .form-group input, .form-group textarea { padding: 14px; font-size: 17px; border-radius: 10px; }
+    .cosmo-btn, .cta-button, .contact-form button[type="submit"] { padding: 16px 35px; font-size: 19px; }
 }
 
 @media (max-width: 768px) { /* Smaller tablet/large phone adjustments */
-    header {
-        flex-direction: column;
-        text-align: center;
-        padding: 15px 4%;
-    }
-    nav {
-        margin-top: 15px;
-        display: flex; /* Use flex to allow links to wrap */
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    nav a {
-        margin: 5px 10px; /* Adjust margin for wrapped links */
-        padding: 8px 12px;
-    }
-    section {
-        padding: 70px 4%;
-    }
-    .main .title h1 {
-        font-size: 36px;
-    }
-    .cosmo-section h2, .how-begin h2, .testimonials h2, .contact-text h2 {
-        font-size: 32px;
-    }
-    .features-row,
-    .testimonial-cards {
-        flex-direction: column;
-        align-items: center;
-        gap: 30px;
-    }
-    .feature,
-    .testimonial-cards .card {
-        max-width: 95%; /* Adjust width for smaller screens */
-        width: 100%;
-    }
-    .form-row {
-        flex-direction: column;
-        gap: 0;
-    }
-    .form-group {
-        margin-bottom: 15px;
-    }
-    .contact-form h3 {
-        font-size: 28px;
-    }
+    header { padding: 12px 3%; }
+    .logo { font-size: 26px; }
+    nav { margin-top: 10px; gap: 10px; }
+    nav a { padding: 8px 12px; font-size: 15px; }
+    section { padding: 60px 4%; }
+    .main .title h1 { font-size: 34px; margin-bottom: 40px; }
+    .features-title { font-size: 22px; margin-bottom: 35px; letter-spacing: 2px; }
+    .cosmo-section h2, .how-begin h2, .testimonials h2, .contact-text h2 { font-size: 32px; }
+    .cosmo-section p, .how-begin p { font-size: 18px; }
+    .feature, .testimonial-cards .card { padding: 30px; border-radius: 18px; }
+    .feature .icon { font-size: 50px; margin-bottom: 20px; }
+    .feature h3 { font-size: 22px; }
+    .feature p { font-size: 16px; }
+    .testimonial-cards .card .quote { font-size: 90px; top: -20px; }
+    .testimonial-cards .card p { font-size: 17px; }
+    .contact-text h2 { font-size: 32px; line-height: 1.3; }
+    .contact-form { padding: 40px; border-radius: 20px; }
+    .contact-form-title { font-size: 32px; margin-bottom: 30px; }
+    .form-group label { font-size: 15px; }
+    .form-group input, .form-group textarea { padding: 12px; font-size: 16px; border-radius: 8px; }
+    .cosmo-btn, .cta-button, .contact-form button[type="submit"] { padding: 14px 30px; font-size: 18px; }
 }
 
 @media (max-width: 480px) { /* Mobile adjustments */
-    .logo {
-        font-size: 22px;
-    }
-    nav a {
-        font-size: 15px;
-        padding: 7px 10px;
-    }
-    h1 {
-        font-size: 28px;
-    }
-    h2 {
-        font-size: 26px;
-    }
-    .cosmo-section p,
-    .how-begin p,
-    .feature p,
-    .testimonial-cards .card p {
-        font-size: 15px;
-    }
-    .cosmo-btn, .cta-button, .contact-form button[type="submit"] {
-        font-size: 17px;
-        padding: 14px 30px;
-    }
-    .contact-form h3 {
-        font-size: 24px;
-    }
-    .feature .icon {
-        font-size: 48px;
-    }
-    .testimonial-cards .card .quote {
-        font-size: 85px;
-        top: -15px; /* Adjust position for smaller screens */
-    }
+    header { padding: 10px 2%; }
+    .logo { font-size: 24px; }
+    nav { margin-top: 8px; gap: 8px; }
+    nav a { padding: 6px 10px; font-size: 14px; }
+    section { padding: 50px 3%; }
+    .main .title h1 { font-size: 28px; margin-bottom: 30px; }
+    .features-title { font-size: 20px; margin-bottom: 30px; letter-spacing: 1.5px; }
+    .cosmo-section h2, .how-begin h2, .testimonials h2, .contact-text h2 { font-size: 28px; }
+    .cosmo-section p, .how-begin p { font-size: 16px; }
+    .feature, .testimonial-cards .card { padding: 25px; border-radius: 15px; }
+    .feature .icon { font-size: 45px; margin-bottom: 15px; }
+    .feature h3 { font-size: 20px; }
+    .feature p { font-size: 15px; }
+    .testimonial-cards .card .quote { font-size: 80px; top: -15px; }
+    .testimonial-cards .card p { font-size: 16px; }
+    .contact-text h2 { font-size: 28px; }
+    .contact-form { padding: 30px; border-radius: 18px; }
+    .contact-form-title { font-size: 28px; margin-bottom: 25px; }
+    .form-group label { font-size: 14px; }
+    .form-group input, .form-group textarea { padding: 10px; font-size: 15px; border-radius: 6px; }
+    .cosmo-btn, .cta-button, .contact-form button[type="submit"] { padding: 12px 25px; font-size: 16px; }
 }
