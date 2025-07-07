@@ -19,7 +19,7 @@ body {
 /* Header Styles */
 header {
     background-color: #FFFFFF; /* Pure white for the header */
-    padding: 20px 6%; /* Slightly more padding for a premium feel */
+    padding: 18px 6%; /* Reverted padding */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -38,7 +38,7 @@ header.scrolled { /* Example for a scrolled header effect if you implement JS fo
 
 .logo {
     font-weight: 700; /* Bolder logo */
-    font-size: 28px; /* Larger logo */
+    font-size: 26px; /* Reverted font size */
     color: #212529; /* Darker, almost black for logo */
     letter-spacing: -0.5px; /* Tighter letter spacing for modern look */
     transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), color 0.3s ease; /* More dynamic transition */
@@ -54,9 +54,9 @@ nav a {
     color: #6C757D; /* Softer gray for navigation links */
     margin-left: 35px; /* More space between links */
     font-weight: 600; /* Slightly bolder nav links */
-    font-size: 17px; /* Slightly larger nav text */
+    font-size: 17px; /* Reverted font size */
     transition: color 0.3s ease, transform 0.2s ease, background-color 0.3s ease, box-shadow 0.3s ease; /* Enhanced transitions */
-    padding: 12px 20px; /* Increased padding for larger clickable area */
+    padding: 10px 18px; /* Reverted padding */
     border-radius: 10px; /* More rounded corners for links */
     position: relative;
     overflow: hidden; /* For underline animation */
@@ -91,7 +91,7 @@ nav a.active {
 
 /* Section Common Styles */
 section {
-    padding: 90px 6%; /* Increased vertical padding for more breathing room */
+    padding: 80px 6%; /* Reverted padding */
     text-align: center;
     opacity: 0; /* Initially hidden for fade-in animation */
     transform: translateY(50px); /* Start further below for a more noticeable slide-up effect */
@@ -117,7 +117,7 @@ section {
 
 h1, h2, h3 {
     color: #212529; /* Darker headings */
-    margin-bottom: 30px; /* More space below headings */
+    margin-bottom: 25px; /* Reverted margin */
     font-family: 'Montserrat', sans-serif; /* A more distinct font for headings */
     line-height: 1.2;
     letter-spacing: -0.5px; /* Tighter letter spacing for headings */
@@ -127,34 +127,34 @@ h1, h2, h3 {
 
 p {
     color: #495057; /* Slightly darker paragraph text color for better contrast */
-    margin-bottom: 25px; /* More space below paragraphs */
-    font-size: 18px; /* Slightly larger base font size */
+    margin-bottom: 20px; /* Reverted margin */
+    font-size: 17px; /* Reverted font size */
 }
 
 /* Cosmo Section (AI Cosmo1) */
 .cosmo-section {
     background: radial-gradient(circle at top left, #F9FAFB 0%, #FFFFFF 100%); /* Subtle radial gradient */
-    padding: 110px 6%; /* More generous padding */
+    padding: 100px 6%; /* Reverted padding */
 }
 
 .cosmo-section h2 {
-    font-size: 48px; /* Larger heading */
+    font-size: 42px; /* Reverted font size */
     margin-bottom: 30px;
 }
 
 .cosmo-section p {
-    font-size: 22px; /* Larger paragraph */
+    font-size: 20px; /* Reverted font size */
     max-width: 850px; /* Wider text block */
-    margin: 0 auto 50px auto; /* More space below paragraph */
+    margin: 0 auto 40px auto; /* Reverted margin */
 }
 
 .cosmo-btn {
     background-color: #000; /* Black button */
     color: #FFF; /* White text */
-    padding: 18px 40px; /* Increased padding */
+    padding: 16px 35px; /* Reverted padding */
     border: none;
     border-radius: 60px; /* Even more rounded for a softer look */
-    font-size: 20px; /* Larger font size */
+    font-size: 19px; /* Reverted font size */
     font-weight: 600; /* Bolder text */
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease; /* Smoother, more dynamic transition */
@@ -195,7 +195,7 @@ p {
 /* Main Section (Features) */
 .main {
     background-color: #FFFFFF; /* White background for this section */
-    padding-bottom: 110px; /* More padding */
+    padding-bottom: 100px; /* Reverted padding */
     position: relative;
     overflow: hidden;
 }
@@ -221,19 +221,19 @@ p {
 
 
 .main .title h1 {
-    font-size: 52px; /* Larger main title */
+    font-size: 48px; /* Reverted font size */
     line-height: 1.25;
-    margin-bottom: 70px; /* More space below title */
+    margin-bottom: 60px; /* Reverted margin */
     max-width: 950px;
     margin-left: auto;
     margin-right: auto;
 }
 
 .features-title {
-    font-size: 28px; /* Larger feature title */
+    font-size: 26px; /* Reverted font size */
     font-weight: 700; /* Bolder */
     color: #343A40; /* Darker color */
-    margin-bottom: 60px; /* More space */
+    margin-bottom: 50px; /* Reverted margin */
     text-transform: uppercase;
     letter-spacing: 4px; /* More letter spacing */
     position: relative;
@@ -261,7 +261,7 @@ p {
 
 .feature {
     background-color: #F9FAFB; /* Lighter background for feature cards */
-    padding: 40px; /* More padding inside card */
+    padding: 35px; /* Reverted padding */
     border-radius: 25px; /* Even more rounded corners */
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15); /* More defined initial shadow */
     max-width: 400px; /* Slightly wider cards */
@@ -296,9 +296,9 @@ p {
 }
 
 .feature .icon {
-    font-size: 60px; /* Much larger icon */
+    font-size: 60px; /* No change, was already 60px */
     color: #212529; /* Darker black icons */
-    margin-bottom: 30px; /* More space below icon */
+    margin-bottom: 25px; /* Reverted margin */
     display: block;
     text-align: center;
     transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), color 0.3s ease;
@@ -312,8 +312,8 @@ p {
 }
 
 .feature h3 {
-    font-size: 26px; /* Larger feature heading */
-    margin-bottom: 20px;
+    font-size: 24px; /* Reverted font size */
+    margin-bottom: 18px; /* Reverted margin */
     text-align: center;
     font-weight: 700;
     position: relative;
@@ -321,17 +321,17 @@ p {
 }
 
 .feature p {
-    font-size: 18px; /* Consistent paragraph font size */
+    font-size: 17px; /* Reverted font size */
     color: #495057;
     text-align: left;
-    margin-bottom: 15px; /* Adjusted margin for clearer separation */
+    margin-bottom: 10px; /* Reverted margin */
     position: relative;
     z-index: 2;
 }
 
 .feature .how {
     font-weight: 700; /* Bolder "How?" */
-    margin-top: 30px; /* More space above "How?" */
+    margin-top: 25px; /* Reverted margin */
     margin-bottom: 10px;
     color: #333;
     position: relative;
@@ -341,24 +341,24 @@ p {
 /* How Do I Begin Section */
 .how-begin {
     background: linear-gradient(160deg, #F9FAFB 0%, #FFFFFF 100%); /* Subtle linear gradient */
-    padding: 110px 6%;
+    padding: 100px 6%; /* Reverted padding */
 }
 
 .how-begin h2 {
-    font-size: 48px;
-    margin-bottom: 35px;
+    font-size: 42px; /* Reverted font size */
+    margin-bottom: 30px; /* Reverted margin */
 }
 
 .how-begin p {
-    font-size: 22px;
-    margin-bottom: 20px;
+    font-size: 20px; /* Reverted font size */
+    margin-bottom: 15px; /* Reverted margin */
 }
 
 .how-begin .simple-text {
     font-weight: 700; /* Bolder */
-    font-size: 24px; /* Larger */
+    font-size: 22px; /* Reverted font size */
     color: #333;
-    margin-top: 35px; /* More space */
+    margin-top: 30px; /* Reverted margin */
     letter-spacing: 1.5px;
     text-transform: uppercase;
 }
@@ -367,12 +367,12 @@ p {
     display: inline-block;
     background-color: #000; /* Black button */
     color: #FFF;
-    padding: 18px 40px;
+    padding: 16px 35px; /* Reverted padding */
     border-radius: 60px;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 19px; /* Reverted font size */
     font-weight: 600;
-    margin-top: 50px; /* More space */
+    margin-top: 40px; /* Reverted margin */
     transition: background-color 0.3s ease, transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
     position: relative;
@@ -409,12 +409,12 @@ p {
 /* Testimonials Section */
 .testimonials {
     background-color: #FFFFFF; /* White background */
-    padding-bottom: 110px;
+    padding-bottom: 100px; /* Reverted padding */
 }
 
 .testimonials h2 {
-    font-size: 48px;
-    margin-bottom: 70px; /* More space */
+    font-size: 42px; /* Reverted font size */
+    margin-bottom: 60px; /* Reverted margin */
 }
 
 .testimonial-cards {
@@ -426,7 +426,7 @@ p {
 
 .testimonial-cards .card {
     background-color: #F9FAFB; /* Light background for testimonial cards */
-    padding: 40px; /* More padding */
+    padding: 35px; /* Reverted padding */
     border-radius: 25px; /* More rounded */
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
     max-width: 400px;
@@ -461,10 +461,10 @@ p {
 }
 
 .testimonial-cards .card .quote {
-    font-size: 110px; /* Even larger quote mark */
+    font-size: 100px; /* Reverted font size */
     color: #888; /* Darker grey for the quote mark */
     position: absolute;
-    top: -30px; /* Adjusted position due to larger font-size */
+    top: -25px; /* Reverted position */
     left: 50%;
     transform: translateX(-50%);
     font-family: 'Georgia', serif; /* A more classic serif font for quotes */
@@ -478,8 +478,8 @@ p {
 
 .testimonial-cards .card p {
     font-style: italic;
-    font-size: 19px; /* Slightly larger testimonial text */
-    margin-bottom: 30px; /* More space */
+    font-size: 18px; /* Reverted font size */
+    margin-bottom: 25px; /* Reverted margin */
     position: relative;
     z-index: 2; /* Ensure text is above pseudo-element */
     color: #343A40; /* Darker text color */
@@ -488,7 +488,7 @@ p {
 .testimonial-cards .card .author {
     font-weight: 700; /* Bolder author name */
     color: #000;
-    font-size: 18px; /* Slightly larger author font size */
+    font-size: 17px; /* Reverted font size */
     margin-bottom: 15px;
     position: relative;
     z-index: 2;
@@ -496,7 +496,7 @@ p {
 
 .testimonial-cards .card .stars {
     color: #FFD700; /* Gold color for stars */
-    font-size: 24px; /* Slightly larger stars */
+    font-size: 22px; /* Reverted font size */
     transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
     position: relative;
     z-index: 2;
@@ -509,8 +509,8 @@ p {
 /* Contact Section */
 .contact-section {
     background: linear-gradient(160deg, #F9FAFB 0%, #FFFFFF 100%); /* Subtle linear gradient */
-    padding-top: 110px;
-    padding-bottom: 110px;
+    padding-top: 100px; /* Reverted padding */
+    padding-bottom: 100px; /* Reverted padding */
 }
 
 .contact-container {
@@ -518,7 +518,7 @@ p {
     justify-content: center;
     align-items: flex-start; /* Align items to the top */
     flex-wrap: wrap;
-    gap: 70px; /* More space between contact text and form */
+    gap: 60px; /* Reverted gap */
     max-width: 1200px; /* Wider container */
     margin: 0 auto;
     text-align: left;
@@ -532,14 +532,14 @@ p {
 }
 
 .contact-text h2 {
-    font-size: 48px; /* Larger heading for contact */
-    margin-bottom: 25px;
+    font-size: 42px; /* Reverted font size */
+    margin-bottom: 20px; /* Reverted margin */
     line-height: 1.25;
 }
 
 .contact-form {
     background-color: #FFFFFF; /* White background for the form */
-    padding: 55px; /* More padding inside the form */
+    padding: 50px; /* Reverted padding */
     border-radius: 25px; /* More rounded */
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2); /* More prominent initial shadow */
     flex: 1;
@@ -555,17 +555,17 @@ p {
 
 /* Styling for the new Contact Us heading inside the form */
 .contact-form-title {
-    font-size: 40px; /* Larger contact form heading */
+    font-size: 36px; /* Reverted font size */
     color: #212529;
     font-weight: 700;
-    margin-bottom: 40px; /* More space below title */
+    margin-bottom: 35px; /* Reverted margin */
     text-align: center;
 }
 
 .form-row {
     display: flex;
-    gap: 30px; /* More space between form fields in a row */
-    margin-bottom: 30px; /* More space below a row */
+    gap: 25px; /* Reverted gap */
+    margin-bottom: 25px; /* Reverted margin */
 }
 
 .form-group {
@@ -575,20 +575,20 @@ p {
 
 .form-group label {
     display: block;
-    margin-bottom: 12px; /* More space below label */
+    margin-bottom: 10px; /* Reverted margin */
     font-weight: 600; /* Bolder labels */
     color: #343A40;
-    font-size: 17px; /* Slightly larger label font size */
+    font-size: 16px; /* Reverted font size */
 }
 
 .form-group input[type="text"],
 .form-group input[type="email"],
 .form-group textarea {
     width: 100%;
-    padding: 16px; /* More padding inside inputs */
+    padding: 14px; /* Reverted padding */
     border: 1px solid #CED4DA; /* Softer border color */
     border-radius: 12px; /* More rounded inputs */
-    font-size: 18px; /* Larger input font size */
+    font-size: 17px; /* Reverted font size */
     box-sizing: border-box;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
     color: #343A40; /* Input text color */
@@ -604,15 +604,15 @@ p {
 .contact-form button[type="submit"] {
     background-color: #000; /* Black submit button */
     color: #FFF;
-    padding: 18px 40px;
+    padding: 16px 35px; /* Reverted padding */
     border: none;
     border-radius: 60px;
-    font-size: 20px;
+    font-size: 19px; /* Reverted font size */
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-    margin-top: 30px; /* More space above button */
+    margin-top: 20px; /* Reverted margin */
     letter-spacing: 0.5px;
     position: relative;
     overflow: hidden;
