@@ -1,65 +1,65 @@
 /* General Body Styles */
 body {
-    font-family: 'Inter', sans-serif; /* Using a more modern sans-serif font */
+    font-family: 'Inter', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* Added subtle background pattern for depth */
-    background-color: #F8F8F8;
-    background-image: radial-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px);
-    background-size: 20px 20px;
-    color: #333; /* Dark gray for general text for good readability */
-    line-height: 1.7; /* Increased line height for better readability */
-    overflow-x: hidden; /* Prevent horizontal scroll on animations */
-    text-rendering: optimizeLegibility; /* Improves font rendering */
-    -webkit-font-smoothing: antialiased; /* Smoother fonts for Webkit browsers */
-    -moz-osx-font-smoothing: grayscale; /* Smoother fonts for Firefox */
+    /* Perfect balance gradient - your image colors */
+    background: linear-gradient(135deg, #b8ddf0 0%, #c8e8c8 100%);
+    background-attachment: fixed;
+    color: #333;
+    line-height: 1.7;
+    overflow-x: hidden;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
 }
 
 /* Header Styles */
 header {
-    background-color: #FFFFFF; /* Pure white for the header */
-    padding: 18px 6%; /* Reverted padding */
+    background-color: #FFFFFF;
+    padding: 18px 6%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); /* More prominent but still subtle initial shadow */
-    position: sticky; /* Make header sticky */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    position: sticky;
     top: 0;
-    z-index: 1000; /* Ensure header stays on top */
-    transition: all 0.4s ease-in-out; /* Smooth transition for any header changes */
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05); /* Subtle bottom border */
+    z-index: 1000;
+    transition: all 0.4s ease-in-out;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-header.scrolled { /* Example for a scrolled header effect if you implement JS for it */
+header.scrolled {
     padding: 15px 6%;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
 .logo {
-    font-weight: 700; /* Bolder logo */
-    font-size: 26px; /* Reverted font size */
-    color: #212529; /* Darker, almost black for logo */
-    letter-spacing: -0.5px; /* Tighter letter spacing for modern look */
-    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), color 0.3s ease; /* More dynamic transition */
+    font-weight: 700;
+    font-size: 26px;
+    color: #212529;
+    letter-spacing: -0.5px;
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), color 0.3s ease;
 }
 
 .logo:hover {
-    transform: scale(1.08); /* More pronounced enlarge effect */
-    color: #000; /* Pure black on hover for logo */
+    transform: scale(1.08);
+    color: #000;
 }
 
 nav a {
     text-decoration: none;
-    color: #6C757D; /* Softer gray for navigation links */
-    margin-left: 35px; /* More space between links */
-    font-weight: 600; /* Slightly bolder nav links */
-    font-size: 17px; /* Reverted font size */
-    transition: color 0.3s ease, transform 0.2s ease, background-color 0.3s ease, box-shadow 0.3s ease; /* Enhanced transitions */
-    padding: 10px 18px; /* Reverted padding */
-    border-radius: 10px; /* More rounded corners for links */
+    color: #6C757D;
+    margin-left: 35px;
+    font-weight: 600;
+    font-size: 17px;
+    transition: color 0.3s ease, transform 0.2s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    padding: 10px 18px;
+    border-radius: 10px;
     position: relative;
-    overflow: hidden; /* For underline animation */
+    overflow: hidden;
 }
 
 nav a::before {
@@ -68,35 +68,35 @@ nav a::before {
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 3px; /* Thicker underline */
-    background-color: #000; /* Black underline for navigation links */
-    transform: scaleX(0); /* Start hidden */
-    transform-origin: bottom right; /* Animate from right to left */
-    transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1); /* Smoother animation */
+    height: 3px;
+    background-color: #000;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 nav a:hover::before,
 nav a.active::before {
-    transform: scaleX(1); /* Expand on hover/active */
-    transform-origin: bottom left; /* Animate from left to right on hover */
+    transform: scaleX(1);
+    transform-origin: bottom left;
 }
 
 nav a:hover,
 nav a.active {
-    color: #000; /* Pure black on hover/active for emphasis */
-    transform: translateY(-4px); /* More pronounced lift on hover */
-    background-color: rgba(0, 0, 0, 0.06); /* Slightly more opaque light black background on hover */
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18); /* Darker, more defined shadow on hover */
+    color: #000;
+    transform: translateY(-4px);
+    background-color: rgba(0, 0, 0, 0.06);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
 }
 
 /* Section Common Styles */
 section {
-    padding: 80px 6%; /* Reverted padding */
+    padding: 80px 6%;
     text-align: center;
-    opacity: 0; /* Initially hidden for fade-in animation */
-    transform: translateY(50px); /* Start further below for a more noticeable slide-up effect */
-    animation: fadeInSlideUp 1.4s ease-out forwards; /* Longer duration for a smoother reveal */
-    animation-delay: var(--section-delay, 0s); /* Staggered animation delay */
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeInSlideUp 1.4s ease-out forwards;
+    animation-delay: var(--section-delay, 0s);
 }
 
 /* Keyframes for fade-in and slide-up animation */
@@ -114,57 +114,54 @@ section {
 .testimonials { --section-delay: 0.8s; }
 .contact-section { --section-delay: 1.0s; }
 
-
 h1, h2, h3 {
-    color: #212529; /* Darker headings */
-    margin-bottom: 25px; /* Reverted margin */
-    font-family: 'Montserrat', sans-serif; /* A more distinct font for headings */
+    color: #212529;
+    margin-bottom: 25px;
+    font-family: 'Montserrat', sans-serif;
     line-height: 1.2;
-    letter-spacing: -0.5px; /* Tighter letter spacing for headings */
-    /* Subtle text shadow for depth */
+    letter-spacing: -0.5px;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 p {
-    color: #495057; /* Slightly darker paragraph text color for better contrast */
-    margin-bottom: 20px; /* Reverted margin */
-    font-size: 17px; /* Reverted font size */
+    color: #495057;
+    margin-bottom: 20px;
+    font-size: 17px;
 }
 
 /* Cosmo Section (AI Cosmo1) */
 .cosmo-section {
-    background: radial-gradient(circle at top left, #F9FAFB 0%, #FFFFFF 100%); /* Subtle radial gradient */
-    padding: 100px 6%; /* Reverted padding */
+    background-color: rgba(255, 255, 255, 0.4);
+    padding: 100px 6%;
 }
 
 .cosmo-section h2 {
-    font-size: 42px; /* Reverted font size */
+    font-size: 42px;
     margin-bottom: 30px;
 }
 
 .cosmo-section p {
-    font-size: 20px; /* Reverted font size */
-    max-width: 850px; /* Wider text block */
-    margin: 0 auto 40px auto; /* Reverted margin */
+    font-size: 20px;
+    max-width: 850px;
+    margin: 0 auto 40px auto;
 }
 
 .cosmo-btn {
-    background-color: #000; /* Black button */
-    color: #FFF; /* White text */
-    padding: 16px 35px; /* Reverted padding */
+    background-color: #000;
+    color: #FFF;
+    padding: 16px 35px;
     border: none;
-    border-radius: 60px; /* Even more rounded for a softer look */
-    font-size: 19px; /* Reverted font size */
-    font-weight: 600; /* Bolder text */
+    border-radius: 60px;
+    font-size: 19px;
+    font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease; /* Smoother, more dynamic transition */
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3); /* More prominent initial shadow */
+    transition: background-color 0.3s ease, transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
     position: relative;
     overflow: hidden;
     letter-spacing: 0.5px;
 }
 
-/* Button ripple effect */
 .cosmo-btn::after {
     content: '';
     position: absolute;
@@ -172,7 +169,7 @@ p {
     left: 50%;
     width: 5px;
     height: 5px;
-    background: rgba(255, 255, 255, 0.3); /* White ripple */
+    background: rgba(255, 255, 255, 0.3);
     border-radius: 50%;
     opacity: 0;
     transform: scale(1) translate(-50%, -50%);
@@ -180,27 +177,26 @@ p {
 }
 
 .cosmo-btn:hover {
-    background-color: #222; /* Darker black on hover for depth */
-    transform: translateY(-10px) scale(1.05); /* More significant lift and enlarge */
-    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6); /* Much darker, more impactful black shadow */
+    background-color: #222;
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6);
 }
 
-.cosmo-btn:active::after { /* Activate ripple on click/active */
+.cosmo-btn:active::after {
     transform: scale(200) translate(-50%, -50%);
     opacity: 1;
     transition: transform 0.3s ease-out, opacity 0.3s ease-out;
 }
 
-
 /* Main Section (Features) */
 .main {
-    background-color: #FFFFFF; /* White background for this section */
-    padding-bottom: 100px; /* Reverted padding */
+    background-color: rgba(255, 255, 255, 0.3);
+    padding-bottom: 100px;
     position: relative;
     overflow: hidden;
 }
 
-.main::before { /* Subtle background element */
+.main::before {
     content: '';
     position: absolute;
     top: 10%;
@@ -219,26 +215,26 @@ p {
     100% { transform: translateY(-20px) translateX(20px); }
 }
 
-
 .main .title h1 {
-    font-size: 48px; /* Reverted font size */
+    font-size: 48px;
     line-height: 1.25;
-    margin-bottom: 60px; /* Reverted margin */
+    margin-bottom: 60px;
     max-width: 950px;
     margin-left: auto;
     margin-right: auto;
 }
 
 .features-title {
-    font-size: 26px; /* Reverted font size */
-    font-weight: 700; /* Bolder */
-    color: #343A40; /* Darker color */
-    margin-bottom: 50px; /* Reverted margin */
+    font-size: 26px;
+    font-weight: 700;
+    color: #343A40;
+    margin-bottom: 50px;
     text-transform: uppercase;
-    letter-spacing: 4px; /* More letter spacing */
+    letter-spacing: 4px;
     position: relative;
     display: inline-block;
 }
+
 .features-title::after {
     content: '';
     position: absolute;
@@ -247,32 +243,31 @@ p {
     transform: translateX(-50%);
     width: 60px;
     height: 3px;
-    background-color: #000; /* Black accent line */
+    background-color: #000;
     border-radius: 2px;
 }
-
 
 .features-row {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 45px; /* More space between feature cards */
+    gap: 45px;
 }
 
 .feature {
-    background-color: #F9FAFB; /* Lighter background for feature cards */
-    padding: 35px; /* Reverted padding */
-    border-radius: 25px; /* Even more rounded corners */
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15); /* More defined initial shadow */
-    max-width: 400px; /* Slightly wider cards */
+    background: rgba(255, 255, 255, 0.4);
+    padding: 35px;
+    border-radius: 25px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+    max-width: 400px;
     text-align: left;
     transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s ease, border 0.4s ease;
-    border: 2px solid transparent; /* Transparent border */
+    border: 2px solid transparent;
     position: relative;
-    overflow: hidden; /* For subtle gradient effect */
+    overflow: hidden;
 }
 
-.feature::before { /* Subtle gradient overlay on hover */
+.feature::before {
     content: '';
     position: absolute;
     top: 0;
@@ -286,34 +281,34 @@ p {
 }
 
 .feature:hover {
-    transform: translateY(-18px); /* Even more significant lift on hover */
-    box-shadow: 0 25px 55px rgba(0, 0, 0, 0.4); /* Much darker, more impactful black shadow */
-    border: 2px solid rgba(0, 0, 0, 0.05); /* Very subtle dark border on hover */
+    transform: translateY(-18px);
+    box-shadow: 0 25px 55px rgba(0, 0, 0, 0.4);
+    border: 2px solid rgba(0, 0, 0, 0.05);
 }
 
 .feature:hover::before {
-    opacity: 1; /* Show gradient overlay on hover */
+    opacity: 1;
 }
 
 .feature .icon {
-    font-size: 60px; /* No change, was already 60px */
-    color: #212529; /* Darker black icons */
-    margin-bottom: 25px; /* Reverted margin */
+    font-size: 60px;
+    color: #212529;
+    margin-bottom: 25px;
     display: block;
     text-align: center;
     transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), color 0.3s ease;
     position: relative;
-    z-index: 2; /* Ensure icon is above pseudo-element */
+    z-index: 2;
 }
 
 .feature:hover .icon {
-    transform: rotateY(360deg) scale(1.18); /* More pronounced 3D flip and scale */
-    color: #000; /* Pure black for icon on hover */
+    transform: rotateY(360deg) scale(1.18);
+    color: #000;
 }
 
 .feature h3 {
-    font-size: 24px; /* Reverted font size */
-    margin-bottom: 18px; /* Reverted margin */
+    font-size: 24px;
+    margin-bottom: 18px;
     text-align: center;
     font-weight: 700;
     position: relative;
@@ -321,17 +316,17 @@ p {
 }
 
 .feature p {
-    font-size: 17px; /* Reverted font size */
+    font-size: 17px;
     color: #495057;
     text-align: left;
-    margin-bottom: 10px; /* Reverted margin */
+    margin-bottom: 10px;
     position: relative;
     z-index: 2;
 }
 
 .feature .how {
-    font-weight: 700; /* Bolder "How?" */
-    margin-top: 25px; /* Reverted margin */
+    font-weight: 700;
+    margin-top: 25px;
     margin-bottom: 10px;
     color: #333;
     position: relative;
@@ -340,46 +335,45 @@ p {
 
 /* How Do I Begin Section */
 .how-begin {
-    background: linear-gradient(160deg, #F9FAFB 0%, #FFFFFF 100%); /* Subtle linear gradient */
-    padding: 100px 6%; /* Reverted padding */
+    background-color: rgba(255, 255, 255, 0.4);
+    padding: 100px 6%;
 }
 
 .how-begin h2 {
-    font-size: 42px; /* Reverted font size */
-    margin-bottom: 30px; /* Reverted margin */
+    font-size: 42px;
+    margin-bottom: 30px;
 }
 
 .how-begin p {
-    font-size: 20px; /* Reverted font size */
-    margin-bottom: 15px; /* Reverted margin */
+    font-size: 20px;
+    margin-bottom: 15px;
 }
 
 .how-begin .simple-text {
-    font-weight: 700; /* Bolder */
-    font-size: 22px; /* Reverted font size */
+    font-weight: 700;
+    font-size: 22px;
     color: #333;
-    margin-top: 30px; /* Reverted margin */
+    margin-top: 30px;
     letter-spacing: 1.5px;
     text-transform: uppercase;
 }
 
 .cta-button {
     display: inline-block;
-    background-color: #000; /* Black button */
+    background-color: #000;
     color: #FFF;
-    padding: 16px 35px; /* Reverted padding */
+    padding: 16px 35px;
     border-radius: 60px;
     text-decoration: none;
-    font-size: 19px; /* Reverted font size */
+    font-size: 19px;
     font-weight: 600;
-    margin-top: 40px; /* Reverted margin */
+    margin-top: 40px;
     transition: background-color 0.3s ease, transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
     position: relative;
     overflow: hidden;
 }
 
-/* Button ripple effect */
 .cta-button::after {
     content: '';
     position: absolute;
@@ -387,7 +381,7 @@ p {
     left: 50%;
     width: 5px;
     height: 5px;
-    background: rgba(255, 255, 255, 0.3); /* White ripple */
+    background: rgba(255, 255, 255, 0.3);
     border-radius: 50%;
     opacity: 0;
     transform: scale(1) translate(-50%, -50%);
@@ -395,12 +389,12 @@ p {
 }
 
 .cta-button:hover {
-    background-color: #222; /* Darker black on hover */
+    background-color: #222;
     transform: translateY(-10px) scale(1.05);
-    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6); /* Much darker, more impactful black shadow */
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6);
 }
 
-.cta-button:active::after { /* Activate ripple on click/active */
+.cta-button:active::after {
     transform: scale(200) translate(-50%, -50%);
     opacity: 1;
     transition: transform 0.3s ease-out, opacity 0.3s ease-out;
@@ -408,26 +402,26 @@ p {
 
 /* Testimonials Section */
 .testimonials {
-    background-color: #FFFFFF; /* White background */
-    padding-bottom: 100px; /* Reverted padding */
+    background-color: rgba(255, 255, 255, 0.3);
+    padding-bottom: 100px;
 }
 
 .testimonials h2 {
-    font-size: 42px; /* Reverted font size */
-    margin-bottom: 60px; /* Reverted margin */
+    font-size: 42px;
+    margin-bottom: 60px;
 }
 
 .testimonial-cards {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 45px; /* More space between cards */
+    gap: 45px;
 }
 
 .testimonial-cards .card {
-    background-color: #F9FAFB; /* Light background for testimonial cards */
-    padding: 35px; /* Reverted padding */
-    border-radius: 25px; /* More rounded */
+    background: rgba(255, 255, 255, 0.4);
+    padding: 35px;
+    border-radius: 25px;
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
     max-width: 400px;
     text-align: center;
@@ -437,7 +431,7 @@ p {
     overflow: hidden;
 }
 
-.testimonial-cards .card::before { /* Subtle gradient overlay on hover */
+.testimonial-cards .card::before {
     content: '';
     position: absolute;
     top: 0;
@@ -451,174 +445,173 @@ p {
 }
 
 .testimonial-cards .card:hover {
-    transform: translateY(-18px); /* More significant lift on hover */
-    box-shadow: 0 25px 55px rgba(0, 0, 0, 0.4); /* Much darker black shadow */
-    border: 2px solid rgba(0, 0, 0, 0.05); /* Very subtle dark border on hover */
+    transform: translateY(-18px);
+    box-shadow: 0 25px 55px rgba(0, 0, 0, 0.4);
+    border: 2px solid rgba(0, 0, 0, 0.05);
 }
 
 .testimonial-cards .card:hover::before {
-    opacity: 1; /* Show gradient overlay on hover */
+    opacity: 1;
 }
 
 .testimonial-cards .card .quote {
-    font-size: 100px; /* Reverted font size */
-    color: #888; /* Darker grey for the quote mark */
+    font-size: 100px;
+    color: #888;
     position: absolute;
-    top: -25px; /* Reverted position */
+    top: -25px;
     left: 50%;
     transform: translateX(-50%);
-    font-family: 'Georgia', serif; /* A more classic serif font for quotes */
-    z-index: 0; /* Keep it behind text */
+    font-family: 'Georgia', serif;
+    z-index: 0;
     transition: color 0.3s ease;
 }
 
 .testimonial-cards .card:hover .quote {
-    color: #666; /* Even darker grey on hover for the quote mark */
+    color: #666;
 }
 
 .testimonial-cards .card p {
     font-style: italic;
-    font-size: 18px; /* Reverted font size */
-    margin-bottom: 25px; /* Reverted margin */
+    font-size: 18px;
+    margin-bottom: 25px;
     position: relative;
-    z-index: 2; /* Ensure text is above pseudo-element */
-    color: #343A40; /* Darker text color */
+    z-index: 2;
+    color: #343A40;
 }
 
 .testimonial-cards .card .author {
-    font-weight: 700; /* Bolder author name */
+    font-weight: 700;
     color: #000;
-    font-size: 17px; /* Reverted font size */
+    font-size: 17px;
     margin-bottom: 15px;
     position: relative;
     z-index: 2;
 }
 
 .testimonial-cards .card .stars {
-    color: #FFD700; /* Gold color for stars */
-    font-size: 22px; /* Reverted font size */
+    color: #FFD700;
+    font-size: 22px;
     transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
     position: relative;
     z-index: 2;
 }
 
 .testimonial-cards .card:hover .stars {
-    transform: scale(1.18) rotate(10deg); /* More pronounced pop and rotate for stars on hover */
+    transform: scale(1.18) rotate(10deg);
 }
 
 /* Contact Section */
 .contact-section {
-    background: linear-gradient(160deg, #F9FAFB 0%, #FFFFFF 100%); /* Subtle linear gradient */
-    padding-top: 100px; /* Reverted padding */
-    padding-bottom: 100px; /* Reverted padding */
+    background-color: rgba(255, 255, 255, 0.4);
+    padding-top: 100px;
+    padding-bottom: 100px;
 }
 
 .contact-container {
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Align items to the top */
+    align-items: flex-start;
     flex-wrap: wrap;
-    gap: 60px; /* Reverted gap */
-    max-width: 1200px; /* Wider container */
+    gap: 60px;
+    max-width: 1200px;
     margin: 0 auto;
     text-align: left;
 }
 
 .contact-text {
     flex: 1;
-    min-width: 350px; /* Ensure text block has enough space */
+    min-width: 350px;
     max-width: 500px;
-    padding-top: 20px; /* Align text better with form */
+    padding-top: 20px;
 }
 
 .contact-text h2 {
-    font-size: 42px; /* Reverted font size */
-    margin-bottom: 20px; /* Reverted margin */
+    font-size: 42px;
+    margin-bottom: 20px;
     line-height: 1.25;
 }
 
 .contact-form {
-    background-color: #FFFFFF; /* White background for the form */
-    padding: 50px; /* Reverted padding */
-    border-radius: 25px; /* More rounded */
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2); /* More prominent initial shadow */
+    background: rgba(255, 255, 255, 0.8);
+    padding: 50px;
+    border-radius: 25px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
     flex: 1;
-    min-width: 450px; /* Minimum width for form */
-    max-width: 650px; /* Max width to prevent it from getting too wide */
+    min-width: 450px;
+    max-width: 650px;
     transition: box-shadow 0.4s ease, transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .contact-form:hover {
-    box-shadow: 0 30px 65px rgba(0, 0, 0, 0.5); /* Much darker, more impactful black shadow */
-    transform: translateY(-12px); /* More significant lift on hover */
+    box-shadow: 0 30px 65px rgba(0, 0, 0, 0.5);
+    transform: translateY(-12px);
 }
 
-/* Styling for the new Contact Us heading inside the form */
 .contact-form-title {
-    font-size: 36px; /* Reverted font size */
+    font-size: 36px;
     color: #212529;
     font-weight: 700;
-    margin-bottom: 35px; /* Reverted margin */
+    margin-bottom: 35px;
     text-align: center;
 }
 
 .form-row {
     display: flex;
-    gap: 25px; /* Reverted gap */
-    margin-bottom: 25px; /* Reverted margin */
+    gap: 25px;
+    margin-bottom: 25px;
 }
 
 .form-group {
     flex: 1;
-    margin-bottom: 0; /* Adjusted as margin is on form-row */
+    margin-bottom: 0;
 }
 
 .form-group label {
     display: block;
-    margin-bottom: 10px; /* Reverted margin */
-    font-weight: 600; /* Bolder labels */
+    margin-bottom: 10px;
+    font-weight: 600;
     color: #343A40;
-    font-size: 16px; /* Reverted font size */
+    font-size: 16px;
 }
 
 .form-group input[type="text"],
 .form-group input[type="email"],
 .form-group textarea {
     width: 100%;
-    padding: 14px; /* Reverted padding */
-    border: 1px solid #CED4DA; /* Softer border color */
-    border-radius: 12px; /* More rounded inputs */
-    font-size: 17px; /* Reverted font size */
+    padding: 14px;
+    border: 1px solid #CED4DA;
+    border-radius: 12px;
+    font-size: 17px;
     box-sizing: border-box;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    color: #343A40; /* Input text color */
+    color: #343A40;
+    background: rgba(255, 255, 255, 0.8);
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
-    border-color: #000; /* Black border on focus */
-    box-shadow: 0 0 0 6px rgba(0, 0, 0, 0.25); /* Darker, more spread black glow on focus */
+    border-color: #000;
+    box-shadow: 0 0 0 6px rgba(0, 0, 0, 0.25);
     outline: none;
 }
 
 .contact-form button[type="submit"] {
-    background-color: #000; /* Black submit button */
+    background-color: #000;
     color: #FFF;
-    padding: 16px 35px; /* Reverted padding */
+    padding: 16px 35px;
     border: none;
     border-radius: 60px;
-    font-size: 19px; /* Reverted font size */
+    font-size: 19px;
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-    margin-top: 20px; /* Reverted margin */
+    margin-top: 20px;
     letter-spacing: 0.5px;
     position: relative;
     overflow: hidden;
 }
 
-/* Button ripple effect */
 .contact-form button[type="submit"]::after {
     content: '';
     position: absolute;
@@ -626,7 +619,7 @@ p {
     left: 50%;
     width: 5px;
     height: 5px;
-    background: rgba(255, 255, 255, 0.3); /* White ripple */
+    background: rgba(255, 255, 255, 0.3);
     border-radius: 50%;
     opacity: 0;
     transform: scale(1) translate(-50%, -50%);
@@ -634,25 +627,19 @@ p {
 }
 
 .contact-form button[type="submit"]:hover {
-    background-color: #222; /* Darker black on hover */
+    background-color: #222;
     transform: translateY(-10px) scale(1.05);
-    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6); /* Much darker, more impactful black shadow */
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6);
 }
 
-.contact-form button[type="submit"]:active::after { /* Activate ripple on click/active */
+.contact-form button[type="submit"]:active::after {
     transform: scale(200) translate(-50%, -50%);
     opacity: 1;
     transition: transform 0.3s ease-out, opacity 0.3s ease-out;
 }
 
-/* Font Awesome Icons (Add this to your HTML <head>) */
-/* <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> */
-/* Google Fonts for 'Inter' and 'Montserrat' (Add this to your HTML <head>) */
-/* <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet"> */
-
-
 /* Responsive Adjustments */
-@media (max-width: 1200px) { /* Adjust for larger tablets/laptops */
+@media (max-width: 1200px) {
     header { padding: 18px 4%; }
     nav a { margin-left: 25px; }
     section { padding: 80px 4%; }
@@ -662,7 +649,7 @@ p {
     .contact-form { min-width: 400px; }
 }
 
-@media (max-width: 992px) { /* Tablet adjustments */
+@media (max-width: 992px) {
     header { flex-direction: column; padding: 15px 4%; }
     nav { margin-top: 15px; flex-wrap: wrap; justify-content: center; gap: 15px; }
     nav a { margin-left: 0; padding: 10px 15px; font-size: 16px; }
@@ -688,7 +675,7 @@ p {
     .cosmo-btn, .cta-button, .contact-form button[type="submit"] { padding: 16px 35px; font-size: 19px; }
 }
 
-@media (max-width: 768px) { /* Smaller tablet/large phone adjustments */
+@media (max-width: 768px) {
     header { padding: 12px 3%; }
     .logo { font-size: 26px; }
     nav { margin-top: 10px; gap: 10px; }
@@ -712,7 +699,7 @@ p {
     .cosmo-btn, .cta-button, .contact-form button[type="submit"] { padding: 14px 30px; font-size: 18px; }
 }
 
-@media (max-width: 480px) { /* Mobile adjustments */
+@media (max-width: 480px) {
     header { padding: 10px 2%; }
     .logo { font-size: 24px; }
     nav { margin-top: 8px; gap: 8px; }
