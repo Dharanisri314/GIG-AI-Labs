@@ -1,4 +1,10 @@
 /* General Body Styles */
+* {
+  margin: 0;
+  padding: 0;
+  
+}
+
 body {
     font-family: 'Inter', sans-serif;
     margin: 0;
@@ -14,6 +20,14 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     min-height: 100vh;
+
+
+text-align: center;
+ 
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f0f0; /* Light background */
 }
 
 /* Header Styles */
@@ -639,6 +653,16 @@ p {
     opacity: 1;
     transition: transform 0.3s ease-out, opacity 0.3s ease-out;
 }
+
+
+  /* Container to keep iframe responsive and centered */
+
+   iframe {
+      width: 700px;
+      height: 460px;
+      border: none;
+      margin-top: 60px;
+    }
 
 /* Responsive Adjustments */
 @media (max-width: 1200px) {

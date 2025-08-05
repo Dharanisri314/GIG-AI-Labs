@@ -13,15 +13,15 @@
 <body>
     <header>
         <div class="logo">GIG AI LABS</div>
-<!-- index.html -->
-<nav>
-  <a href="index.html" class="active">Home</a>
-  <a href="#app">About Us</a>
-<a href="#" onclick="event.preventDefault();">The App</a>
-  <a href="login.html">Log In</a>
-  <a href="#reviews">Reviews</a>
-  <a href="#contact">Contact</a>
-</nav>
+        <!-- index.html -->
+        <nav>
+            <a href="index.html" class="active">Home</a>
+            <a href="#app">About Us</a>
+            <a href="#" onclick="event.preventDefault();">The App</a>
+            <a href="login.html">Log In</a>
+            <a href="#reviews">Reviews</a>
+            <a href="#contact">Contact</a>
+        </nav>
 
     </header>
 
@@ -58,7 +58,8 @@
                 <h2>Our Story</h2>
             </div>
             <div class="story-right">
-                <p>We have been Featured on Elevate <strong>SHARK TANK 2025</strong> and We are built by engineers of India for Builders of India.</p>
+                <p>We have been Featured on Elevate <strong>SHARK TANK 2025</strong> and We are built by engineers of
+                    India for Builders of India.</p>
             </div>
         </div>
     </section>
@@ -89,23 +90,23 @@
     </section>
 
     <script>
-link.addEventListener("click", function (e) {
-    const href = this.getAttribute("href");
+        link.addEventListener("click", function (e) {
+            const href = this.getAttribute("href");
 
-    // If href starts with "#" (same page navigation), do smooth scroll
-    if (href.startsWith("#")) {
-        e.preventDefault();
-        const targetId = href.slice(1);
-        const targetSection = document.getElementById(targetId);
-        if (targetSection) {
-            targetSection.scrollIntoView({ behavior: "smooth" });
-        }
+            // If href starts with "#" (same page navigation), do smooth scroll
+            if (href.startsWith("#")) {
+                e.preventDefault();
+                const targetId = href.slice(1);
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: "smooth" });
+                }
 
-        navLinks.forEach(l => l.classList.remove("active"));
-        this.classList.add("active");
-    }
-    // Else (like href="Theapp.html"), let browser go to that page normally
-});
+                navLinks.forEach(l => l.classList.remove("active"));
+                this.classList.add("active");
+            }
+            // Else (like href="Theapp.html"), let browser go to that page normally
+        });
         // Highlight active navigation link on scroll and header scroll effect
         window.addEventListener("scroll", () => {
             let scrollPos = window.scrollY + 100; // Add offset for better detection

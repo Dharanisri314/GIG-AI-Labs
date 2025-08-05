@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,10 +8,29 @@
     <!-- Link to your custom CSS file -->
     <link rel="stylesheet" href="./Theapp.css" />
     <!-- Google Fonts for 'Inter' and 'Montserrat' -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700&display=swap"
+        rel="stylesheet">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js"></script>
+<style>
+  #webchat .bpWebchat {
+    position: unset;
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    max-width: 100%;
+  }
+
+  #webchat .bpFab {
+    display: none;
+  }
+</style>
+   
 </head>
+
 <body>
     <header>
         <div class="logo">GIG AI LABS</div>
@@ -26,7 +46,8 @@
 
     <section class="cosmo-section" id="app">
         <h2>Cosmo1</h2>
-        <p>Cosmo1 is our flagship Generative AI Copilot that is helping Founders & Startups scale during their build phase and help them go from 0 to 1.</p>
+        <p>Cosmo1 is our flagship Generative AI Copilot that is helping Founders & Startups scale during their build
+            phase and help them go from 0 to 1.</p>
         <button class="cosmo-btn">Let's Begin</button>
     </section>
 
@@ -40,28 +61,41 @@
             <div class="feature">
                 <i class="fas fa-star icon"></i>
                 <h3>AI Copilot for Founders and Startups.</h3>
-                <p>We provide founders, solo founders, startup teams, non-technical & technical founders with the resources they need for growth by effectively addressing their most critical inquiries.</p>
+                <p>We provide founders, solo founders, startup teams, non-technical & technical founders with the
+                    resources they need for growth by effectively addressing their most critical inquiries.</p>
                 <p class="how">How?</p>
-                <p>With our Super Intelligent AI Copilot. enjoy the benefits of having an AI co-founder, guiding towards successful methods of scaling.</p>
+                <p>With our Super Intelligent AI Copilot. enjoy the benefits of having an AI co-founder, guiding towards
+                    successful methods of scaling.</p>
             </div>
 
             <div class="feature">
                 <i class="fas fa-user-friends icon"></i>
                 <h3>24/7 Support</h3>
-                <p>Our AI Assistant is here to eliminate the need for endless scrolling through social media and LinkedIn for advice.</p>
+                <p>Our AI Assistant is here to eliminate the need for endless scrolling through social media and
+                    LinkedIn for advice.</p>
                 <br><br>
-                <p>Available 24/7, ready to guide you through the challenges of entrepreneurship with confidence and ease. Let's start this exciting adventure together!</p>
+                <p>Available 24/7, ready to guide you through the challenges of entrepreneurship with confidence and
+                    ease. Let's start this exciting adventure together!</p>
             </div>
 
             <div class="feature">
                 <i class="fas fa-award icon"></i>
                 <h3>Unlock Successful Templates.</h3>
-                <p>Unlock access to powerful templates employed by successful startups that have secured millions in funding.</p>
+                <p>Unlock access to powerful templates employed by successful startups that have secured millions in
+                    funding.</p>
                 <br>
-                <p>With our Intelligent AI Tool, Startups can now confidently elevate their business to new heights. We're here to help you build a strong foundation for your success. Start your journey today!</p>
+                <p>With our Intelligent AI Tool, Startups can now confidently elevate their business to new heights.
+                    We're here to help you build a strong foundation for your success. Start your journey today!</p>
             </div>
         </div>
     </section>
+
+    <iframe id="vp1O67JD" title="Video Player"
+        src="https://s3.amazonaws.com/embed.animoto.com/play.html?w=swf/production/vp1&e=1754370454&f=O67JD1wotZUwaXfaNHlWOQ&d=0&m=p&r=360p+720p&volume=100&start_res=720p&i=m&asset_domain=s3-p.animoto.com&animoto_domain=animoto.com&options=autostart"
+        allowfullscreen>
+    </iframe>
+
+
 
     <section class="how-begin">
         <h2>How Do I Begin?</h2>
@@ -69,6 +103,10 @@
         <p class="simple-text">It's that SIMPLE !!</p>
         <a href="#" class="cta-button">Learn More</a>
     </section>
+
+ 
+<div id="webchat" style="width: 500px; height: 500px;"></div>
+
 
     <section class="testimonials" id="reviews">
         <h2>Testimonials</h2>
@@ -101,7 +139,7 @@
             <div class="contact-text">
                 <h2>For Any Assistance<br />Required Please<br />Reach Out</h2>
             </div>
-            
+
             <form class="contact-form">
                 <h3 class="contact-form-title">Contact Us</h3> <!-- Added this title for the form -->
                 <div class="form-row">
@@ -126,5 +164,20 @@
             </form>
         </div>
     </section>
+
+
+  <script>
+  window.botpress.init({
+    botId: "your-bot-id", // 👈 important
+    host: "https://cdn.botpress.cloud", // 👈 important
+    selector: "#webchat"
+  });
+
+  window.botpress.on("webchat:ready", () => {
+    window.botpress.open();
+  });
+</script>
+
 </body>
+
 </html>
