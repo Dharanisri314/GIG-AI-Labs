@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Login</title>
+  <title>Signup</title>
   <link rel="stylesheet" href="login.css" />
   <style>
     .error {
@@ -10,22 +10,27 @@
       font-size: 0.9rem;
       margin-top: 4px;
     }
+
+</style>
   </style>
 </head>
 <body>
-    <button id="goBackBtn">Go Back</button>
-  <h2>Login</h2>
+  <button id="goBackBtn">Go Back</button>
 
-  <input type="email" id="loginEmail" placeholder="Enter email" />
-  <p class="error" id="loginEmailError"></p>
+  <h2>Create Account</h2>
 
-  <input type="password" id="loginPassword" placeholder="Enter password" />
-  <p class="error" id="loginPasswordError"></p>
+  <input type="text" id="signupName" placeholder="Enter your name" />
 
-  <button onclick="logIn()">Login</button>
+  <input type="email" id="signupEmail" placeholder="Enter email" />
+  <p class="error" id="signupEmailError"></p>
 
-  <p>Don't have an account?
-    <a href="signup.html">Create one</a>
+  <input type="password" id="signupPassword" placeholder="Enter password" />
+  <p class="error" id="signupPasswordError"></p>
+
+  <button onclick="signUp()">Sign Up</button>
+
+  <p>Already have an account?
+    <a href="login.html">Login</a>
   </p>
 
   <!-- Firebase SDK (Compat Version) -->

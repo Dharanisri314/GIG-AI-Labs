@@ -70,7 +70,7 @@ a:hover {
     color: #1A4D9A;
 }
 
-#goHomeBtn {
+#goBackBtn {
   position: absolute;
   top: 20px;
   left: 20px; /* 👉 Right instead of Left */
@@ -92,4 +92,11 @@ body {
   position: relative;
   font-family: sans-serif;
   padding: 40px;
+}
+
+.error {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 4px;
+  margin-bottom: 8px;
 }
