@@ -134,7 +134,6 @@ function logIn() {
     });
 }
 
-
 // 🆕 Signup function
 function signUp() {
   clearErrors();
@@ -151,7 +150,7 @@ function signUp() {
     })
     .then(() => {
       alert("Account created successfully!");
-      window.location.href = "index.html"; // Go to login page
+      window.location.href = "https://cosmo1-5.vercel.app/"; // Redirect to website
     })
     .catch((error) => {
       console.log("Signup Error:", error.code);
