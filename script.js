@@ -80,6 +80,7 @@
 //   }
 // });
 // Firebase Config
+
 const firebaseConfig = {
   apiKey: "AIzaSyArGYvELVRxlCQHVY-IAihp9Nr7ViUiWgk",
   authDomain: "gig-ai-labs.firebaseapp.com",
