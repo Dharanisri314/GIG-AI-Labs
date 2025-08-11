@@ -79,7 +79,6 @@
 //     });
 //   }
 // });
-
 // Firebase Config
 const firebaseConfig = {
   apiKey: "AIzaSyArGYvELVRxlCQHVY-IAihp9Nr7ViUiWgk",
@@ -100,14 +99,18 @@ function clearErrors() {
   errors.forEach(el => el.textContent = "");
 }
 
+// Login Function
 function logIn() {
   clearErrors();
 
   const email = document.getElementById("loginEmail").value.trim();
   const password = document.getElementById("loginPassword").value;
 
-  // Bypass fetchSignInMethodsForEmail
-  auth.signInWithEmailAndPassword(email, password)
+  // Set persistence before login
+  auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+    .then(() => {
+      return auth.signInWithEmailAndPassword(email, password);
+    })
     .then((userCredential) => {
       const user = userCredential.user;
       alert(`Welcome ${user.displayName || "User"}!`);
@@ -134,7 +137,7 @@ function logIn() {
     });
 }
 
-// 🆕 Signup function
+// Signup Function
 function signUp() {
   clearErrors();
 
@@ -142,7 +145,11 @@ function signUp() {
   const email = document.getElementById("signupEmail").value.trim();
   const password = document.getElementById("signupPassword").value;
 
-  auth.createUserWithEmailAndPassword(email, password)
+  // Set persistence before signup
+  auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+    .then(() => {
+      return auth.createUserWithEmailAndPassword(email, password);
+    })
     .then((userCredential) => {
       return userCredential.user.updateProfile({
         displayName: name
@@ -150,7 +157,7 @@ function signUp() {
     })
     .then(() => {
       alert("Account created successfully!");
-      window.location.href = "https://cosmo1-5.vercel.app/"; // Redirect to website
+      window.location.href = "https://cosmo1-5.vercel.app/";
     })
     .catch((error) => {
       console.log("Signup Error:", error.code);
