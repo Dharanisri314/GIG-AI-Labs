@@ -10,11 +10,55 @@
       font-size: 0.9rem;
       margin-top: 4px;
     }
+
+    /* Side-by-side buttons container */
+    .button-row {
+      display: flex;
+      gap: 15px;
+      margin-top: 1rem;
+    }
+
+    #goBackBtn {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      padding: 10px 18px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    #goBackBtn:hover {
+      background-color: #388e3c;
+    }
+
+    #logoutBtn {
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 70px;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+      background: linear-gradient(45deg, #f44336, #ff6659);
+      color: white;
+      box-shadow: 0 18px 45px rgba(244, 67, 54, 0.4);
+      transition: 0.3s ease;
+    }
+
+    #logoutBtn:hover {
+      background: linear-gradient(45deg, #d32f2f, #f44336);
+      transform: translateY(-5px);
+      box-shadow: 0 25px 55px rgba(244, 67, 54, 0.5);
+    }
   </style>
 </head>
 <body>
-    <button id="goBackBtn">Go Back</button>
-    <button onclick="logOut()">Logout</button>
+  <button id="goBackBtn">Go Back</button>
+
   <h2>Login</h2>
 
   <input type="email" id="loginEmail" placeholder="Enter email" />
@@ -23,7 +67,11 @@
   <input type="password" id="loginPassword" placeholder="Enter password" />
   <p class="error" id="loginPasswordError"></p>
 
-  <button onclick="logIn()">Login</button>
+  <!-- Side by side buttons -->
+  <div class="button-row">
+    <button onclick="logIn()">Login</button>
+    <button id="logoutBtn" onclick="logOut()">Logout</button>
+  </div>
 
   <p>Don't have an account?
     <a href="signup.html">Create one</a>
