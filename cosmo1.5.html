@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmo1.5</title>
+    <link rel="stylesheet" href="cosmo1.5.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Lato:wght@400;700&display=swap"
+        rel="stylesheet">
+
+        <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="script.js"></script>
+
+    <!-- 
+<script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
+<script src="https://files.bpcontent.cloud/2024/10/13/08/20241013080819-5B7IE0CJ.js" defer></script> -->
+
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container container">
+            <div class="logo">
+                <a href="#home" class="logo-text">Cosmo<span class="version">1.5</span></a>
+            </div>
+            <ul class="nav-menu">
+                <li>
+                    <a href="#" class="nav-link"
+                        onclick="window.location.href='https://dharanisri314.github.io/GIG-AI-Labs/#cosmo1'">
+                        Home
+                    </a>
+                </li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#chatbot" class="nav-link">AI Chat</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-background">
+            <div class="floating-shape shape1"></div>
+            <div class="floating-shape shape2"></div>
+            <div class="floating-shape shape3"></div>
+        </div>
+        <div class="hero-container container">
+            <div class="hero-content">
+                <h2 class="hero-title">Welcome to <span class="highlight">Cosmo1.5</span> your intelligent AI
+                    Assistant to help you scale.</h2>
+                <button class="cta-button">
+                    <span>LET'S BEGIN</span>
+                    <div class="button-glow"></div>
+                </button>
+            </div>
+            <div class="hero-visual">
+                <div class="ai-orb">
+                    <div class="orb-inner"></div>
+                    <div class="orb-ring"></div>
+                    <div class="orb-particles">
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <h2 class="section-title">Cosmo 1.5 is a Highly Intelligent AI Assistant guiding you across your
+                    business verticals, helping you make better decisions in Sustainability and other Allied Sectors.
+                </h2>
+                <div class="about-description">
+                    <p class="description-text">Whether you need information on Manufacturing Partners, Govt Schemes,
+                        Strategies on Indian Market Entry, or any other query related to your sector...</p>
+                    <p class="brand-promise"><strong>Cosmo 1.5 has you covered.</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="chatbot" class="chatbot-section">
+        <div class="chatbot-orb-container">
+            <div class="chatbot-orb">
+                <div class="chatbot-orb-inner"></div>
+                <div class="chatbot-orb-ring"></div>
+                <div class="chatbot-orb-ring-2"></div>
+                <div class="chatbot-orb-particles">
+                    <div class="chatbot-particle"></div>
+                    <div class="chatbot-particle"></div>
+                    <div class="chatbot-particle"></div>
+                    <div class="chatbot-particle"></div>
+                    <div class="chatbot-particle"></div>
+                    <div class="chatbot-particle"></div>
+                </div>
+            </div>
+            <div class="chat-intro-text">
+                <h3 class="chat-title">Start Your Conversation</h3>
+            </div>
+        </div>
+
+        <!-- Chatbot iframe -->
+        <div
+            style="background: linear-gradient(135deg, #E6F0FF 0%, #D8E3F2 100%); padding: 30px; display: flex; justify-content: center; width: 100%;">
+            <!-- <iframe id="cosmoChat"
+                src="https://cdn.botpress.cloud/webchat/v3.2/shareable.html?configUrl=https://files.bpcontent.cloud/2024/10/13/08/20241013080819-VRF99YJJ.json"
+                style="width: 70%; height: 500px; border: none;">
+            </iframe> -->
+            <iframe
+                src="https://cdn.botpress.cloud/webchat/v3.2/shareable.html?configUrl=https://files.bpcontent.cloud/2024/10/13/08/20241013080819-VRF99YJJ.json"
+                style="width: 70%; height: 500px; border: none;"
+                allow="microphone; clipboard-read; clipboard-write; autoplay">
+            </iframe>
+
+
+
+
+
+
+
+
+
+        </div>
+
+
+
+    </section>
+
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-text">Cosmo<span class="version">1.5</span></span>
+                </div>
+                <div class="footer-text">
+                    <p>Made by <strong>GIG AI Labs</strong></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 GIG AI Labs. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        hamburger.addEventListener('click', function () {
+            navMenu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+
+        // Smooth scrolling
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+                navMenu.classList.remove('active');
+                hamburger.classList.remove('active');
+            });
+        });
+
+        // CTA button scroll to chatbot
+        const ctaButton = document.querySelector('.cta-button');
+        ctaButton.addEventListener('click', function () {
+            const chatbotElement = document.getElementById('chatbot');
+            if (chatbotElement) {
+                chatbotElement.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+
+        if (window.botpressWebChat) {
+            window.botpressWebChat.sendEvent({ type: 'hide' });
+        }
+
+
+    
+  // Check if user is logged in
+  firebase.auth().onAuthStateChanged((user) => {
+    if (!user) {
+      // User not logged in → redirect home
+      window.location.href = "index.html";
+    } else {
+      // User logged in → display name
+      const welcomeMsg = document.createElement("h2");
+      welcomeMsg.textContent = `Welcome ${user.displayName || "User"}!`;
+      document.body.prepend(welcomeMsg);
+    }
+  });
+
+    </script>
+
+</body>
+
+</html>
