@@ -226,29 +226,36 @@ window.addEventListener("load", () => {
   });
 });
 
+// ===== LOGIN FUNCTION =====
+// LOGIN FUNCTION
 function logIn() {
   clearErrors();
   const email = document.getElementById("loginEmail").value.trim();
   const password = document.getElementById("loginPassword").value;
 
-  auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
-    .then(() => auth.signInWithEmailAndPassword(email, password))
+  firebase.auth().signInWithEmailAndPassword(email, password)
     .then(userCredential => {
       const user = userCredential.user;
       alert(`Welcome ${user.displayName || "User"}!`);
-      localStorage.setItem("logoutFlag", "false"); // reset flag
+      localStorage.setItem("logoutFlag", "false");
       window.location.href = "cosmo1.5.html";
     })
     .catch(error => {
+      console.log("Login Error:", error.code, error.message);
       if (error.code === "auth/user-not-found") {
         document.getElementById("loginEmailError").textContent = "User not found. Signup first.";
       } else if (error.code === "auth/wrong-password") {
         document.getElementById("loginPasswordError").textContent = "Wrong password.";
+      } else if (error.code === "auth/invalid-email") {
+        document.getElementById("loginEmailError").textContent = "Enter a valid email.";
+      } else if (error.code === "auth/too-many-requests") {
+        document.getElementById("loginPasswordError").textContent = "Too many failed attempts. Try again later.";
       } else {
-        document.getElementById("loginPasswordError").textContent = error.message || "Login failed.";
+        document.getElementById("loginPasswordError").textContent = "Login failed. Try again.";
       }
     });
 }
+
 
 // SIGNUP FUNCTION
 function signUp() {
@@ -288,3 +295,12 @@ function logOut() {
     })
     .catch(error => console.log("Logout Error:", error.message));
 }
+// BLOCK ACCESS TO PROTECTED PAGE
+window.addEventListener("load", () => {
+  const page = window.location.pathname.split("/").pop();
+  auth.onAuthStateChanged(user => {
+    if (page === "cosmo1.5.html" && (!user || localStorage.getItem("logoutFlag") === "true")) {
+      window.location.href = "index.html";
+    }
+  });
+});

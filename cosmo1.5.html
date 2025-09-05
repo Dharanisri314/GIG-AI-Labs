@@ -39,6 +39,8 @@
                 </li>
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#chatbot" class="nav-link">AI Chat</a></li>
+                <li><button id="logoutBtn" class="nav-link logout-button">Logout</button></li>
+
             </ul>
             <div class="hamburger">
                 <span class="bar"></span>
@@ -209,7 +211,21 @@
       welcomeMsg.textContent = `Welcome ${user.displayName || "User"}!`;
       document.body.prepend(welcomeMsg);
     }
+    
   });
+
+
+  const logoutBtn = document.getElementById('logoutBtn');
+
+logoutBtn.addEventListener('click', () => {
+    firebase.auth().signOut().then(() => {
+        // User logout aana, intha page block → redirect index.html
+        window.location.href = "index.html";
+    }).catch((error) => {
+        console.error("Logout error:", error);
+    });
+});
+
 
     </script>
 
