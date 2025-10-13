@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cosmo1.5</title>
+    <title>Cosmo</title>
     <link rel="stylesheet" href="cosmo1.5.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,9 +13,9 @@
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Lato:wght@400;700&display=swap"
         rel="stylesheet">
 
-        <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
-<script src="script.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+    <script src="script.js"></script>
 
     <!-- 
 <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
@@ -28,7 +28,7 @@
     <nav class="navbar">
         <div class="nav-container container">
             <div class="logo">
-                <a href="#home" class="logo-text">Cosmo<span class="version">1.5</span></a>
+                <a href="#home" class="logo-text">Cosmo<span class="version"></span></a>
             </div>
             <ul class="nav-menu">
                 <li>
@@ -83,13 +83,16 @@
     <section id="about" class="about">
         <div class="container">
             <div class="about-content">
-                <h2 class="section-title">Cosmo 1.5 is a Highly Intelligent AI Assistant guiding you across your
-                    business verticals, helping you make better decisions in Sustainability and other Allied Sectors.
+                <h2 class="section-title">Cosmo is a Highly Intelligent AI-powered tool designed to help businesses and
+                    entrepreneurs scale faster and more efficiently.
+
                 </h2>
                 <div class="about-description">
-                    <p class="description-text">Whether you need information on Manufacturing Partners, Govt Schemes,
-                        Strategies on Indian Market Entry, or any other query related to your sector...</p>
-                    <p class="brand-promise"><strong>Cosmo 1.5 has you covered.</strong></p>
+                    <p class="description-text">Acting as a Personalized AI strategist it helps a user with their
+                        business needs. No matter what stage the business is. Cosmo provides strategies and helps
+                        businesses scale.
+                    </p>
+                    <p class="brand-promise"><strong>Cosmo has you covered.</strong></p>
                 </div>
             </div>
         </div>
@@ -127,19 +130,7 @@
                 style="width: 70%; height: 500px; border: none;"
                 allow="microphone; clipboard-read; clipboard-write; autoplay">
             </iframe>
-
-
-
-
-
-
-
-
-
         </div>
-
-
-
     </section>
 
 
@@ -148,7 +139,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <span class="logo-text">Cosmo<span class="version">1.5</span></span>
+                    <span class="logo-text">Cosmo<span class="version"></span></span>
                 </div>
                 <div class="footer-text">
                     <p>Made by <strong>GIG AI Labs</strong></p>
@@ -199,32 +190,32 @@
         }
 
 
-    
-  // Check if user is logged in
-  firebase.auth().onAuthStateChanged((user) => {
-    if (!user) {
-      // User not logged in → redirect home
-      window.location.href = "index.html";
-    } else {
-      // User logged in → display name
-      const welcomeMsg = document.createElement("h2");
-      welcomeMsg.textContent = `Welcome ${user.displayName || "User"}!`;
-      document.body.prepend(welcomeMsg);
-    }
-    
-  });
+
+        // Check if user is logged in
+        firebase.auth().onAuthStateChanged((user) => {
+            if (!user) {
+                // User not logged in → redirect home
+                window.location.href = "index.html";
+            } else {
+                // User logged in → display name
+                const welcomeMsg = document.createElement("h2");
+                welcomeMsg.textContent = `Welcome ${user.displayName || "User"}!`;
+                document.body.prepend(welcomeMsg);
+            }
+
+        });
 
 
-  const logoutBtn = document.getElementById('logoutBtn');
+        const logoutBtn = document.getElementById('logoutBtn');
 
-logoutBtn.addEventListener('click', () => {
-    firebase.auth().signOut().then(() => {
-        // User logout aana, intha page block → redirect index.html
-        window.location.href = "index.html";
-    }).catch((error) => {
-        console.error("Logout error:", error);
-    });
-});
+        logoutBtn.addEventListener('click', () => {
+            firebase.auth().signOut().then(() => {
+                // User logout aana, intha page block → redirect index.html
+                window.location.href = "index.html";
+            }).catch((error) => {
+                console.error("Logout error:", error);
+            });
+        });
 
 
     </script>
