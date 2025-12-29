@@ -8,6 +8,26 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+
+
+    <style>
+        .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .image-container img {
+            margin-top: 50px;
+            margin-bottom: 50px;
+            width: 50%;
+            height: auto;
+            display: block;
+        }
+    </style>
+
 
 </head>
 
@@ -15,13 +35,13 @@
     <header>
         <div class="logo">GIG AI LABS</div>
         <!-- index.html -->
-      <nav>
-  <a href="index.html" class="active">Home</a>
-  <a href="#app">About Us</a>
-  <a href="#" onclick="event.preventDefault();">The App</a>
-  <a href="login.html" id="authLink">Log In</a>
-  <a href="#contact">Contact</a>
-</nav>
+        <nav>
+            <a href="index.html" class="active">Home</a>
+            <a href="#app">About Us</a>
+            <a href="#" onclick="event.preventDefault();">The App</a>
+            <a href="login.html" id="authLink">Log In</a>
+            <a href="#contact">Contact</a>
+        </nav>
 
     </header>
 
@@ -39,7 +59,8 @@
             <div class="info-box">
                 <p><strong>🚀 We build AI Systems</strong> for Industries and Human Use Cases.</p>
                 <p>✨ We have been Featured on Elevate<strong>SHARK TANK 2025</strong></p>
-                <p>🎓  GIG AI Labs was the only company invited to showcase its innovation at the<strong> National Innovation Summit under the AI category by IIT Madras </strong></p>
+                <p>🎓 GIG AI Labs was the only company invited to showcase its innovation at the<strong> National
+                        Innovation Summit under the AI category by IIT Madras </strong></p>
                 <p class="trusted">✅ We are Trusted by Atal Innovation Mission Institutes. – Govt of India.</p>
             </div>
         </section>
@@ -53,6 +74,18 @@
         <p>Cosmo1 is a flagship Generative AI Copilot that is helping early stage companies build fast.</p>
         <button class="cosmo-btn">Let's Begin</button>
     </section>
+
+
+    <div class="image-container"> <img src="assets/images/cosmo.png" alt="Cosmo Image" data-aos="zoom-out-left"
+            data-aos-duration="1500">
+    </div>
+
+
+
+
+
+
+
 
     <section class="our-story" id="about">
         <div class="story-container">
@@ -169,6 +202,13 @@
             e.preventDefault();
             window.location.href = "login.html";
         });
+    </script>
+
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        AOS.init();
     </script>
 
 
