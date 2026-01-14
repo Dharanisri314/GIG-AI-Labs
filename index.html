@@ -26,6 +26,35 @@
             margin-bottom: 50px;
             display: block;
         }
+
+        #text {
+            color:#2f6fd3;
+            font-size: 49px;
+            font-weight: 700;
+        }
+
+        .cursor {
+            display: inline-block;
+            width:9px;
+            height: 11px;
+            background-color: rgb(1, 5, 1);
+            margin-left: 6px;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
     </style>
 
 
@@ -70,9 +99,13 @@
     </main>
 
     <section class="cosmo-section" id="app">
-        <h2>Building a Smarter World through the power of Generative AI</h3>
+        <div>
+            <span id="text"></span>
+            <span class="cursor"></span>
+        </div>
         <p>We believe that the world’s most powerful technology shouldn’t belong to the few.</p>
-        <p>Our mission is to put cutting-edge AI into the hands of every consumer, unlocking new levels of potential, creativity, and daily success for everyone.</p>
+        <p>Our mission is to put cutting-edge AI into the hands of every consumer, unlocking new levels of potential,
+            creativity, and daily success for everyone.</p>
         <button class="cosmo-btn">Let's Begin</button>
     </section>
 
@@ -213,6 +246,40 @@
     </script>
 
 
+
+
+
+    <script>
+        let message = "Building a Smarter World through the power of Generative AI";
+        let textElement = document.getElementById("text");
+
+        let index = 0;
+        let isDeleting = false;
+
+        function typeEffect() {
+            if (!isDeleting) {
+                // Typing
+                textElement.innerHTML = message.substring(0, index + 1);
+                index++;
+
+                if (index === message.length) {
+                    setTimeout(() => isDeleting = true, 1000);
+                }
+            } else {
+                // Deleting
+                textElement.innerHTML = message.substring(0, index - 1);
+                index--;
+
+                if (index === 0) {
+                    isDeleting = false;
+                }
+            }
+
+            setTimeout(typeEffect, isDeleting ? 50 : 100);
+        }
+
+        typeEffect();
+    </script>
 
 </body>
 
