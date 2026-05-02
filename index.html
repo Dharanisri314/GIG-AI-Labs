@@ -1,286 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GIG AI LABS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="index.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
-
-
-    <style>
-        .image-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-        }
-
-        .image-container img {
-            width: 70%;
-            height: auto;
-            margin-top: 50px;
-            margin-bottom: 50px;
-            display: block;
-        }
-
-        #text {
-            color:#2f6fd3;
-            font-size: 49px;
-            font-weight: 700;
-        }
-
-        .cursor {
-            display: inline-block;
-            width:9px;
-            height: 11px;
-            background-color: rgb(1, 5, 1);
-            margin-left: 6px;
-            animation: blink 1s infinite;
-        }
-
-        @keyframes blink {
-            0% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0;
-            }
-
-            100% {
-                opacity: 1;
-            }
-        }
-    </style>
-
-
+    <link rel="stylesheet" href="index.css" />
 </head>
-
 <body>
+
     <header>
-        <div class="logo">GIG AI LABS</div>
-        <!-- index.html -->
+        <!-- <div class="logo">GIG AI LABS</div> -->
+         <div class="logo">
+        <a href="index.html">
+            <img src="assets/images/company-logo.png" alt="GIG AI LABS Logo" class="header-logo">
+        </a>
+    </div>
         <nav>
             <a href="index.html" class="active">Home</a>
             <a href="#app">About Us</a>
-            <a href="#" onclick="event.preventDefault();">The App</a>
-            <a href="login.html" id="authLink">Log In</a>
+            
+            <div class="dropdown">
+                <a href="#" class="dropbtn" onclick="event.preventDefault();">
+                    The App <i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown-content">
+                    <a href="https://app.gigailabs.com/" target="_blank">B1</a>
+                </div>
+            </div>
+
+            <a href="login.html">Log In</a>
             <a href="#contact">Contact</a>
         </nav>
-
     </header>
 
     <main class="hero" id="home">
-        <section class="left">
+        <section class="hero-content">
             <h1><span class="highlight">GIG AI LABS</span></h1>
             <p class="subtitle">An Applied Research & AI Product Company</p>
-            <div class="hiring-text">
-                <p>We're Hiring Interns for our Gen AI Team !!<br />
-                    To apply <a href="#" class="click-link">Click Here:</a></p>
-            </div>
         </section>
-
-        <section class="right">
-            <div class="info-box">
-                <p><strong>🚀 We build AI Systems</strong> for Industries and Human Use Cases.</p>
-                <p>✨ We have been Featured on Elevate<strong>SHARK TANK 2025</strong></p>
-                <p>🎓 GIG AI Labs was the only company invited to showcase its innovation at the<strong> National
-                        Innovation Summit under the AI category by IIT Madras </strong></p>
-                <p class="trusted">✅ We are Trusted by Atal Innovation Mission Institutes. – Govt of India.</p>
-            </div>
-        </section>
-
-
-
     </main>
 
     <section class="cosmo-section" id="app">
-        <div>
+        <div class="typing-box">
             <span id="text"></span>
             <span class="cursor"></span>
         </div>
-        <p>We believe that the world’s most powerful technology shouldn’t belong to the few.</p>
-        <p>Our mission is to put cutting-edge AI into the hands of every consumer, unlocking new levels of potential,
-            creativity, and daily success for everyone.</p>
+        <p>We believe that the world's most powerful technology shouldn't belong to the few.<br>
+        Our mission is to put cutting-edge AI into the hands of every consumer, unlocking new levels of potential, creativity, and daily success for everyone.</p>
         <button class="cosmo-btn">Let's Begin</button>
     </section>
 
-    <div class="image-container">
-        <img src="assets/images/cosmo.png" alt="Cosmo Image" data-aos="zoom-out-left" data-aos-duration="1500"
-            data-aos-offset="400">
-    </div>
+    <!-- <div class="image-container">
+
+        <img src="assets/images/cosmo.png" alt="Cosmo Image" data-aos="zoom-in-up" data-aos-duration="1500">
+
+    </div> -->
 
 
-
-
-
-
-
-
-    <section class="our-story" id="about">
-        <div class="story-container">
-            <div class="story-left">
-                <h2>Our Story</h2>
-            </div>
-            <div class="story-right">
-                <p>We have been Featured on Elevate <strong>SHARK TANK 2025</strong> and We are built by engineers of
-                    India for Builders of India.</p>
-            </div>
-        </div>
+    <section class="cosmox-section" id="cosmox">
+        <h1 class="cosmox-heading">B1 Agent is an Enterprise Grade tool designed to identify critical vulnerabilities and harden security in code.</h1>
+        <p>The tool is specialized to spot vulnerabilities that look fine to the human eye which is very common in LLM Generated Code.<br><br>
+        B1 is not a coding copilot constrained to an IDE or an AI wrapper around an API,<br>It is an industry-grade AI agent that runs heavy duty scans in the background in real-time on AI-generated code ensuring users ship reliable & safe code.</p>
     </section>
+
+    
+    <section class="test-results-heading" style="text-align: center; padding: 50px 20px 20px;">
+        <h2 style="font-size: 1.4rem; margin-bottom: 15px; color: #555;">
+            We tested B1 against Anthropic's Claude Opus 4.7
+        </h2>
+        <p style="font-size: 1.3rem; color: #555; max-width: 900px; margin: 0 auto 10px;">
+            We ran B1 Agent on multiple codebases to find hidden vulnerabilities and fed B1 Agents finding results to Claude Opus 4.7 to validate its efficiency. 
+        </p>
+        <p style="font-weight: 600; color: #555;">
+            We have decided to make the test result public.
+        </p>
+    </section>
+
+<section class="image-grid-section">
+    <div class="img-wrapper left" data-aos="fade-right" data-aos-duration="1200">
+        <h2 class="grid-item-heading"></h2>
+        <img src="assets/images/Cosmox_1.png" alt="Work 1">
+    </div>
+    
+    <div class="img-wrapper right" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="200">
+        <h2 class="grid-item-heading"></h2>
+        <img src="assets/images/Cosmox_2.png" alt="Work 2">
+    </div>
+    
+    <div class="img-wrapper left" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="200">
+        <h2 class="grid-item-heading" style="font-family: 'Playfair Display', serif; font-size: 1.3rem;"> When <strong style="font-size: 30px">B1</strong> caught GPT <strong style="font-size: 25px; font-family: 'Playfair Display', serif; ">5.4 </strong>, We ran B1 on a fixed software patch done by GPT <strong style="font-size: 25px; font-family: 'Playfair Display', serif; ">5.4 </strong> and multiple vulnerabilities were flagged.</h2>
+        <img src="assets/images/Cosmox_3.png" alt="Work 3">
+    </div>
+</section>
+
+
 
 
 
     <section class="contact-section" id="contact">
         <div class="contact-container">
-            <form class="contact-form" style="max-width: 80%">
+            <form class="contact-form">
                 <h3>Contact Us</h3>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="firstName">Name *</label>
-                        <input type="text" id="firstName" name="firstName" required />
-                    </div>
+                <div class="form-group">
+                    <label>Name *</label>
+                    <input type="text" required />
                 </div>
                 <div class="form-group">
-                    <label for="email">Email *</label>
-                    <input type="email" id="email" name="email" required />
+                    <label>Email *</label>
+                    <input type="email" required />
                 </div>
                 <div class="form-group">
-                    <label for="message">Leave us a message</label>
-                    <textarea id="message" name="message" rows="4"></textarea>
+                    <label>Message</label>
+                    <textarea rows="4"></textarea>
                 </div>
                 <button type="submit">Submit</button>
             </form>
         </div>
     </section>
 
-    <!-- <div
-  style="
-    background: linear-gradient(135deg, #E6F0FF 0%, #D8E3F2 100%);
-    padding: 30px;
-    display: flex;
-    justify-content: center; 
-    align-items: center;      
-    width: 100%;
-    height: 100vh;  /* Full screen height */
-
-  "
->
-  <div
-    style="
-      height: 90vh;  /* adjust size inside */
-      border-radius: 10px;
-      overflow: show;
-      width: 500px;
-    "
-  >
-    <iframe
-      src="anythingllm-widget.html"
-      width="100%"
-      height="100%"
-      style="border: none;"
-    ></iframe>
-  </div>
-
-
-
-
-        </div> -->
-
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        link.addEventListener("click", function (e) {
-            const href = this.getAttribute("href");
+        AOS.init();
 
-            // If href starts with "#" (same page navigation), do smooth scroll
-            if (href.startsWith("#")) {
-                e.preventDefault();
-                const targetId = href.slice(1);
-                const targetSection = document.getElementById(targetId);
-                if (targetSection) {
-                    targetSection.scrollIntoView({ behavior: "smooth" });
-                }
-
-                navLinks.forEach(l => l.classList.remove("active"));
-                this.classList.add("active");
-            }
-            // Else (like href="Theapp.html"), let browser go to that page normally
-        });
-        // Highlight active navigation link on scroll and header scroll effect
-        window.addEventListener("scroll", () => {
-            let scrollPos = window.scrollY + 100; // Add offset for better detection
-            navLinks.forEach(link => {
-                const section = document.querySelector(link.getAttribute("href"));
-                if (
-                    section.offsetTop <= scrollPos &&
-                    section.offsetTop + section.offsetHeight > scrollPos
-                ) {
-                    navLinks.forEach(l => l.classList.remove("active"));
-                    link.classList.add("active");
+        // Smooth Scroll Logic
+        const navLinks = document.querySelectorAll('nav > a, .dropbtn');
+        navLinks.forEach(link => {
+            link.addEventListener("click", function (e) {
+                const href = this.getAttribute("href");
+                if (href && href.startsWith("#")) {
+                    e.preventDefault();
+                    const targetId = href.slice(1);
+                    const targetSection = document.getElementById(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: "smooth" });
+                    }
                 }
             });
+        });
 
-            // Add/remove 'scrolled' class to header for styling changes
+        // Header scroll effect
+        window.addEventListener("scroll", () => {
             const header = document.querySelector('header');
-            if (window.scrollY > 50) { // If scrolled down more than 50px
+            if (window.scrollY > 50) {
                 header.classList.add('scrolled');
             } else {
                 header.classList.remove('scrolled');
             }
         });
 
-        document.getElementById("loginRedirect").addEventListener("click", function (e) {
-            e.preventDefault();
-            window.location.href = "login.html";
-        });
-    </script>
-
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
-    <script>
-        AOS.init();
-    </script>
-
-
-
-
-
-    <script>
+        // Typing Effect logic
         let message = "Building a Smarter World through the power of Generative AI";
         let textElement = document.getElementById("text");
-
         let index = 0;
         let isDeleting = false;
 
         function typeEffect() {
             if (!isDeleting) {
-                // Typing
                 textElement.innerHTML = message.substring(0, index + 1);
                 index++;
-
                 if (index === message.length) {
                     setTimeout(() => isDeleting = true, 1000);
                 }
             } else {
-                // Deleting
                 textElement.innerHTML = message.substring(0, index - 1);
                 index--;
-
                 if (index === 0) {
                     isDeleting = false;
                 }
             }
-
             setTimeout(typeEffect, isDeleting ? 50 : 100);
         }
-
         typeEffect();
     </script>
-
 </body>
-
 </html>
