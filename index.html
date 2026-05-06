@@ -12,18 +12,25 @@
 <body>
 
     <header>
-        <!-- <div class="logo">GIG AI LABS</div> -->
-         <div class="logo">
-        <a href="index.html">
-            <img src="assets/images/company-logo.png" alt="GIG AI LABS Logo" class="header-logo">
-        </a>
-    </div>
-        <nav>
+        <div class="logo">
+            <a href="index.html">
+                <img src="assets/images/company-logo.png" alt="GIG AI LABS Logo" class="header-logo">
+            </a>
+        </div>
+        
+        <!-- Hamburger Menu Icon -->
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        
+        <nav id="nav-menu">
             <a href="index.html" class="active">Home</a>
             <a href="#app">About Us</a>
             
-            <div class="dropdown">
-                <a href="#" class="dropbtn" onclick="event.preventDefault();">
+            <div class="dropdown" id="dropdown">
+                <a href="#" class="dropbtn" id="dropbtn">
                     The App <i class="fas fa-chevron-down"></i>
                 </a>
                 <div class="dropdown-content">
@@ -53,12 +60,12 @@
         <button class="cosmo-btn">Let's Begin</button>
     </section>
 
-    <!-- <div class="image-container">
+
+       <!-- <div class="image-container">
 
         <img src="assets/images/cosmo.png" alt="Cosmo Image" data-aos="zoom-in-up" data-aos-duration="1500">
 
     </div> -->
-
 
     <section class="cosmox-section" id="cosmox">
         <h1 class="cosmox-heading">B1 Agent is an Enterprise Grade tool designed to identify critical vulnerabilities and harden security in code.</h1>
@@ -66,7 +73,6 @@
         B1 is not a coding copilot constrained to an IDE or an AI wrapper around an API,<br>It is an industry-grade AI agent that runs heavy duty scans in the background in real-time on AI-generated code ensuring users ship reliable & safe code.</p>
     </section>
 
-    
     <section class="test-results-heading" style="text-align: center; padding: 50px 20px 20px;">
         <h2 style="font-size: 1.4rem; margin-bottom: 15px; color: #555;">
             We tested B1 against Anthropic's Claude Opus 4.7
@@ -79,26 +85,22 @@
         </p>
     </section>
 
-<section class="image-grid-section">
-    <div class="img-wrapper left" data-aos="fade-right" data-aos-duration="1200">
-        <h2 class="grid-item-heading"></h2>
-        <img src="assets/images/Cosmox_1.png" alt="Work 1">
-    </div>
-    
-    <div class="img-wrapper right" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="200">
-        <h2 class="grid-item-heading"></h2>
-        <img src="assets/images/Cosmox_2.png" alt="Work 2">
-    </div>
-    
-    <div class="img-wrapper left" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="200">
-        <h2 class="grid-item-heading" style="font-family: 'Playfair Display', serif; font-size: 1.3rem;"> When <strong style="font-size: 30px">B1</strong> caught GPT <strong style="font-size: 25px; font-family: 'Playfair Display', serif; ">5.4 </strong>, We ran B1 on a fixed software patch done by GPT <strong style="font-size: 25px; font-family: 'Playfair Display', serif; ">5.4 </strong> and multiple vulnerabilities were flagged.</h2>
-        <img src="assets/images/Cosmox_3.png" alt="Work 3">
-    </div>
-</section>
-
-
-
-
+    <section class="image-grid-section">
+        <div class="img-wrapper left" data-aos="fade-right" data-aos-duration="1200">
+            <h2 class="grid-item-heading"></h2>
+            <img src="assets/images/Cosmox_1.png" alt="Work 1">
+        </div>
+        
+        <div class="img-wrapper right" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="200">
+            <h2 class="grid-item-heading"></h2>
+            <img src="assets/images/Cosmox_2.png" alt="Work 2">
+        </div>
+        
+        <div class="img-wrapper left" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="200">
+            <h2 class="grid-item-heading" style="font-family: 'Playfair Display', serif; font-size: 1.3rem;"> When <strong style="font-size: 30px">B1</strong> caught GPT <strong style="font-size: 25px; font-family: 'Playfair Display', serif; ">5.4 </strong>, We ran B1 on a fixed software patch done by GPT <strong style="font-size: 25px; font-family: 'Playfair Display', serif; ">5.4 </strong> and multiple vulnerabilities were flagged.</h2>
+            <img src="assets/images/Cosmox_3.png" alt="Work 3">
+        </div>
+    </section>
 
     <section class="contact-section" id="contact">
         <div class="contact-container">
@@ -125,24 +127,62 @@
     <script>
         AOS.init();
 
-        // Smooth Scroll Logic
-        const navLinks = document.querySelectorAll('nav > a, .dropbtn');
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+        const dropdown = document.getElementById('dropdown');
+        const dropbtn = document.getElementById('dropbtn');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Mobile dropdown toggle - Click to open/close
+        dropbtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (window.innerWidth <= 768) {
+                dropdown.classList.toggle('mobile-active');
+            }
+        });
+
+        // Close menu when clicking on a regular nav link
+        const navLinks = document.querySelectorAll('nav > a');
         navLinks.forEach(link => {
-            link.addEventListener("click", function (e) {
-                const href = this.getAttribute("href");
-                if (href && href.startsWith("#")) {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                dropdown.classList.remove('mobile-active');
+            });
+        });
+
+        // Close mobile menu when clicking B1 link
+        const dropdownLinks = document.querySelectorAll('.dropdown-content a');
+        dropdownLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                dropdown.classList.remove('mobile-active');
+            });
+        });
+
+        // Smooth Scroll Logic
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href && href.startsWith('#') && href !== '#') {
                     e.preventDefault();
                     const targetId = href.slice(1);
                     const targetSection = document.getElementById(targetId);
                     if (targetSection) {
-                        targetSection.scrollIntoView({ behavior: "smooth" });
+                        targetSection.scrollIntoView({ behavior: 'smooth' });
                     }
                 }
             });
         });
 
         // Header scroll effect
-        window.addEventListener("scroll", () => {
+        window.addEventListener('scroll', () => {
             const header = document.querySelector('header');
             if (window.scrollY > 50) {
                 header.classList.add('scrolled');

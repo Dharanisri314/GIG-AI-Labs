@@ -10,15 +10,43 @@
 
 /* Base Styles */
 * { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* FIX 1: use overflow-x: clip instead of hidden on body alone
+   (overflow-x: hidden on body breaks position:sticky in some browsers) */
+html, body {
+    overflow-x: clip;
+}
+
 html { scroll-behavior: smooth; }
 
 body {
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(180deg, var(--bg-base-white) 0%, var(--bg-lite-sky) 50%, var(--bg-pale-blue) 100%);
-    background-attachment: fixed;
+    /* FIX 2: background-attachment:fixed causes shake/jitter on iOS Safari & Android.
+       We set it to scroll by default and only keep fixed on desktop via media query below. */
+    background-attachment: scroll;
     color: var(--dark-text);
     line-height: 1.7;
-    overflow-x: hidden;
+}
+
+/* Re-enable fixed background only on desktop where it works correctly */
+@media (min-width: 769px) {
+    body {
+        background-attachment: fixed;
+    }
+}
+
+/* FIX 3: Missing @keyframes fadeUp — without this the cosmo-section
+   was invisible / flashing on load */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Header & Nav */
@@ -46,6 +74,7 @@ header.scrolled {
     font-weight: 700;
     color: var(--primary-blue);
     letter-spacing: 1px;
+    z-index: 1001;
 }
 
 nav {
@@ -68,7 +97,36 @@ nav a:hover, nav a.active {
     background: rgba(47, 111, 211, 0.05);
 }
 
-/* --- DROPDOWN FIXES (FULL ALIGNMENT) --- */
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: var(--primary-blue);
+    margin: 4px 0;
+    transition: 0.3s;
+    border-radius: 3px;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Dropdown */
 .dropdown {
     position: relative;
     display: inline-block;
@@ -80,30 +138,30 @@ nav a:hover, nav a.active {
     display: flex;
     align-items: center;
     padding: 10px 15px;
-    margin-left: 2rem; /* Matches other nav links */
+    margin-left: 2rem;
 }
 
 .dropdown-content {
     display: none;
     position: absolute;
     background-color: #ffffff;
-    min-width: 160px; 
+    min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.15);
     z-index: 1000;
     border-radius: 8px;
     top: 100%;
-    left: 2rem; /* Aligns with the parent link start */
-    padding: 0 !important; 
+    left: 2rem;
+    padding: 0 !important;
     margin: 0 !important;
-    overflow: hidden; 
+    overflow: hidden;
 }
 
 .dropdown-content a {
-    color: #333 !important; 
+    color: #333 !important;
     padding: 12px 0 !important;
     text-decoration: none !important;
     display: block !important;
-    width: 100% !important; 
+    width: 100% !important;
     margin: 0 !important;
     font-size: 15px;
     font-weight: 600;
@@ -112,7 +170,7 @@ nav a:hover, nav a.active {
 }
 
 .dropdown-content a:hover {
-    background-color: #e3f2fd !important; 
+    background-color: #e3f2fd !important;
     color: #1976d2 !important;
 }
 
@@ -151,30 +209,22 @@ nav a:hover, nav a.active {
     font-weight: 300;
 }
 
-/* Sections Styling */
+/* Cosmo Section */
 .cosmo-section {
     text-align: center;
-    padding: 6rem 2rem; 
-    
-
-   background: linear-gradient(to bottom, var(--white), var(--light-blue-bg)) !important; 
-    
-   
+    padding: 6rem 2rem;
     width: 100%;
     max-width: 1300px;
-    margin: 60px auto; 
-    
- 
-    border-radius: 50px; 
-
+    margin: 60px auto;
+    border-radius: 50px;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
-    
     position: relative;
     z-index: 1;
     overflow: hidden;
     animation: fadeUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    /* FIX 4: promotes element to its own GPU layer — reduces repaint jank on scroll */
+    will-change: transform;
 }
-
 
 .cosmo-section::before {
     content: '';
@@ -183,9 +233,11 @@ nav a:hover, nav a.active {
     left: 50%;
     width: 150%;
     height: 150%;
-    background: radial-gradient(circle, rgba(var(--primary-blue-rgb), 0.05) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(47, 111, 211, 0.05) 0%, transparent 70%);
     transform: translate(-50%, -50%);
     z-index: 0;
+    /* Pointer events off so it doesn't block clicks */
+    pointer-events: none;
 }
 
 .cosmox-section {
@@ -202,7 +254,7 @@ nav a:hover, nav a.active {
     max-width: 800px;
 }
 
-/* COSMOX HEADING GRADIENT */
+/* Cosmox Heading Gradient */
 .cosmox-heading {
     font-family: 'Playfair Display', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: clamp(24px, 4vw, 36px);
@@ -216,6 +268,7 @@ nav a:hover, nav a.active {
 
 /* Typing box */
 .typing-box { margin-bottom: 30px; }
+
 #text {
     font-family: 'Playfair Display', serif;
     font-size: clamp(24px, 5vw, 40px);
@@ -229,10 +282,12 @@ nav a:hover, nav a.active {
 .cursor {
     display: inline-block;
     width: 3px;
-    height: 35px; 
+    height: 35px;
     background: #000;
     margin-left: 8px;
     animation: blink 0.8s infinite;
+    /* Align cursor vertically with text */
+    vertical-align: middle;
 }
 
 @keyframes blink { 50% { opacity: 0; } }
@@ -249,6 +304,8 @@ nav a:hover, nav a.active {
     transition: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
     text-transform: uppercase;
     letter-spacing: 1px;
+    position: relative;
+    z-index: 1;
 }
 
 .cosmo-btn:hover {
@@ -258,6 +315,7 @@ nav a:hover, nav a.active {
 
 /* Contact Section */
 .contact-section { padding: 100px 20px; }
+
 .contact-form {
     max-width: 700px;
     margin: 0 auto;
@@ -278,38 +336,44 @@ nav a:hover, nav a.active {
 }
 
 .form-group { margin-bottom: 20px; }
+
 .form-group label { display: block; margin-bottom: 8px; font-weight: 600; }
+
 .form-group input, .form-group textarea {
-    width: 100%; padding: 15px; border: 1px solid #D1EAFF; border-radius: 12px;
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #D1EAFF;
+    border-radius: 12px;
 }
 
 .contact-form button {
-    width: 100%; background: var(--primary-blue); color: white; border: none; padding: 15px;
-    border-radius: 12px; font-size: 18px; font-weight: 600; cursor: pointer;
+    width: 100%;
+    background: var(--primary-blue);
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
 }
 
-@media (max-width: 768px) {
-    header { padding: 1.5rem; }
-    nav { display: none; } /* Consider adding a mobile menu later */
-    .cosmo-section, .cosmox-section { margin: 20px; border-radius: 30px; }
-}
-
+/* Image Grid */
 .image-grid-section {
     padding: 100px 10%;
     display: flex;
     flex-direction: column;
-    gap: 150px; 
-    overflow-x: hidden;
+    gap: 150px;
+    /* FIX 5: contain horizontal overflow from grid without breaking sticky */
+    overflow-x: clip;
 }
 
 .img-wrapper {
-    width: 60%; 
-    border: 8px solid #ffffff; 
-    box-shadow: 0px 15px 40px rgba(0,0,0,0.4);
-    background-color: #1a1a2e; 
+    width: 60%;
     transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
 }
-
 
 .img-wrapper:hover {
     transform: scale(1.02);
@@ -319,6 +383,9 @@ nav a:hover, nav a.active {
     width: 100%;
     height: auto;
     display: block;
+    border: 8px solid #ffffff;
+    box-shadow: 0px 15px 40px rgba(0,0,0,0.4);
+    border-radius: 10px;
 }
 
 .img-wrapper.left {
@@ -329,70 +396,221 @@ nav a:hover, nav a.active {
     align-self: flex-end;
 }
 
-/* Mobile-la spacing adjustment */
-@media (max-width: 768px) {
-    .image-grid-section {
-        gap: 80px; 
-    }
-    .img-wrapper {
-        width: 90%;
-        align-self: center !important;
-    }
-}
-
+/* Logo */
 .logo img.header-logo {
-    height: 50px;    
-    width: auto;    
+    height: 50px;
+    width: auto;
     display: block;
     transition: transform 0.3s ease;
 }
-
 
 .logo img.header-logo:hover {
     transform: scale(1.05);
 }
 
 header.scrolled .header-logo {
-    height: 40px; 
+    height: 40px;
 }
 
-
-@media (max-width: 768px) {
-    .logo img.header-logo {
-        height: 35px;
-    }
-}
-
-
-
+/* Grid item headings */
 .grid-item-heading {
-    font-family: 'Playfair Display', serif; 
+    font-family: 'Playfair Display', serif;
     font-size: 1.8rem;
     font-weight: 700;
-    margin-bottom: 20px; 
+    margin-bottom: 20px;
     color: #555;
-    text-align: left; 
+    text-align: left;
     display: block;
 }
-
 
 .img-wrapper.right .grid-item-heading {
     text-align: right;
 }
 
-.img-wrapper {
-    display: flex;
-    flex-direction: column;
+/* ========== MOBILE RESPONSIVE STYLES ========== */
+@media (max-width: 768px) {
+
+    /* Header */
+    header {
+        padding: 1rem 1.5rem;
+    }
+
+    header.scrolled {
+        padding: 0.8rem 1.5rem;
+    }
+
+    /* Show hamburger, hide desktop nav */
+    .hamburger {
+        display: flex;
+    }
+
+    nav {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background-color: rgba(255, 255, 255, 0.98);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+        padding: 20px 0;
+        align-items: center;
+    }
+
+    nav.active {
+        left: 0;
+    }
+
+    nav a {
+        margin: 15px 0;
+        margin-left: 0;
+        width: 90%;
+        padding: 12px;
+    }
+
+    /* Mobile dropdown */
+    .dropdown {
+        width: 90%;
+    }
+
+    .dropbtn {
+        margin-left: 0;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .dropdown-content {
+        position: static !important;
+        width: 100% !important;
+        left: 0 !important;
+        box-shadow: none !important;
+        margin-top: 0 !important;
+        background-color: rgba(240, 249, 255, 0.5) !important;
+        border-radius: 8px !important;
+        display: none;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+    }
+
+    /* Disable desktop hover on mobile */
+    .dropdown:hover .dropdown-content {
+        display: none !important;
+    }
+
+    /* Enable click-based dropdown on mobile */
+    .dropdown.mobile-active .dropdown-content {
+        display: block !important;
+        max-height: 200px;
+    }
+
+    .dropdown-content a {
+        padding: 15px 0 !important;
+        margin: 5px 0 !important;
+    }
+
+    /* Logo */
+    .logo img.header-logo {
+        height: 35px;
+    }
+
+    /* Hero */
+    .hero {
+        min-height: 60vh;
+        padding: 2rem 1rem;
+    }
+
+    .subtitle {
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Sections */
+    .cosmo-section, .cosmox-section {
+        margin: 20px;
+        padding: 3rem 1.5rem;
+        border-radius: 30px;
+        /* Disable will-change on low-end mobile to save memory */
+        will-change: auto;
+    }
+
+    .cosmo-section p, .cosmox-section p {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    .cosmo-btn {
+        padding: 1rem 2.5rem;
+        font-size: 0.95rem;
+    }
+
+    /* Image Grid */
+    .image-grid-section {
+        padding: 50px 5%;
+        gap: 80px;
+    }
+
+    .img-wrapper {
+        width: 95%;
+        align-self: center !important;
+    }
+
+    .grid-item-heading {
+        font-size: 1.2rem;
+        text-align: center !important;
+    }
+
+    .img-wrapper.right .grid-item-heading {
+        text-align: center !important;
+    }
+
+    /* Contact Form */
+    .contact-section {
+        padding: 50px 20px;
+    }
+
+    .contact-form {
+        padding: 30px 20px;
+    }
+
+    .contact-form h3 {
+        font-size: 24px;
+    }
+
+    /* Test Results Section */
+    .test-results-heading h2 {
+        font-size: 1.1rem !important;
+    }
+
+    .test-results-heading p {
+        font-size: 1rem !important;
+    }
 }
 
-.img-wrapper {
-    border: none !important; 
-    box-shadow: none !important;
-    background-color: transparent !important;
-}
+/* Extra small devices */
+@media (max-width: 480px) {
+    .highlight {
+        font-size: 32px;
+    }
 
-.img-wrapper img {
-    border: 8px solid #ffffff; 
-    box-shadow: 0px 15px 40px rgba(0,0,0,0.4);
-    border-radius: 10px; 
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    #text {
+        font-size: 20px;
+    }
+
+    .cursor {
+        height: 25px;
+    }
+
+    .cosmo-section, .cosmox-section {
+        padding: 2rem 1rem;
+    }
+
+    .img-wrapper {
+        width: 100%;
+    }
 }
