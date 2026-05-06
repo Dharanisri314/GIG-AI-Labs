@@ -7,37 +7,30 @@
     --bg-lite-sky: #F0F9FF; 
     --bg-pale-blue: #becfdc; 
 }
-
+ 
 /* Base Styles */
 * { margin: 0; padding: 0; box-sizing: border-box; }
-
-/* FIX 1: use overflow-x: clip instead of hidden on body alone
-   (overflow-x: hidden on body breaks position:sticky in some browsers) */
+ 
 html, body {
     overflow-x: clip;
 }
-
+ 
 html { scroll-behavior: smooth; }
-
+ 
 body {
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(180deg, var(--bg-base-white) 0%, var(--bg-lite-sky) 50%, var(--bg-pale-blue) 100%);
-    /* FIX 2: background-attachment:fixed causes shake/jitter on iOS Safari & Android.
-       We set it to scroll by default and only keep fixed on desktop via media query below. */
     background-attachment: scroll;
     color: var(--dark-text);
     line-height: 1.7;
 }
-
-/* Re-enable fixed background only on desktop where it works correctly */
+ 
 @media (min-width: 769px) {
     body {
         background-attachment: fixed;
     }
 }
-
-/* FIX 3: Missing @keyframes fadeUp — without this the cosmo-section
-   was invisible / flashing on load */
+ 
 @keyframes fadeUp {
     from {
         opacity: 0;
@@ -48,11 +41,12 @@ body {
         transform: translateY(0);
     }
 }
-
-/* Header & Nav */
+ 
+/* ─── Header & Nav ─────────────────────────────────────────── */
 header {
     background: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -62,26 +56,34 @@ header {
     z-index: 1000;
     border-bottom: 1px solid rgba(47, 111, 211, 0.1);
     transition: 0.4s;
+    /*
+     * FIX — hamburger invisible on real phones:
+     * backdrop-filter creates a new stacking context in Safari/Chrome mobile.
+     * isolation: isolate ensures child z-index values are resolved
+     * relative to the header, not trapped inside the blur layer.
+     */
+    isolation: isolate;
 }
-
+ 
 header.scrolled {
     padding: 1rem 3rem;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
-
+ 
 .logo {
     font-size: 2rem;
     font-weight: 700;
     color: var(--primary-blue);
     letter-spacing: 1px;
+    position: relative;
     z-index: 1001;
 }
-
+ 
 nav {
     display: flex;
     align-items: center;
 }
-
+ 
 nav a {
     text-decoration: none;
     color: var(--medium-text);
@@ -91,20 +93,30 @@ nav a {
     border-radius: 10px;
     transition: 0.3s;
 }
-
+ 
 nav a:hover, nav a.active {
     color: var(--primary-blue);
     background: rgba(47, 111, 211, 0.05);
 }
-
-/* Hamburger Menu */
+ 
+/* ─── Hamburger ────────────────────────────────────────────── */
 .hamburger {
     display: none;
     flex-direction: column;
     cursor: pointer;
-    z-index: 1001;
+    /*
+     * FIX — z-index alone doesn't work without a positioning context.
+     * position: relative is required for z-index to take effect on
+     * real mobile browsers (especially iOS Safari).
+     */
+    position: relative;
+    z-index: 1002;
+    /* Removes the grey tap-highlight flash on iOS */
+    -webkit-tap-highlight-color: transparent;
+    /* Larger tap area — easier to hit on small screens */
+    padding: 6px;
 }
-
+ 
 .hamburger span {
     width: 25px;
     height: 3px;
@@ -112,26 +124,25 @@ nav a:hover, nav a.active {
     margin: 4px 0;
     transition: 0.3s;
     border-radius: 3px;
+    display: block;
 }
-
+ 
 .hamburger.active span:nth-child(1) {
     transform: rotate(-45deg) translate(-5px, 6px);
 }
-
 .hamburger.active span:nth-child(2) {
     opacity: 0;
 }
-
 .hamburger.active span:nth-child(3) {
     transform: rotate(45deg) translate(-5px, -6px);
 }
-
-/* Dropdown */
+ 
+/* ─── Dropdown ─────────────────────────────────────────────── */
 .dropdown {
     position: relative;
     display: inline-block;
 }
-
+ 
 .dropbtn {
     cursor: pointer;
     text-decoration: none;
@@ -140,7 +151,7 @@ nav a:hover, nav a.active {
     padding: 10px 15px;
     margin-left: 2rem;
 }
-
+ 
 .dropdown-content {
     display: none;
     position: absolute;
@@ -155,7 +166,7 @@ nav a:hover, nav a.active {
     margin: 0 !important;
     overflow: hidden;
 }
-
+ 
 .dropdown-content a {
     color: #333 !important;
     padding: 12px 0 !important;
@@ -168,22 +179,22 @@ nav a:hover, nav a.active {
     text-align: center;
     background: none;
 }
-
+ 
 .dropdown-content a:hover {
     background-color: #e3f2fd !important;
     color: #1976d2 !important;
 }
-
+ 
 .dropdown:hover .dropdown-content {
     display: block;
 }
-
+ 
 .fa-chevron-down {
     font-size: 0.7rem;
     margin-left: 8px;
 }
-
-/* Hero Section */
+ 
+/* ─── Hero ─────────────────────────────────────────────────── */
 .hero {
     display: flex;
     justify-content: center;
@@ -191,7 +202,7 @@ nav a:hover, nav a.active {
     min-height: 70vh;
     text-align: center;
 }
-
+ 
 .highlight {
     font-family: 'Playfair Display', serif;
     font-size: clamp(40px, 8vw, 80px);
@@ -201,15 +212,15 @@ nav a:hover, nav a.active {
     -webkit-text-fill-color: transparent;
     display: inline-block;
 }
-
+ 
 .subtitle {
     font-size: 1.8rem;
     margin-bottom: 2.5rem;
     color: var(--medium-text);
     font-weight: 300;
 }
-
-/* Cosmo Section */
+ 
+/* ─── Cosmo Section ────────────────────────────────────────── */
 .cosmo-section {
     text-align: center;
     padding: 6rem 2rem;
@@ -222,10 +233,9 @@ nav a:hover, nav a.active {
     z-index: 1;
     overflow: hidden;
     animation: fadeUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) both;
-    /* FIX 4: promotes element to its own GPU layer — reduces repaint jank on scroll */
     will-change: transform;
 }
-
+ 
 .cosmo-section::before {
     content: '';
     position: absolute;
@@ -236,25 +246,24 @@ nav a:hover, nav a.active {
     background: radial-gradient(circle, rgba(47, 111, 211, 0.05) 0%, transparent 70%);
     transform: translate(-50%, -50%);
     z-index: 0;
-    /* Pointer events off so it doesn't block clicks */
     pointer-events: none;
 }
-
+ 
 .cosmox-section {
     text-align: center;
     padding: 100px 20px;
     border-radius: 50px;
     margin: 40px;
 }
-
+ 
 .cosmo-section p, .cosmox-section p {
     font-size: 1.3rem;
     color: var(--medium-text);
     margin: 2rem auto;
     max-width: 800px;
 }
-
-/* Cosmox Heading Gradient */
+ 
+/* ─── Cosmox Heading ───────────────────────────────────────── */
 .cosmox-heading {
     font-family: 'Playfair Display', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: clamp(24px, 4vw, 36px);
@@ -265,10 +274,10 @@ nav a:hover, nav a.active {
     display: inline-block;
     line-height: 1.3;
 }
-
-/* Typing box */
+ 
+/* ─── Typing Box ───────────────────────────────────────────── */
 .typing-box { margin-bottom: 30px; }
-
+ 
 #text {
     font-family: 'Playfair Display', serif;
     font-size: clamp(24px, 5vw, 40px);
@@ -278,7 +287,7 @@ nav a:hover, nav a.active {
     -webkit-text-fill-color: transparent;
     display: inline-block;
 }
-
+ 
 .cursor {
     display: inline-block;
     width: 3px;
@@ -286,12 +295,12 @@ nav a:hover, nav a.active {
     background: #000;
     margin-left: 8px;
     animation: blink 0.8s infinite;
-    /* Align cursor vertically with text */
     vertical-align: middle;
 }
-
+ 
 @keyframes blink { 50% { opacity: 0; } }
-
+ 
+/* ─── Button ───────────────────────────────────────────────── */
 .cosmo-btn {
     background: var(--primary-blue);
     color: white;
@@ -307,15 +316,15 @@ nav a:hover, nav a.active {
     position: relative;
     z-index: 1;
 }
-
+ 
 .cosmo-btn:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 25px rgba(47, 111, 211, 0.3);
 }
-
-/* Contact Section */
+ 
+/* ─── Contact Section ──────────────────────────────────────── */
 .contact-section { padding: 100px 20px; }
-
+ 
 .contact-form {
     max-width: 700px;
     margin: 0 auto;
@@ -324,7 +333,7 @@ nav a:hover, nav a.active {
     border-radius: 30px;
     box-shadow: 0 10px 40px rgba(0,0,0,0.03);
 }
-
+ 
 .contact-form h3 {
     font-family: 'Playfair Display', serif;
     font-size: 32px;
@@ -334,18 +343,18 @@ nav a:hover, nav a.active {
     text-align: center;
     margin-bottom: 30px;
 }
-
+ 
 .form-group { margin-bottom: 20px; }
-
+ 
 .form-group label { display: block; margin-bottom: 8px; font-weight: 600; }
-
+ 
 .form-group input, .form-group textarea {
     width: 100%;
     padding: 15px;
     border: 1px solid #D1EAFF;
     border-radius: 12px;
 }
-
+ 
 .contact-form button {
     width: 100%;
     background: var(--primary-blue);
@@ -357,28 +366,25 @@ nav a:hover, nav a.active {
     font-weight: 600;
     cursor: pointer;
 }
-
-/* Image Grid */
+ 
+/* ─── Image Grid ───────────────────────────────────────────── */
 .image-grid-section {
     padding: 100px 10%;
     display: flex;
     flex-direction: column;
     gap: 150px;
-    /* FIX 5: contain horizontal overflow from grid without breaking sticky */
     overflow-x: clip;
 }
-
+ 
 .img-wrapper {
     width: 60%;
     transition: transform 0.3s ease;
     display: flex;
     flex-direction: column;
 }
-
-.img-wrapper:hover {
-    transform: scale(1.02);
-}
-
+ 
+.img-wrapper:hover { transform: scale(1.02); }
+ 
 .img-wrapper img {
     width: 100%;
     height: auto;
@@ -387,32 +393,23 @@ nav a:hover, nav a.active {
     box-shadow: 0px 15px 40px rgba(0,0,0,0.4);
     border-radius: 10px;
 }
-
-.img-wrapper.left {
-    align-self: flex-start;
-}
-
-.img-wrapper.right {
-    align-self: flex-end;
-}
-
-/* Logo */
+ 
+.img-wrapper.left  { align-self: flex-start; }
+.img-wrapper.right { align-self: flex-end; }
+ 
+/* ─── Logo ─────────────────────────────────────────────────── */
 .logo img.header-logo {
     height: 50px;
     width: auto;
     display: block;
     transition: transform 0.3s ease;
 }
-
-.logo img.header-logo:hover {
-    transform: scale(1.05);
-}
-
-header.scrolled .header-logo {
-    height: 40px;
-}
-
-/* Grid item headings */
+ 
+.logo img.header-logo:hover { transform: scale(1.05); }
+ 
+header.scrolled .header-logo { height: 40px; }
+ 
+/* ─── Grid Item Headings ───────────────────────────────────── */
 .grid-item-heading {
     font-family: 'Playfair Display', serif;
     font-size: 1.8rem;
@@ -422,28 +419,28 @@ header.scrolled .header-logo {
     text-align: left;
     display: block;
 }
-
-.img-wrapper.right .grid-item-heading {
-    text-align: right;
-}
-
-/* ========== MOBILE RESPONSIVE STYLES ========== */
+ 
+.img-wrapper.right .grid-item-heading { text-align: right; }
+ 
+/* ═══════════════════════════════════════════════════════════
+   MOBILE  (≤ 768px)
+═══════════════════════════════════════════════════════════ */
 @media (max-width: 768px) {
-
-    /* Header */
+ 
     header {
         padding: 1rem 1.5rem;
     }
-
+ 
     header.scrolled {
         padding: 0.8rem 1.5rem;
     }
-
-    /* Show hamburger, hide desktop nav */
+ 
+    /* Show hamburger */
     .hamburger {
         display: flex;
     }
-
+ 
+    /* Full-screen slide-in nav panel */
     nav {
         position: fixed;
         left: -100%;
@@ -452,34 +449,33 @@ header.scrolled .header-logo {
         background-color: rgba(255, 255, 255, 0.98);
         width: 100%;
         text-align: center;
-        transition: 0.3s;
+        transition: left 0.3s ease;
         box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
         padding: 20px 0;
         align-items: center;
+        z-index: 999;
     }
-
+ 
     nav.active {
         left: 0;
     }
-
+ 
     nav a {
         margin: 15px 0;
         margin-left: 0;
         width: 90%;
         padding: 12px;
     }
-
+ 
     /* Mobile dropdown */
-    .dropdown {
-        width: 90%;
-    }
-
+    .dropdown { width: 90%; }
+ 
     .dropbtn {
         margin-left: 0;
         width: 100%;
         justify-content: center;
     }
-
+ 
     .dropdown-content {
         position: static !important;
         width: 100% !important;
@@ -493,124 +489,100 @@ header.scrolled .header-logo {
         overflow: hidden;
         transition: max-height 0.3s ease;
     }
-
-    /* Disable desktop hover on mobile */
+ 
+    /* Disable hover-based open on mobile */
     .dropdown:hover .dropdown-content {
         display: none !important;
     }
-
-    /* Enable click-based dropdown on mobile */
+ 
+    /* Enable tap-based open on mobile */
     .dropdown.mobile-active .dropdown-content {
         display: block !important;
         max-height: 200px;
     }
-
+ 
     .dropdown-content a {
         padding: 15px 0 !important;
         margin: 5px 0 !important;
     }
-
-    /* Logo */
-    .logo img.header-logo {
-        height: 35px;
-    }
-
+ 
+    .logo img.header-logo { height: 35px; }
+ 
     /* Hero */
     .hero {
         min-height: 60vh;
         padding: 2rem 1rem;
     }
-
+ 
     .subtitle {
         font-size: 1.2rem;
         margin-bottom: 1.5rem;
     }
-
+ 
     /* Sections */
     .cosmo-section, .cosmox-section {
         margin: 20px;
         padding: 3rem 1.5rem;
         border-radius: 30px;
-        /* Disable will-change on low-end mobile to save memory */
         will-change: auto;
     }
-
+ 
     .cosmo-section p, .cosmox-section p {
         font-size: 1rem;
         line-height: 1.6;
     }
-
+ 
     .cosmo-btn {
         padding: 1rem 2.5rem;
         font-size: 0.95rem;
     }
-
+ 
     /* Image Grid */
     .image-grid-section {
         padding: 50px 5%;
         gap: 80px;
     }
-
+ 
     .img-wrapper {
         width: 95%;
         align-self: center !important;
     }
-
+ 
     .grid-item-heading {
         font-size: 1.2rem;
         text-align: center !important;
     }
-
+ 
     .img-wrapper.right .grid-item-heading {
         text-align: center !important;
     }
-
-    /* Contact Form */
-    .contact-section {
-        padding: 50px 20px;
-    }
-
-    .contact-form {
-        padding: 30px 20px;
-    }
-
-    .contact-form h3 {
-        font-size: 24px;
-    }
-
-    /* Test Results Section */
-    .test-results-heading h2 {
-        font-size: 1.1rem !important;
-    }
-
-    .test-results-heading p {
-        font-size: 1rem !important;
-    }
+ 
+    /* Contact */
+    .contact-section { padding: 50px 20px; }
+ 
+    .contact-form { padding: 30px 20px; }
+ 
+    .contact-form h3 { font-size: 24px; }
+ 
+    /* Test Results */
+    .test-results-heading h2 { font-size: 1.1rem !important; }
+    .test-results-heading p  { font-size: 1rem !important; }
 }
-
-/* Extra small devices */
+ 
+/* ═══════════════════════════════════════════════════════════
+   EXTRA SMALL  (≤ 480px)
+═══════════════════════════════════════════════════════════ */
 @media (max-width: 480px) {
-    .highlight {
-        font-size: 32px;
-    }
-
-    .subtitle {
-        font-size: 1rem;
-    }
-
-    #text {
-        font-size: 20px;
-    }
-
-    .cursor {
-        height: 25px;
-    }
-
-    .cosmo-section, .cosmox-section {
-        padding: 2rem 1rem;
-    }
-
-    .img-wrapper {
-        width: 100%;
-    }
+ 
+    .highlight { font-size: 32px; }
+ 
+    .subtitle { font-size: 1rem; }
+ 
+    #text { font-size: 20px; }
+ 
+    .cursor { height: 25px; }
+ 
+    .cosmo-section, .cosmox-section { padding: 2rem 1rem; }
+ 
+    .img-wrapper { width: 100%; }
 }
