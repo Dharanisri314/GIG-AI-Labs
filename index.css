@@ -258,9 +258,9 @@ nav a:hover, nav a.active {
 }
  
 /* ─── Typing Box ────────────────────────────────────────────── */
+/* ─── Typing Box ────────────────────────────────────────────── */
 .typing-box {
     margin-bottom: 30px;
-    /* FIX: flex keeps the cursor on the same line as the text */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -268,6 +268,24 @@ nav a:hover, nav a.active {
     width: 100%;
     position: relative;
     z-index: 1;
+    
+    /* FIX: Intha rendu line-um mukkiyam */
+    min-height: 120px; /* Minimum height reserve pannum */
+    display: flex;
+    align-content: center; 
+}
+
+/* Mobile-ukku height adjust panna */
+@media (max-width: 768px) {
+    .typing-box {
+        min-height: 100px; 
+    }
+}
+
+@media (max-width: 480px) {
+    .typing-box {
+        min-height: 80px;
+    }
 }
  
 #text {
