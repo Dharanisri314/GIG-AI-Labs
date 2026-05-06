@@ -8,7 +8,7 @@
     --bg-pale-blue: #becfdc; 
 }
  
-/* Base Styles */
+/* ─── Base Styles ───────────────────────────────────────────── */
 * { margin: 0; padding: 0; box-sizing: border-box; }
  
 html, body {
@@ -25,6 +25,7 @@ body {
     line-height: 1.7;
 }
  
+/* Re-enable fixed background only on desktop */
 @media (min-width: 769px) {
     body {
         background-attachment: fixed;
@@ -32,17 +33,11 @@ body {
 }
  
 @keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
  
-/* ─── Header & Nav ─────────────────────────────────────────── */
+/* ─── Header & Nav ──────────────────────────────────────────── */
 header {
     background: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(15px);
@@ -56,12 +51,7 @@ header {
     z-index: 1000;
     border-bottom: 1px solid rgba(47, 111, 211, 0.1);
     transition: 0.4s;
-    /*
-     * FIX — hamburger invisible on real phones:
-     * backdrop-filter creates a new stacking context in Safari/Chrome mobile.
-     * isolation: isolate ensures child z-index values are resolved
-     * relative to the header, not trapped inside the blur layer.
-     */
+    /* Prevents backdrop-filter from trapping hamburger behind blur on real phones */
     isolation: isolate;
 }
  
@@ -99,21 +89,14 @@ nav a:hover, nav a.active {
     background: rgba(47, 111, 211, 0.05);
 }
  
-/* ─── Hamburger ────────────────────────────────────────────── */
+/* ─── Hamburger ─────────────────────────────────────────────── */
 .hamburger {
     display: none;
     flex-direction: column;
     cursor: pointer;
-    /*
-     * FIX — z-index alone doesn't work without a positioning context.
-     * position: relative is required for z-index to take effect on
-     * real mobile browsers (especially iOS Safari).
-     */
-    position: relative;
+    position: relative;          /* required for z-index to work on iOS Safari */
     z-index: 1002;
-    /* Removes the grey tap-highlight flash on iOS */
     -webkit-tap-highlight-color: transparent;
-    /* Larger tap area — easier to hit on small screens */
     padding: 6px;
 }
  
@@ -127,17 +110,11 @@ nav a:hover, nav a.active {
     display: block;
 }
  
-.hamburger.active span:nth-child(1) {
-    transform: rotate(-45deg) translate(-5px, 6px);
-}
-.hamburger.active span:nth-child(2) {
-    opacity: 0;
-}
-.hamburger.active span:nth-child(3) {
-    transform: rotate(45deg) translate(-5px, -6px);
-}
+.hamburger.active span:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); }
  
-/* ─── Dropdown ─────────────────────────────────────────────── */
+/* ─── Dropdown ──────────────────────────────────────────────── */
 .dropdown {
     position: relative;
     display: inline-block;
@@ -185,16 +162,14 @@ nav a:hover, nav a.active {
     color: #1976d2 !important;
 }
  
-.dropdown:hover .dropdown-content {
-    display: block;
-}
+.dropdown:hover .dropdown-content { display: block; }
  
 .fa-chevron-down {
     font-size: 0.7rem;
     margin-left: 8px;
 }
  
-/* ─── Hero ─────────────────────────────────────────────────── */
+/* ─── Hero ──────────────────────────────────────────────────── */
 .hero {
     display: flex;
     justify-content: center;
@@ -220,10 +195,17 @@ nav a:hover, nav a.active {
     font-weight: 300;
 }
  
-/* ─── Cosmo Section ────────────────────────────────────────── */
+/* ─── Cosmo Section ─────────────────────────────────────────── */
 .cosmo-section {
+    /* FIX: flex column so typing box, paragraph and button all center properly */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+ 
     text-align: center;
     padding: 6rem 2rem;
+
     width: 100%;
     max-width: 1300px;
     margin: 60px auto;
@@ -263,7 +245,7 @@ nav a:hover, nav a.active {
     max-width: 800px;
 }
  
-/* ─── Cosmox Heading ───────────────────────────────────────── */
+/* ─── Cosmox Heading ────────────────────────────────────────── */
 .cosmox-heading {
     font-family: 'Playfair Display', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: clamp(24px, 4vw, 36px);
@@ -275,8 +257,18 @@ nav a:hover, nav a.active {
     line-height: 1.3;
 }
  
-/* ─── Typing Box ───────────────────────────────────────────── */
-.typing-box { margin-bottom: 30px; }
+/* ─── Typing Box ────────────────────────────────────────────── */
+.typing-box {
+    margin-bottom: 30px;
+    /* FIX: flex keeps the cursor on the same line as the text */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
  
 #text {
     font-family: 'Playfair Display', serif;
@@ -285,22 +277,26 @@ nav a:hover, nav a.active {
     background: linear-gradient(90deg, #000000 0%, #333333 50%, #666666 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    display: inline-block;
+    background-clip: text;
+    /* FIX: inline (not inline-block) — inline-block created an invisible
+       box that pushed the cursor down to its own line */
+    display: inline;
 }
  
 .cursor {
     display: inline-block;
     width: 3px;
-    height: 35px;
+    height: 1em;        /* matches font size automatically on all screen sizes */
     background: #000;
-    margin-left: 8px;
+    margin-left: 4px;
     animation: blink 0.8s infinite;
     vertical-align: middle;
+    flex-shrink: 0;
 }
  
 @keyframes blink { 50% { opacity: 0; } }
  
-/* ─── Button ───────────────────────────────────────────────── */
+/* ─── Button ────────────────────────────────────────────────── */
 .cosmo-btn {
     background: var(--primary-blue);
     color: white;
@@ -322,7 +318,7 @@ nav a:hover, nav a.active {
     box-shadow: 0 10px 25px rgba(47, 111, 211, 0.3);
 }
  
-/* ─── Contact Section ──────────────────────────────────────── */
+/* ─── Contact Section ───────────────────────────────────────── */
 .contact-section { padding: 100px 20px; }
  
 .contact-form {
@@ -367,7 +363,7 @@ nav a:hover, nav a.active {
     cursor: pointer;
 }
  
-/* ─── Image Grid ───────────────────────────────────────────── */
+/* ─── Image Grid ────────────────────────────────────────────── */
 .image-grid-section {
     padding: 100px 10%;
     display: flex;
@@ -397,7 +393,7 @@ nav a:hover, nav a.active {
 .img-wrapper.left  { align-self: flex-start; }
 .img-wrapper.right { align-self: flex-end; }
  
-/* ─── Logo ─────────────────────────────────────────────────── */
+/* ─── Logo ──────────────────────────────────────────────────── */
 .logo img.header-logo {
     height: 50px;
     width: auto;
@@ -409,7 +405,7 @@ nav a:hover, nav a.active {
  
 header.scrolled .header-logo { height: 40px; }
  
-/* ─── Grid Item Headings ───────────────────────────────────── */
+/* ─── Grid Item Headings ─────────────────────────────────────── */
 .grid-item-heading {
     font-family: 'Playfair Display', serif;
     font-size: 1.8rem;
@@ -422,25 +418,16 @@ header.scrolled .header-logo { height: 40px; }
  
 .img-wrapper.right .grid-item-heading { text-align: right; }
  
-/* ═══════════════════════════════════════════════════════════
+/* ═══════════════════════════════════════════════════════════════
    MOBILE  (≤ 768px)
-═══════════════════════════════════════════════════════════ */
+═══════════════════════════════════════════════════════════════ */
 @media (max-width: 768px) {
  
-    header {
-        padding: 1rem 1.5rem;
-    }
+    header { padding: 1rem 1.5rem; }
+    header.scrolled { padding: 0.8rem 1.5rem; }
  
-    header.scrolled {
-        padding: 0.8rem 1.5rem;
-    }
+    .hamburger { display: flex; }
  
-    /* Show hamburger */
-    .hamburger {
-        display: flex;
-    }
- 
-    /* Full-screen slide-in nav panel */
     nav {
         position: fixed;
         left: -100%;
@@ -456,9 +443,7 @@ header.scrolled .header-logo { height: 40px; }
         z-index: 999;
     }
  
-    nav.active {
-        left: 0;
-    }
+    nav.active { left: 0; }
  
     nav a {
         margin: 15px 0;
@@ -467,7 +452,6 @@ header.scrolled .header-logo { height: 40px; }
         padding: 12px;
     }
  
-    /* Mobile dropdown */
     .dropdown { width: 90%; }
  
     .dropbtn {
@@ -490,12 +474,8 @@ header.scrolled .header-logo { height: 40px; }
         transition: max-height 0.3s ease;
     }
  
-    /* Disable hover-based open on mobile */
-    .dropdown:hover .dropdown-content {
-        display: none !important;
-    }
+    .dropdown:hover .dropdown-content { display: none !important; }
  
-    /* Enable tap-based open on mobile */
     .dropdown.mobile-active .dropdown-content {
         display: block !important;
         max-height: 200px;
@@ -508,7 +488,6 @@ header.scrolled .header-logo { height: 40px; }
  
     .logo img.header-logo { height: 35px; }
  
-    /* Hero */
     .hero {
         min-height: 60vh;
         padding: 2rem 1rem;
@@ -519,7 +498,6 @@ header.scrolled .header-logo { height: 40px; }
         margin-bottom: 1.5rem;
     }
  
-    /* Sections */
     .cosmo-section, .cosmox-section {
         margin: 20px;
         padding: 3rem 1.5rem;
@@ -537,7 +515,13 @@ header.scrolled .header-logo { height: 40px; }
         font-size: 0.95rem;
     }
  
-    /* Image Grid */
+    /* Typing box on mobile — allow text to wrap, cursor stays inline */
+    .typing-box {
+        align-items: flex-start;
+        text-align: center;
+        justify-content: center;
+    }
+ 
     .image-grid-section {
         padding: 50px 5%;
         gap: 80px;
@@ -553,25 +537,19 @@ header.scrolled .header-logo { height: 40px; }
         text-align: center !important;
     }
  
-    .img-wrapper.right .grid-item-heading {
-        text-align: center !important;
-    }
+    .img-wrapper.right .grid-item-heading { text-align: center !important; }
  
-    /* Contact */
     .contact-section { padding: 50px 20px; }
- 
     .contact-form { padding: 30px 20px; }
- 
     .contact-form h3 { font-size: 24px; }
  
-    /* Test Results */
     .test-results-heading h2 { font-size: 1.1rem !important; }
     .test-results-heading p  { font-size: 1rem !important; }
 }
  
-/* ═══════════════════════════════════════════════════════════
+/* ═══════════════════════════════════════════════════════════════
    EXTRA SMALL  (≤ 480px)
-═══════════════════════════════════════════════════════════ */
+═══════════════════════════════════════════════════════════════ */
 @media (max-width: 480px) {
  
     .highlight { font-size: 32px; }
