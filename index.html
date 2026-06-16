@@ -171,8 +171,8 @@
 
     <script>
         window.addEventListener("load", function () {
-            if (window.location.hash === "#home") {
-                history.replaceState(null, null, window.location.pathname);
+            if (window.location.hash) {
+                history.replaceState({}, document.title, window.location.pathname);
             }
         });
     </script>
