@@ -16,65 +16,60 @@
 
 <body>
 
-<header>
-    <div class="logo">
-        <!-- Logo click → root domain only (no path) -->
-        <a href="/">
-            <img src="assets/images/company-logo.png" alt="GIG AI LABS Logo" class="header-logo">
-        </a>
-    </div>
-
-    <!-- Hamburger Menu Icon -->
-    <div class="hamburger" id="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-
-    <nav id="nav-menu">
-        <!-- Home → URL shows /home -->
-        <a href="/#home" class="active">Home</a>
-        <a href="/#about-us">About Us</a>
-
-        <div class="dropdown" id="dropdown">
-            <a href="/#app" class="dropbtn" id="dropbtn">
-                The App <i class="fas fa-chevron-down"></i>
+    <header>
+        <div class="logo">
+            <!-- Logo click → root domain only (no path) -->
+            <a href="/">
+                <img src="assets/images/company-logo.png" alt="GIG AI LABS Logo" class="header-logo">
             </a>
-            <div class="dropdown-content">
-                <a href="https://app.gigailabs.com/" target="_blank">B1</a>
-            </div>
         </div>
 
-        <a href="/login">Log In</a>
-        <a href="https://frost-cabin-9fe.notion.site/1f1b5e5aff0d8085aaacf221a1c77365?pvs=105" target="_blank" rel="noopener noreferrer">Contact</a>
-    </nav>
-</header>
+        <!-- Hamburger Menu Icon -->
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
 
-<main class="hero" id="home">
-    <div class="premium-arc-stack">
-        <div class="arc arc-1"></div>
-        <div class="arc arc-2"></div>
-        <div class="arc arc-3"></div>
-        <div class="arc arc-4"></div>
-    </div>
+        <nav id="nav-menu">
+            <!-- Home → URL shows /home -->
+            <a href="/#home" class="active">Home</a>
+            <a href="/#about-us">About Us</a>
 
- <section class="hero-content">
-    <h1>
-        <span class="highlight" 
-              data-aos="fade-up" 
-              data-aos-duration="900" 
-              data-aos-delay="100">
-            GIG AI LABS
-        </span>
-    </h1>
-    <p class="subtitle" 
-       data-aos="fade-up" 
-       data-aos-duration="900" 
-       data-aos-delay="350">
-        An Applied Research &amp; AI Product Company
-    </p>
-</section>
-</main>
+            <div class="dropdown" id="dropdown">
+                <a href="/#app" class="dropbtn" id="dropbtn">
+                    The App <i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown-content">
+                    <a href="https://app.gigailabs.com/" target="_blank">B1</a>
+                </div>
+            </div>
+
+            <a href="/login">Log In</a>
+            <a href="https://frost-cabin-9fe.notion.site/1f1b5e5aff0d8085aaacf221a1c77365?pvs=105" target="_blank"
+                rel="noopener noreferrer">Contact</a>
+        </nav>
+    </header>
+
+    <main class="hero" id="home">
+        <div class="premium-arc-stack">
+            <div class="arc arc-1"></div>
+            <div class="arc arc-2"></div>
+            <div class="arc arc-3"></div>
+            <div class="arc arc-4"></div>
+        </div>
+
+        <section class="hero-content">
+            <h1>
+                <span class="highlight" data-aos="fade-up" data-aos-duration="900" data-aos-delay="100">
+                    GIG AI LABS
+                </span>
+            </h1>
+            <p class="subtitle" data-aos="fade-up" data-aos-duration="900" data-aos-delay="350">
+                An Applied Research &amp; AI Product Company
+            </p>
+        </section>
+    </main>
 
     <section class="cosmo-section" id="about-us">
         <div class="typing-box">
@@ -134,7 +129,8 @@
                     style="font-size: 25px; font-family: 'Playfair Display', serif; ">5.4 </strong>, We ran B1 on a
                 fixed software patch done by GPT <strong
                     style="font-size: 25px; font-family: 'Playfair Display', serif; ">5.4 </strong> and multiple
-                vulnerabilities were flagged.</h2>
+                vulnerabilities were flagged.
+            </h2>
             <img src="assets/images/Cosmox_3.png" alt="Work 3">
         </div>
     </section>
@@ -172,6 +168,14 @@
         </div>
     </section>
 
+
+    <script>
+        window.addEventListener("load", function () {
+            if (window.location.hash === "#home") {
+                history.replaceState(null, null, window.location.pathname);
+            }
+        });
+    </script>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
