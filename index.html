@@ -16,37 +16,39 @@
 
 <body>
 
-    <header>
-        <div class="logo">
-            <a href="index.html">
-                <img src="assets/images/company-logo.png" alt="GIG AI LABS Logo" class="header-logo">
+<header>
+    <div class="logo">
+        <!-- Logo click → root domain only (no path) -->
+        <a href="/">
+            <img src="assets/images/company-logo.png" alt="GIG AI LABS Logo" class="header-logo">
+        </a>
+    </div>
+
+    <!-- Hamburger Menu Icon -->
+    <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <nav id="nav-menu">
+        <!-- Home → URL shows /home -->
+        <a href="#home" class="active">Home</a>
+        <a href="#app">About Us</a>
+
+        <div class="dropdown" id="dropdown">
+            <a href="#" class="dropbtn" id="dropbtn">
+                The App <i class="fas fa-chevron-down"></i>
             </a>
-        </div>
-
-        <!-- Hamburger Menu Icon -->
-        <div class="hamburger" id="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-
-        <nav id="nav-menu">
-            <a href="index.html" class="active">Home</a>
-            <a href="#app">About Us</a>
-
-            <div class="dropdown" id="dropdown">
-                <a href="#" class="dropbtn" id="dropbtn">
-                    The App <i class="fas fa-chevron-down"></i>
-                </a>
-                <div class="dropdown-content">
-                    <a href="https://app.gigailabs.com/" target="_blank">B1</a>
-                </div>
+            <div class="dropdown-content">
+                <a href="https://app.gigailabs.com/" target="_blank">B1</a>
             </div>
+        </div>
 
-            <a href="login.html">Log In</a>
-            <a href="https://frost-cabin-9fe.notion.site/1f1b5e5aff0d8085aaacf221a1c77365?pvs=105">Contact</a>
-        </nav>
-    </header>
+        <a href="/login.html">Log In</a>
+        <a href="https://frost-cabin-9fe.notion.site/1f1b5e5aff0d8085aaacf221a1c77365?pvs=105" target="_blank" rel="noopener noreferrer">Contact</a>
+    </nav>
+</header>
 
 <main class="hero" id="home">
     <div class="premium-arc-stack">
