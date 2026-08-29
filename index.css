@@ -705,3 +705,39 @@ header.scrolled .header-logo { height: 40px; }
     .cosmo-section, .cosmox-section { padding: 2rem 1rem; }
     .img-wrapper { width: 100%; }
 }
+
+
+
+
+.cd-headline.clip {
+  display: inline-block;
+  overflow: hidden;
+  background-color: linear-gradient(90deg, #000000 0%, #333333 50%, #666666 100%);
+font-family: 'Playfair Display', sans-serif;
+}
+
+.cd-words-wrapper {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  vertical-align: top;
+  white-space: nowrap; /* Prevents text line breaks during clipping */
+}
+
+/* Vertical animation line on edge */
+.cd-words-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 10%;
+  right: 0;
+  width: 2px;
+  height: 80%;
+  background-color:rgba(19, 200, 228)
+}
+
+.cd-words-wrapper b {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+

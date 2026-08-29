@@ -73,8 +73,12 @@
 
     <section class="cosmo-section" id="about-us">
         <div class="typing-box">
-            <span id="text"></span>
-            <span class="cursor"></span>
+            <h1 class="cd-headline clip">
+                <span class="cd-words-wrapper">
+                    <b class="is-visible">Building a Smarter World through the power of Generative AI</b>
+                </span>
+            </h1>
+            <!-- <span class="cursor"></span> -->
         </div>
         <p>We believe that the world's most powerful technology shouldn't belong to the few.<br>
             Our mission is to put cutting-edge AI into the hands of every consumer, unlocking new levels of potential,
@@ -93,7 +97,8 @@
         <h1 class="cosmox-heading">B1 Agent is an Enterprise Grade tool designed to identify critical vulnerabilities
             and help users with Red Teaming and applying Mitigations.</h1>
         <p>
-            B1 is not a coding copilot constrained to an IDE or an AI wrapper around an API,<br>It is an industry-grade AI agent that conducts Red Team Analysis ensuring systems are secure.
+            B1 is not a coding copilot constrained to an IDE or an AI wrapper around an API,<br>It is an industry-grade
+            AI agent that conducts Red Team Analysis ensuring systems are secure.
         </p>
     </section>
 
@@ -244,28 +249,68 @@
         });
 
         // Typing Effect logic
-        let message = "Building a Smarter World through the power of Generative AI";
-        let textElement = document.getElementById("text");
-        let index = 0;
-        let isDeleting = false;
+        // let message = "Building a Smarter World through the power of Generative AI";
+        // let textElement = document.getElementById("text");
+        // let index = 0;
+        // let isDeleting = false;
 
-        function typeEffect() {
-            if (!isDeleting) {
-                textElement.innerHTML = message.substring(0, index + 1);
-                index++;
-                if (index === message.length) {
-                    setTimeout(() => isDeleting = true, 1000);
-                }
-            } else {
-                textElement.innerHTML = message.substring(0, index - 1);
-                index--;
-                if (index === 0) {
-                    isDeleting = false;
-                }
-            }
-            setTimeout(typeEffect, isDeleting ? 50 : 100);
-        }
-        typeEffect();
+        // function typeEffect() {
+        //     if (!isDeleting) {
+        //         textElement.innerHTML = message.substring(0, index + 1);
+        //         index++;
+        //         if (index === message.length) {
+        //             setTimeout(() => isDeleting = true, 1000);
+        //         }
+        //     } else {
+        //         textElement.innerHTML = message.substring(0, index - 1);
+        //         index--;
+        //         if (index === 0) {
+        //             isDeleting = false;
+        //         }
+        //     }
+        //     setTimeout(typeEffect, isDeleting ? 50 : 100);
+        // }
+        // typeEffect();
+
+
+
+
+
+
+       document.addEventListener("DOMContentLoaded", function () {
+    const wrapper = document.querySelector(".cd-words-wrapper");
+    const textElement = wrapper.querySelector("b");
+
+    // Speed and delay configuration (in milliseconds)
+    const clipDuration = 7000;  // Significantly slowed down (3 seconds) for a gradual reveal/hide
+    const visiblePause = 2000;  // Pause duration when sentence is FULLY REVEALED
+    const hiddenPause = 800;    // Brief pause when sentence is FULLY HIDDEN
+
+    function animateClipLoop() {
+        // 1. Get exact pixel width of full sentence
+        const fullWidth = textElement.offsetWidth;
+
+        // 2. Expand width gradually to reveal full sentence
+        wrapper.style.transition = `width ${clipDuration}ms cubic-bezier(0.65, 0, 0.35, 1)`;
+        wrapper.style.width = fullWidth + "px";
+
+        // 3. Pause while visible
+        setTimeout(() => {
+            // 4. Clip back gradually to hidden (0px) at the exact same slower speed
+            wrapper.style.width = "0px";
+
+            // 5. Wait for closing animation to finish + short pause before repeating
+            setTimeout(() => {
+                animateClipLoop();
+            }, clipDuration + hiddenPause);
+
+        }, clipDuration + visiblePause);
+    }
+
+    // Set initial state to 0px width and start loop
+    wrapper.style.width = "0px";
+    animateClipLoop();
+});
     </script>
 
 
