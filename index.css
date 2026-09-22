@@ -765,22 +765,39 @@ font-family: 'Playfair Display', sans-serif;
 }
 
 /* ─── Mobile fix for headline animation ──────────────────────────
-   The width-clip animation (JS measures the sentence's pixel width
-   and animates the wrapper from 0 → fullWidth) only works when the
-   sentence stays on ONE line (white-space: nowrap). On small screens
-   the sentence is too long for one line, so it either overflows off
-   the right edge or gets stuck invisible at width:0. Below 768px we
-   switch it off and let the text wrap normally with a simple fade-in
-   instead (JS below adds the .mobile-fade-in class in this case). */
+   The JS only animates the WIDTH of a single nowrap line — it has
+   no idea about mobile and never adds any class here. On a narrow
+   screen that single line is far wider than the viewport, so the
+   sentence either shoots off the right edge or sits stuck at 0
+   width (invisible), and being inline-block with no explicit width
+   also threw off centering. Below 768px we:
+     1) let the sentence wrap onto multiple lines, centered, at
+        full container width (fixes the alignment), and
+     2) drive the reveal/hide loop ourselves with a CSS clip-path
+        animation, completely independent of the JS (fixes the
+        animation) — the JS's own width changes on the same
+        element are neutralised by !important below, so it can't
+        fight this animation. */
 @media (max-width: 768px) {
+  .cd-headline.clip {
+    display: block;
+    width: 100%;
+    overflow: visible !important;
+  }
+
   .cd-words-wrapper {
-    white-space: normal;
+    display: block;
     width: 100% !important;
-    overflow: visible;
+    white-space: normal !important;
+    text-align: center;
+    overflow: visible !important;
+    transition: none !important;
+    animation: mobileClipReveal 16s cubic-bezier(0.65, 0, 0.35, 1) infinite;
   }
 
   .cd-words-wrapper b {
-    white-space: normal;
+    display: inline;
+    white-space: normal !important;
   }
 
   /* the vertical accent line only makes sense at the edge of a
@@ -788,17 +805,11 @@ font-family: 'Playfair Display', sans-serif;
   .cd-words-wrapper::after {
     display: none;
   }
-
-  .cd-headline.clip {
-    overflow: visible;
-  }
 }
 
-.mobile-fade-in {
-  animation: mobileFadeIn 1s ease both;
-}
-
-@keyframes mobileFadeIn {
-  from { opacity: 0; transform: translateY(15px); }
-  to   { opacity: 1; transform: translateY(0); }
+@keyframes mobileClipReveal {
+  0%   { clip-path: inset(0 100% 0 0); }
+  44%  { clip-path: inset(0 0 0 0); }
+  56%  { clip-path: inset(0 0 0 0); }
+  100% { clip-path: inset(0 100% 0 0); }
 }
