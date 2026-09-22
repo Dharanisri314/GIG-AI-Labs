@@ -394,7 +394,7 @@ nav a:hover, nav a.active {
 }
 
 @media (max-width: 768px) {
-    .typing-box { min-height: 100px; }
+    .typing-box { min-height: 100px; min-width: 0; width: 100%; }
 }
 
 @media (max-width: 480px) {
@@ -649,6 +649,7 @@ header.scrolled .header-logo { height: 40px; }
     }
  
     .cosmo-section, .cosmox-section {
+        width: auto;
         margin: 20px;
         padding: 3rem 1.5rem;
         border-radius: 30px;
@@ -782,12 +783,15 @@ font-family: 'Playfair Display', sans-serif;
   .cd-headline.clip {
     display: block;
     width: 100%;
+    min-width: 0;
+    flex: 1 1 100%;
     overflow: visible !important;
   }
 
   .cd-words-wrapper {
     display: block;
     width: 100% !important;
+    min-width: 0;
     white-space: normal !important;
     text-align: center;
     overflow: visible !important;
