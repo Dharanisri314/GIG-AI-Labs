@@ -692,8 +692,25 @@ header.scrolled .header-logo { height: 40px; }
     .contact-form { padding: 30px 20px; }
     .contact-form h3 { font-size: 24px; }
  
+    /* button was 33% of the form width — too narrow to tap comfortably
+       and too narrow for its own label on phones */
+    .contact-form button {
+        width: 100%;
+        padding: 14px;
+        font-size: 16px;
+    }
+ 
     .test-results-heading h2 { font-size: 1.1rem !important; }
     .test-results-heading p  { font-size: 1rem !important; }
+ 
+    /* the "When B1 caught GPT 5.4" heading carries hard-coded inline
+       font-sizes (30px / 25px) in the HTML — those don't shrink with
+       everything else, so they overflow/crowd a phone screen. Pull
+       them down with higher-specificity + !important so they scale
+       along with the rest of .grid-item-heading on mobile. */
+    .image-grid-section .grid-item-heading strong {
+        font-size: 1.05rem !important;
+    }
 }
  
 /* ─── Extra Small Screens ───────────────────────────────────── */
@@ -704,6 +721,13 @@ header.scrolled .header-logo { height: 40px; }
     .cursor { height: 25px; }
     .cosmo-section, .cosmox-section { padding: 2rem 1rem; }
     .img-wrapper { width: 100%; }
+ 
+    .cosmox-heading { font-size: 1.3rem; }
+    .grid-item-heading { font-size: 1rem; }
+    .image-grid-section .grid-item-heading strong { font-size: 0.95rem !important; }
+ 
+    .contact-form h3 { font-size: 20px; }
+    .contact-form button { font-size: 15px; padding: 12px; }
 }
 
 
@@ -740,4 +764,41 @@ font-family: 'Playfair Display', sans-serif;
   white-space: nowrap;
 }
 
+/* ─── Mobile fix for headline animation ──────────────────────────
+   The width-clip animation (JS measures the sentence's pixel width
+   and animates the wrapper from 0 → fullWidth) only works when the
+   sentence stays on ONE line (white-space: nowrap). On small screens
+   the sentence is too long for one line, so it either overflows off
+   the right edge or gets stuck invisible at width:0. Below 768px we
+   switch it off and let the text wrap normally with a simple fade-in
+   instead (JS below adds the .mobile-fade-in class in this case). */
+@media (max-width: 768px) {
+  .cd-words-wrapper {
+    white-space: normal;
+    width: 100% !important;
+    overflow: visible;
+  }
 
+  .cd-words-wrapper b {
+    white-space: normal;
+  }
+
+  /* the vertical accent line only makes sense at the edge of a
+     single-line clipped block; hide it once text wraps */
+  .cd-words-wrapper::after {
+    display: none;
+  }
+
+  .cd-headline.clip {
+    overflow: visible;
+  }
+}
+
+.mobile-fade-in {
+  animation: mobileFadeIn 1s ease both;
+}
+
+@keyframes mobileFadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
